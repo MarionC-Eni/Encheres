@@ -3,8 +3,8 @@ package fr.eni.projet.encheres.bo;
 public class Acheteur extends Utilisateur {
 
 	public Acheteur(int noUtilisateur, String pseudo, String nom, String prenom, String email, int telephone,
-			String rue, int codePostal, String ville, String motDePasse, int credit, boolean adminsitrateur) {
-		super(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit, adminsitrateur);
+			String rue, int codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
+		super(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit, administrateur);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -33,8 +33,8 @@ public class Acheteur extends Utilisateur {
 		builder.append(getMotDePasse());
 		builder.append(", getCredit()=");
 		builder.append(getCredit());
-		builder.append(", isAdminsitrateur()=");
-		builder.append(isAdminsitrateur());
+		builder.append(", isadministrateur()=");
+		builder.append(isadministrateur());
 		builder.append(", toString()=");
 		builder.append(super.toString());
 		builder.append(", getClass()=");
