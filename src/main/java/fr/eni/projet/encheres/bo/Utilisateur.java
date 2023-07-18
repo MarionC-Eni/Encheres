@@ -5,4 +5,4 @@ private int noUtilisateur;
 private String pseudo;
 private int point;
 
-}
+
