@@ -7,27 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class connectionServlet
- */
 @WebServlet("/connectionServlet")
 public class connectionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public connectionServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/WEB-INF/formulaire.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/index.html").forward(request, response);
 	}
 
 	/**
@@ -37,6 +27,6 @@ public class connectionServlet extends HttpServlet {
 		String nom = request.getParameter("nom");
 		nom = nom.toUpperCase();
 		request.setAttribute("nom", nom);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/formulaire.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/index.html").forward(request, response);
 	}
 	}
