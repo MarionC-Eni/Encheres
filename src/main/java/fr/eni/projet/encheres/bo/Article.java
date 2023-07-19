@@ -101,17 +101,5 @@ public class Article {
 				+ dateDebut + ", dateFin=" + dateFin + "]";
 	}
 	
-
+}
 	
-	
-
-	
-	
-	
-	}
-	
-	
-	
-	
-
-
