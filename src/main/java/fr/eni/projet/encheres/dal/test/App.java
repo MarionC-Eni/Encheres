@@ -20,10 +20,10 @@ public class App {
 		*/
 	
 		
-		ADAOArticle adao = DaoFactory.getAdao();
+/**		ADAOArticle adao = DaoFactory.getAdao();
 		System.out.println(adao.obtenirTousLesArticles());
 	
-
+*/
 	}
 
 
