@@ -9,6 +9,7 @@ public class App {
 
 	public static void main(String[] args) {
 
+		// test commentaire
 		
 		ADAOArticle adao1 = DaoFactory.getAdao();
 		Article y = new Article(1, "Lampe", "blanche", 10, 9, false, null, null);
