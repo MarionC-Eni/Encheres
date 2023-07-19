@@ -1,10 +1,10 @@
-package fr.eni.projet.encheres.dal;
+package fr.eni.projet.encheres.dal.dbo.utilisateur;
 
 import java.util.List;
 
 import fr.eni.projet.encheres.bo.Utilisateur;
 
-public interface ADAO {
+public interface ADAOUtilisateur {
 
 
 		public void ajouterUtilisateur(Utilisateur utilisateur);
