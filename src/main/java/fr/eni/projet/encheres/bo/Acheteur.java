@@ -45,7 +45,7 @@ public class Acheteur extends Utilisateur {
 		return builder.toString();
 	}
 
-
+// commentaire pour la modif
 
 	}
 
