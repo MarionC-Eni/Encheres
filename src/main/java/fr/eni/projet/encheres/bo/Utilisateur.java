@@ -1,12 +1,12 @@
 package fr.eni.projet.encheres.bo;
 
 public class Utilisateur {
-	private int noUtilisateur;
+	private static int noUtilisateur;
 	private String pseudo;
-	private String nom;
+	private static String nom;
 	private String prenom;
 	private String email;
-	private int telephone;
+	private String telephone;
 	private String rue;
 	private int codePostal;
 	private String ville;
@@ -14,7 +14,7 @@ public class Utilisateur {
 	private int credit;
 	private boolean administrateur;
 	
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, int telephone,
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, int codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
 		super();
 		this.noUtilisateur = noUtilisateur;
@@ -31,7 +31,7 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 	
-	public Utilisateur(String pseudo, String nom, String prenom, String email, int telephone,
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, int codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
 		super();
 		this.pseudo = pseudo;
@@ -47,12 +47,12 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	public int getNoUtilisateur() {
+	public static int getNoUtilisateur() {
 		return noUtilisateur;
 	}
 
 	public void setNoUtilisateur(int noUtilisateur) {
-		this.noUtilisateur = noUtilisateur;
+		Utilisateur.noUtilisateur = noUtilisateur;
 	}
 
 	public String getPseudo() {
@@ -63,12 +63,12 @@ public class Utilisateur {
 		this.pseudo = pseudo;
 	}
 
-	public String getNom() {
+	public static String getNom() {
 		return nom;
 	}
 
 	public void setNom(String nom) {
-		this.nom = nom;
+		Utilisateur.nom = nom;
 	}
 
 	public String getPrenom() {
@@ -87,11 +87,11 @@ public class Utilisateur {
 		this.email = email;
 	}
 
-	public int getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
 
-	public void setTelephone(int telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 

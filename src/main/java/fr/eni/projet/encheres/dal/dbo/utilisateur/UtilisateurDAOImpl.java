@@ -11,57 +11,86 @@ import java.util.List;
 import fr.eni.projet.encheres.bo.Utilisateur;
 import fr.eni.projet.encheres.dal.ConnectionProvider;
 
-public class UtilisateurDAOImpl implements ADAOUtilisateur {
+public class UtilisateurDAOImpl implements DAOUtilisateur {
 
-	private static final String INSERT_USER = "INSERT INTO utilisateurs (nom, mail) VALUES (?,?)";
-	private static final String SELECT_ALL_USERS = "SELECT * FROM utilisateurs";
+	private static final String INSERT_USER = "INSERT INTO UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String SELECT_ALL_USERS = "SELECT * FROM UTILISATEURS";
 
 	
-	@Override
 	public void ajouterUtilisateur(Utilisateur utilisateur) {
 		try {Connection connection = ConnectionProvider.getConnection();
 		PreparedStatement pStmt = connection.prepareStatement(INSERT_USER);
 		
-		pStmt.setString(1, utilisateur.getNom());
-		pStmt.setString(2, utilisateur.getEmail());
+		pStmt.setString(1, utilisateur.getPseudo());
+		pStmt.setString(2, utilisateur.getNom());
+		pStmt.setString(3, utilisateur.getPrenom());
+		pStmt.setString(4, utilisateur.getEmail());
+        pStmt.setString(5, utilisateur.getTelephone()); // Truncate 'telephone' value if necessary
+		pStmt.setString(6, utilisateur.getRue());
+		pStmt.setInt(7, utilisateur.getCodePostal());
+		pStmt.setString(8, utilisateur.getVille());
+		pStmt.setString(9, utilisateur.getMotDePasse());
+		pStmt.setInt(10, utilisateur.getCredit());
+		pStmt.setBoolean(11, utilisateur.isadministrateur());
+		
 		pStmt.executeUpdate();
-		System.out.println("L'utilisateur %s a bien été ajouté");		
+/**
+ * System.out.printf("L'utilisateur %s a bien été ajouté", Utilisateur.getNom()););	// phase de test : on affiche pas cette ligne	
+ */
+		
+		
+		
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
 		
 	}
-	@Override
+	
+	private String truncateString(String value, int maxLength) {
+	    if (value.length() > maxLength) {
+	        return value.substring(0, maxLength);
+	    }
+	    return value;
+	}
+	
 	public void mettreAJourUtilisateur(Utilisateur utilisateur) {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
 	public void supprimerUtilisateur(Utilisateur utilisateur) {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
 	public Utilisateur obtenirUtilisateurParId(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
 	public List<Utilisateur> obtenirTousLesUtilisateurs() {
 		try {Connection connection = ConnectionProvider.getConnection();
 		Statement Stmt = connection.createStatement();
 		ResultSet rs = Stmt.executeQuery(SELECT_ALL_USERS);
 		List<Utilisateur> utilisateurs = new ArrayList<>();
 				while (rs.next()) {
-					utilisateurs.add(
-							new Utilisateur( 
-							rs.getInt("no_utilisateur"),
-							rs.getString("nom"),
-							rs.getString("email"), null, null, 0, null, 0, null, null, 0, false
-							)
-					);
-				}
-					
+				
+		            Utilisateur utilisateur = new Utilisateur(null, null, null, null, null, null, 0, null, null, 0, false);
+
+		            // Utilisation des méthodes setter pour définir les valeurs de l'utilisateur
+		            utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
+		            utilisateur.setPseudo(rs.getString("pseudo"));
+		            utilisateur.setNom(rs.getString("nom"));
+		            utilisateur.setPrenom(rs.getString("prenom"));
+		            utilisateur.setEmail(rs.getString("email"));
+		            utilisateur.setTelephone(rs.getString("telephone"));
+		            utilisateur.setRue(rs.getString("rue"));
+		            utilisateur.setCodePostal(rs.getInt("code_postal"));
+		            utilisateur.setVille(rs.getString("ville"));
+		            utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+		            utilisateur.setCredit(rs.getInt("credit"));
+		            utilisateur.setadministrateur(rs.getBoolean("administrateur"));
+
+		            utilisateurs.add(utilisateur);
+		        }
+
 	return utilisateurs;
 				
 	} catch (SQLException e) {

@@ -1,6 +1,7 @@
 package fr.eni.projet.encheres.bo;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Article {
@@ -11,13 +12,13 @@ public class Article {
 	private double prixVente;
 	private double miseAPrix;
 	private boolean etatVente;
-	private Date dateDebut;
-	private Date dateFin;
+	private LocalDate dateDebut;
+	private LocalDate dateFin;
 	
 	// Constructeur
 	
 	public Article(int noArticle, String nomArticle, String description, double prixVente, double miseAPrix,
-			boolean etatVente, Date dateDebut, Date dateFin) {
+			boolean etatVente, LocalDate dateDebut, LocalDate dateFin) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -31,7 +32,7 @@ public class Article {
 	// Constructeur sans noArticle
 	
 	public Article(String nomArticle, String description, double prixVente, double miseAPrix, boolean etatVente,
-			Date dateDebut, Date dateFin) {
+			LocalDate dateDebut, LocalDate dateFin) {
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.prixVente = prixVente;
@@ -79,16 +80,16 @@ public class Article {
 	public void setEtatVente(boolean etatVente) {
 		this.etatVente = etatVente;
 	}
-	public Date getDateDebut() {
+	public LocalDate getDateDebut() {
 		return dateDebut;
 	}
-	public void setDateDebut(Date dateDebut) {
+	public void setDateDebut(LocalDate dateDebut) {
 		this.dateDebut = dateDebut;
 	}
-	public Date getDateFin() {
+	public LocalDate getDateFin() {
 		return dateFin;
 	}
-	public void setDateFin(Date dateFin) {
+	public void setDateFin(LocalDate dateFin) {
 		this.dateFin = dateFin;
 	}
 	

@@ -4,7 +4,7 @@ import java.util.List;
 
 import fr.eni.projet.encheres.bo.Article;
 
-public interface ADAOArticle {
+public interface DAOArticle {
 
 
 		public void ajouterArticle(Article Article);
