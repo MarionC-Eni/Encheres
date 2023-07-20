@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class PageConnexion
  */
-@WebServlet(name = "PageConnexion", urlPatterns = { "/PageConnexion" })
+@WebServlet("/PageConnexion")
 public class PageConnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

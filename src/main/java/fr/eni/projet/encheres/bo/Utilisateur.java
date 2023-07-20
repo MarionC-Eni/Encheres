@@ -46,6 +46,11 @@ public class Utilisateur {
 		this.credit = credit;
 		this.administrateur = administrateur;
 	}
+// a suppr
+	public Utilisateur(int noUtilisateur2, String pseudo2, String nom2, String prenom2, String email2, int telephone2,
+			String rue2, int codePostal2, String ville2, String motDePasse2, int credit2, boolean administrateur2) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public static int getNoUtilisateur() {
 		return noUtilisateur;

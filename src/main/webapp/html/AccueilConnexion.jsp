@@ -10,16 +10,16 @@
 <body>
 <h1>ENI-Enchères</h1>
 <h2>Page de connexion</h2>
-<form method="POST" action="/Enchere-Eni/PageConnexion.java">
+<form method="POST" action="/Enchere-Eni/">
 <label for="Identifiant">Identifiant :</label>
-<input type="text" id="Identifiant" name="Identifiant" value="NineJea"/><br><br>
-<label for="Mot de passe">passeword :</label>
-<input type="text" id="Mot de passe" name="Mot de passe" value="*******"/><br><br>
+<input type="text" id="Identifiant" name="Identifiant" placeholder="NineJea"/><br><br>
+<label for="Mot de passe">password :</label>
+<input type="password" id="Mot de passe" name="Mot de passe" placeholder="*******"/><br><br>
 <input type="submit" value="connexion" />
 <input type="checkbox" id="checkbox" name="checkbox" value="true" />
 <label for="checkbox"> Se souvenir de moi</label>
 </form>
-<form method="POST" action="/html/CreationCompte.jsp">
+<form method="POST" action="/Enchere-Eni/CreationCompte">
 <input type="submit" value="Créer un compte" />
 </form>
 </body>
