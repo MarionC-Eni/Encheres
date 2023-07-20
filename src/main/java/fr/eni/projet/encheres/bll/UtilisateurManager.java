@@ -15,13 +15,16 @@ package fr.eni.projet.encheres.bll;
 	    }
 
 	    // Méthode pour l'inscription d'un nouvel utilisateur
-	    public void sinscrire (String pseudo, String motDePasse, String email, String prenom) throws BusinessException {
+	    public void sinscrire (String pseudo, String motDePasse, String email, String prenom, int codePostal, String ville, String adresse) throws BusinessException {
 	        try {
 	        	Utilisateur u = new Utilisateur();
 	        	u.setPseudo(pseudo);
 	        	u.setMotDePasse(motDePasse);
 	        	u.setEmail(email);
 	        	u.setPrenom(prenom);
+	        	u.setCodePostal(codePostal);
+	        	u.setVille(ville);
+	        	u.setAdresse(adresse);
 	        	
 	        	//validateUtilisateur(utilisateur, motDePasse);
 	            DAOUtilisateur.ajouterUtilisateur(u);
