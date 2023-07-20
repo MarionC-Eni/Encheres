@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class connectionServlet
  */
-@WebServlet("/connectionServlet")
-public class connectionServlet extends HttpServlet {
+@WebServlet("/AccueilSite")
+public class AccueilSite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public connectionServlet() {
+    public AccueilSite() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +28,7 @@ public class connectionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/AccueilConnexion.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/html/AccueilConnexion.jsp").forward(request, response);
 	}
 
 	/**
@@ -38,6 +38,6 @@ public class connectionServlet extends HttpServlet {
 		//String nom = request.getParameter("nom");
 		//nom = nom.toUpperCase();
 		//request.setAttribute("nom", nom);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
+		//this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
 	}
 	}
