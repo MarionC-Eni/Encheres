@@ -4,15 +4,6 @@ package fr.eni.projet.encheres.bll;
 	 import fr.eni.projet.encheres.bo.Utilisateur;
 	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
 	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
->>>>>>> 106e328e3c616b2259e935f4ca37cc5c14afaa48
-	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
-	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
-	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
-	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
-	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
-	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
-	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
-	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
 
 
 	public class UtilisateurManager {
@@ -51,11 +42,7 @@ package fr.eni.projet.encheres.bll;
 	    // Méthode pour afficher le profil d'un utilisateur
 	    public Utilisateur afficherProfil(int noUtilisateur) throws BusinessException {
 	        try {
-<<<<<<< HEAD
-	            return DAOUtilisateur.selectById(noUtilisateur);
-=======
 	            return DAOUtilisateur.obtenirUtilisateurParId(noUtilisateur);
->>>>>>> 106e328e3c616b2259e935f4ca37cc5c14afaa48
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de l'affichage du profil de l'utilisateur", e);
 	        }
@@ -74,11 +61,7 @@ package fr.eni.projet.encheres.bll;
 	    // Méthode pour supprimer un compte utilisateur
 	    public void supprimerUtilisateur(Utilisateur utilisateur) throws BusinessException {
 	        try {
-<<<<<<< HEAD
-	            DAOUtilisateur.supprimerUtilisateur(utilisateur);
-=======
 	        	DAOUtilisateur.supprimerUtilisateur(utilisateur, motDePasse);
->>>>>>> 106e328e3c616b2259e935f4ca37cc5c14afaa48
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de la suppression du compte de l'utilisateur", e);
 	        }
