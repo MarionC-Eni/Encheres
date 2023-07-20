@@ -13,7 +13,7 @@ public class Utilisateur {
 	private String motDePasse;
 	private int credit;
 	private boolean administrateur;
-	private String adresse;
+	
 	
 	public Utilisateur() {
 		
@@ -21,7 +21,7 @@ public class Utilisateur {
 
 	
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, int codePostal, String ville, String motDePasse, int credit, boolean administrateur, String adresse) {
+			String rue, int codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
 		super();
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
@@ -35,11 +35,11 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 		this.credit = credit;
 		this.administrateur = administrateur;
-		this.adresse = adresse;
+		
 	}
 	
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, int codePostal, String ville, String motDePasse, int credit, boolean administrateur, String adresse) {
+			String rue, int codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -52,7 +52,7 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 		this.credit = credit;
 		this.administrateur = administrateur;
-		this.adresse = adresse;
+		
 	}
 // a suppr
 	public Utilisateur(int noUtilisateur2, String pseudo2, String nom2, String prenom2, String email2, int telephone2,
@@ -158,15 +158,6 @@ public class Utilisateur {
 	
 	
 
-	public String getAdresse() {
-		return adresse;
-	}
-
-
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
-
 
 	@Override
 	public String toString() {
@@ -196,8 +187,6 @@ public class Utilisateur {
 		builder.append(", administrateur=");
 		builder.append(administrateur);
 		builder.append("]");
-		builder.append(", adresse=");
-		builder.append(adresse);
 		return builder.toString();
 	}
 
