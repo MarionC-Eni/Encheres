@@ -2,7 +2,9 @@ package fr.eni.projet.encheres.dal.dbo.articles;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.sql.Date;
 import fr.eni.projet.encheres.bo.Article;
 import fr.eni.projet.encheres.bo.Categorie;
@@ -12,6 +14,7 @@ import fr.eni.projet.encheres.dal.ConnectionProvider;
 public class ArticleDAOImpl implements DAOArticle {
 
 	private static final String INSERT_ARTICLES = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?,?)";
+	private static final String SELECT_ALL_ARTICLES = null;
 
 	//private static final String SELECT_ALL_ARTICLES = "SELECT * FROM ARTICLES_VENDUS";
 
@@ -60,10 +63,10 @@ public class ArticleDAOImpl implements DAOArticle {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	}
+	
 
 	
-/**	public List<Article> obtenirTousLesArticles() {
+	public List<Article> obtenirTousLesArticles() {
 		try {Connection connection = ConnectionProvider.getConnection();
 		Statement Stmt = connection.createStatement();
 		ResultSet rs = Stmt.executeQuery(SELECT_ALL_ARTICLES);
@@ -86,6 +89,6 @@ public class ArticleDAOImpl implements DAOArticle {
 
 		return null;
 	}
-	*/
+	}
 
 

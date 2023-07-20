@@ -15,8 +15,7 @@ public interface DAOArticle {
 				
 		Article obtenirArticleParId(int no_article);
 				
-		/**List<Article> obtenirTousLesArticles();
-		 * 
-		 */
+		List<Article> obtenirTousLesArticles();
+		
 	}
 
