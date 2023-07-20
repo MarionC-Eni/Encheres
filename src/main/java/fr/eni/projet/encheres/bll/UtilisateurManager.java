@@ -1,24 +1,24 @@
 package fr.eni.projet.encheres.bll;
 
-	// import fr.eni.encheres.BusinessException;
-	 import fr.eni.projet.encheres.bo.Utilisateur;
-	// import fr.eni.encheres.dal.DAOFactory;
-	// import fr.eni.encheres.dal.UtilisateurDAO;
+// import fr.eni.encheres.BusinessException;
+import fr.eni.projet.encheres.bo.Utilisateur;
+import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
+import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
 
 
 	public class UtilisateurManager {
-	    private final UtilisateurDAO utilisateurDAO;
+	    private final DAOUtilisateur DAOUtilisateur;
 	    
 	    // Constructeur 
 	    public UtilisateurManager() {
-	        this.utilisateurDAO = DAOFactory.getUtilisateurDAO();
+	        this.DAOUtilisateur = DaoFactory.getDAOUtilisateur();
 	    }
 
 	    // Méthode pour l'inscription d'un nouvel utilisateur
 	    public void inscription(Utilisateur utilisateur, String motDePasse) throws BusinessException {
 	        try {
 	            validateUtilisateur(utilisateur, motDePasse);
-	            utilisateurDAO.insert(utilisateur, motDePasse);
+	            DAOUtilisateur.ajouterUtilisateur(utilisateur, motDePasse);
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de l'inscription de l'utilisateur", e);
 	        }
@@ -27,7 +27,7 @@ package fr.eni.projet.encheres.bll;
 	    // Méthode pour la connexion d'un utilisateur
 	    public Utilisateur seConnecter(String pseudo, String motDePasse) throws BusinessException {
 	        try {
-	            Utilisateur utilisateur = utilisateurDAO.selectByPseudo(pseudo);
+	            Utilisateur utilisateur = DAOUtilisateur.selectByPseudo(pseudo);
 	            if (utilisateur == null (utilisateur.getPseudo) {
 	                return utilisateur;
 	            } else {
@@ -42,7 +42,7 @@ package fr.eni.projet.encheres.bll;
 	    // Méthode pour afficher le profil d'un utilisateur
 	    public Utilisateur afficherProfil(int idUtilisateur) throws BusinessException {
 	        try {
-	            return utilisateurDAO.selectById(noUtilisateur);
+	            return DAOUtilisateur.selectById(noUtilisateur);
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de l'affichage du profil de l'utilisateur", e);
 	        }
@@ -52,7 +52,7 @@ package fr.eni.projet.encheres.bll;
 	    public void modifierProfil(Utilisateur utilisateur) throws BusinessException {
 	        try {
 	            validateUtilisateur(utilisateur); 
-	            utilisateurDAO.update(utilisateur);
+	            DAOUtilisateur.mettreAJourUtilisateur(utilisateur);
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de la modification du profil de l'utilisateur", e);
 	        }
@@ -61,7 +61,7 @@ package fr.eni.projet.encheres.bll;
 	    // Méthode pour supprimer un compte utilisateur
 	    public void supprimerCompte(Utilisateur utilisateur) throws BusinessException {
 	        try {
-	            utilisateurDAO.delete(utilisateur);
+	            DAOUtilisateur.supprimerUtilisateur(utilisateur);
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de la suppression du compte de l'utilisateur", e);
 	        }
@@ -73,7 +73,7 @@ package fr.eni.projet.encheres.bll;
 	    
 	    public void retrouverMotDePasse(String pseudo, String email) throws BusinessException {
 	        try {
-	            Utilisateur utilisateur = utilisateurDAO.selectByPseudoAndEmail(pseudo, email);
+	            Utilisateur utilisateur = DAOUtilisateur.selectByPseudoAndEmail(pseudo, email);
 	            if (utilisateur != null) {
 	                // Envoyer un email avec un lien pour réinitialiser le mot de passe
 	            } else {

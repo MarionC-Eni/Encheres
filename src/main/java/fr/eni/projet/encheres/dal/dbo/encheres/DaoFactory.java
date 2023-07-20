@@ -1,12 +1,12 @@
 package fr.eni.projet.encheres.dal.dbo.encheres;
 
-import fr.eni.projet.encheres.dal.dbo.categorie.DAOCategorie;
-import fr.eni.projet.encheres.dal.dbo.categorie.CategorieDAOImpl;
+import fr.eni.projet.encheres.dal.dbo.encheres.DAOEnchere;
+import fr.eni.projet.encheres.dal.dbo.encheres.EnchereDAOImpl;
 
 
 public abstract class DaoFactory {
 
-	public static DAOCategorie getAdao() {
-		return new CategorieDAOImpl();
+	public static DAOEnchere getAdao() {
+		return new EnchereDAOImpl();
 	}
 }

@@ -5,12 +5,12 @@ import java.time.LocalDateTime;
 
 public class Enchere {
 	private LocalDateTime dateEnchere;
-	private int montant_enchere;
+	private int montantEnchere;
 	
-	public Enchere(LocalDateTime dateEnchere, int montant_enchere) {
+	public Enchere(LocalDateTime dateEnchere, int montantEnchere) {
 		super();
 		this.dateEnchere = dateEnchere;
-		this.montant_enchere = montant_enchere;
+		this.montantEnchere = montantEnchere;
 	}
 
 	public LocalDateTime getDateEnchere() {
@@ -21,12 +21,12 @@ public class Enchere {
 		this.dateEnchere = dateEnchere;
 	}
 
-	public int getMontant_enchere() {
-		return montant_enchere;
+	public int getmontantEnchere() {
+		return montantEnchere;
 	}
 
-	public void setMontant_enchere(int montant_enchere) {
-		this.montant_enchere = montant_enchere;
+	public void setmontantEnchere(int montantEnchere) {
+		this.montantEnchere = montantEnchere;
 	}
 
 	@Override
@@ -34,8 +34,8 @@ public class Enchere {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Enchere [dateEnchere=");
 		builder.append(dateEnchere);
-		builder.append(", montant_enchere=");
-		builder.append(montant_enchere);
+		builder.append(", montantEnchere=");
+		builder.append(montantEnchere);
 		builder.append("]");
 		return builder.toString();
 	} 
