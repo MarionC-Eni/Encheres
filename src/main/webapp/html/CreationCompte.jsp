@@ -12,20 +12,22 @@
 <h2>Mon profil</h2>
 <form>
 <label for="pseudo">pseudo :</label>
-<input type="text" id="pseudo" name="pseudo">
+<input type="text" id="pseudo" name="pseudo" required>
 <label for="nom">Nom :</label>
-<input type="text" id="nom" name="nom">
+<input type="text" id="nom" name="nom" required>
 <label for="Prenom">Prénom :</label>
-<input type="text" id="Prenom" name="Prenom">
+<input type="text" id="Prenom" name="Prenom" required>
 <label for="telephone">telephone :</label>
-<input type="tel" id="telephone" name="telephone">
+<input type="tel" id="telephone" name="telephone" maxlength= "10" required>
 <label for="rue">Rue :</label>
-<input type="text" id="rue" name="rue">
+<input type="text" id="rue" name="rue" required>
 <label for="codePostal">Code postal :</label>
-<input type="text" id="codePostal" name="codePostal">
+<input type="number" id="codePostal" name="codePostal" maxlength= "5" required>
 <label for="motDePasse">Mot de passe :</label>
-<input type="password" id="motDePasse" name="motDePasse">
-<input type="submit" value="true">
+<input type="password" id="motDePasse" name="motDePasse" required>
+<input type="submit" value="creer">
+<a href="/Enchere-Eni/AccueilSite"><button>Annuler</button></a>
+
 </form>
 <p></p>
 </body>

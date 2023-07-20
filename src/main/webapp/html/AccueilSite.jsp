@@ -13,7 +13,7 @@
 	<h2>Liste des enchères</h2>
 	<form>
 	<label for="filtresEnchere">Filtres :</label><br>
-	<input type=text id="filtresEnchere" name="filtreEnchere" placeholder="Le nom de l'article contient"><br>
+	<input type=search id="filtresEnchere" name="filtreEnchere" placeholder="Le nom de l'article contient"><br>
 	<label for="Categorie">Categorie :</label>
 	<select id="Categorie" name="Categorie" >
 	<option value="Toutes"> Toutes</option>
