@@ -23,9 +23,9 @@ public class EnchereDAOImpl implements DAOEnchere {
 		try {Connection connection = ConnectionProvider.getConnection();
 		PreparedStatement pStmt = connection.prepareStatement(INSERT_ENCHERE);
 		
-		pStmt.setInt(1, Utilisateur.getNoUtilisateur());
-		pStmt.setInt(2, Article.getNoArticle());
-		pStmt.setDate(3, Enchere.getDateEnchere());
+		pStmt.setInt(1, Enchere.getUtilisateur().getNoUtilisateur());
+		pStmt.setInt(2, Enchere.getArticle().getNoArticle());
+		pStmt.setDate(3, new java.sql.Date(Enchere.getDateEnchere().getTime()))
 		pStmt.setInt(4, Enchere.getmontantEnchere());
 		
 		pStmt.executeUpdate();
@@ -48,11 +48,6 @@ public class EnchereDAOImpl implements DAOEnchere {
 	}
 	public void supprimerEnchere(Enchere Enchere) {
 		// TODO Auto-generated method stub
-		
-	}
-	public Enchere obtenirEnchereParId(int id) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	public List<Enchere> obtenirToutesLesEncheres() {
 		try {Connection connection = ConnectionProvider.getConnection();
@@ -64,8 +59,10 @@ public class EnchereDAOImpl implements DAOEnchere {
 		            Enchere Enchere = new Enchere(null);
 
 		            // Utilisation des méthodes setter pour définir les valeurs de l'Enchere
-		            Enchere.setDateEnchere(rs.getInt("no_Enchere"));
-		            Enchere.setMontantEnchere(rs.getString("MontantEnchere"));
+		            Enchere.setNoUtilisateur(rs.getInt("no_utilisateur"));
+	                Enchere.setNoArticle(rs.getInt("no_article"));
+	                Enchere.setDateEnchere(rs.getDate("date_enchere"));
+	                Enchere.setMontantEnchere(rs.getInt("montant_enchere"))
 
 		            Encheres.add(Enchere);
 		        }
