@@ -1,9 +1,18 @@
 package fr.eni.projet.encheres.bll;
 
-// import fr.eni.encheres.BusinessException;
-import fr.eni.projet.encheres.bo.Utilisateur;
-import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
-import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
+	// import fr.eni.encheres.BusinessException;
+	 import fr.eni.projet.encheres.bo.Utilisateur;
+	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
+	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
+>>>>>>> 106e328e3c616b2259e935f4ca37cc5c14afaa48
+	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
+	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
+	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
+	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
+	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
+	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
+	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
+	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
 
 
 	public class UtilisateurManager {
@@ -15,7 +24,7 @@ import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
 	    }
 
 	    // Méthode pour l'inscription d'un nouvel utilisateur
-	    public void inscription(Utilisateur utilisateur, String motDePasse) throws BusinessException {
+	    public void sinscrire (Utilisateur utilisateur, String motDePasse) throws BusinessException {
 	        try {
 	            validateUtilisateur(utilisateur, motDePasse);
 	            DAOUtilisateur.ajouterUtilisateur(utilisateur, motDePasse);
@@ -40,16 +49,20 @@ import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
 
 
 	    // Méthode pour afficher le profil d'un utilisateur
-	    public Utilisateur afficherProfil(int idUtilisateur) throws BusinessException {
+	    public Utilisateur afficherProfil(int noUtilisateur) throws BusinessException {
 	        try {
+<<<<<<< HEAD
 	            return DAOUtilisateur.selectById(noUtilisateur);
+=======
+	            return DAOUtilisateur.obtenirUtilisateurParId(noUtilisateur);
+>>>>>>> 106e328e3c616b2259e935f4ca37cc5c14afaa48
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de l'affichage du profil de l'utilisateur", e);
 	        }
 	    }
 
 	    // Méthode pour modifier le profil d'un utilisateur
-	    public void modifierProfil(Utilisateur utilisateur) throws BusinessException {
+	    public void mettreAJourUtilisateurProfil(Utilisateur utilisateur) throws BusinessException {
 	        try {
 	            validateUtilisateur(utilisateur); 
 	            DAOUtilisateur.mettreAJourUtilisateur(utilisateur);
@@ -59,9 +72,13 @@ import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
 	    }
 
 	    // Méthode pour supprimer un compte utilisateur
-	    public void supprimerCompte(Utilisateur utilisateur) throws BusinessException {
+	    public void supprimerUtilisateur(Utilisateur utilisateur) throws BusinessException {
 	        try {
+<<<<<<< HEAD
 	            DAOUtilisateur.supprimerUtilisateur(utilisateur);
+=======
+	        	DAOUtilisateur.supprimerUtilisateur(utilisateur, motDePasse);
+>>>>>>> 106e328e3c616b2259e935f4ca37cc5c14afaa48
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de la suppression du compte de l'utilisateur", e);
 	        }
@@ -71,7 +88,7 @@ import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
 
 	    // Méthode pour retrouver son mot de passe
 	    
-	    public void retrouverMotDePasse(String pseudo, String email) throws BusinessException {
+	  /**  public void retrouverMotDePasse(String pseudo, String email) throws BusinessException {
 	        try {
 	            Utilisateur utilisateur = DAOUtilisateur.selectByPseudoAndEmail(pseudo, email);
 	            if (utilisateur != null) {
@@ -83,10 +100,11 @@ import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
 	            throw new BusinessException("Erreur lors de la récupération du mot de passe", e);
 	        }
 	    }
+	    **/
 
 	    // Validation des données pour l'inscription et la modification du profil
 	    
-	    private void validateUtilisateur(Utilisateur utilisateur, String motDePasse) throws BusinessException {
+	  /**  private void validateUtilisateur(Utilisateur utilisateur, String motDePasse) throws BusinessException {
 	    
 	        // Ajouter ici les validations nécessaires pour l'utilisateur
 	        // Exemple : Vérification des champs obligatoires, des valeurs valides, etc.
@@ -96,14 +114,14 @@ import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
 	        if (utilisateur.getEmail() == null || utilisateur.getEmail().isEmpty()) {
 	            throw new BusinessException("L'email ne peut pas être vide.");
 	        }
-	        if (motDePasseNonHash == null || motDePasse.isEmpty()) {
+	        if (motDePasse == null || motDePasse.isEmpty()) {
 	            throw new BusinessException("Le mot de passe ne peut pas être vide.");
 	        }
 	        // Ajouter d'autres validations selon vos besoins
 
 	       
 	}
-
+**/
 
 
 
