@@ -17,7 +17,7 @@ import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
 /**
  * Servlet implementation class TestBdd
  */
-@WebServlet("/TestBdd")
+@WebServlet("/TestBdd2")
 public class TestBdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
