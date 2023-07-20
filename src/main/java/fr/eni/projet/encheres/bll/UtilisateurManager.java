@@ -15,7 +15,11 @@ package fr.eni.projet.encheres.bll;
 	    }
 
 	    // Méthode pour l'inscription d'un nouvel utilisateur
+<<<<<<< HEAD
 	    public void sinscrire (String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse, String credit, String administrateur) throws BusinessException {
+=======
+	    public void sinscrire (String pseudo, String motDePasse, String email, String prenom, int codePostal, String ville, String adresse) throws BusinessException {
+>>>>>>> 76e080fb7fb3c6118b579cab34092fa9dba2ed93
 	        try {
 	        	Utilisateur u = new Utilisateur();
 	        	u.setPseudo(pseudo);
@@ -27,8 +31,16 @@ package fr.eni.projet.encheres.bll;
 	        	u.setEmail(codePostal);
 	        	u.setPrenom(ville);
 	        	u.setMotDePasse(motDePasse);
+<<<<<<< HEAD
 	        	u.setEmail(credit);
 	        	u.setPrenom(administrateur);
+=======
+	        	u.setEmail(email);
+	        	u.setPrenom(prenom);
+	        	u.setCodePostal(codePostal);
+	        	u.setVille(ville);
+	        	u.setAdresse(adresse);
+>>>>>>> 76e080fb7fb3c6118b579cab34092fa9dba2ed93
 	        	
 	        	//validateUtilisateur(utilisateur, motDePasse);
 	            DAOUtilisateur.ajouterUtilisateur(u);
