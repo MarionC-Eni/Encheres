@@ -54,7 +54,7 @@ package fr.eni.projet.encheres.bll;
 	            throw new BusinessException("Erreur lors de la connexion de l'utilisateur");
 	        }
 	    }
-
+		// modif bidon pour push
 
 	    // Méthode pour afficher le profil d'un utilisateur
 	    public Utilisateur afficherProfil(int noUtilisateur) throws BusinessException {
