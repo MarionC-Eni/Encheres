@@ -1,0 +1,16 @@
+form {
+	display :column;
+	margin: auto;
+	width: 50%;
+	border: 3px solid green;
+}
+h1
+{
+	font-size:16px;
+	border: 3px solid green;
+}
+h2 {
+	margin : auto;
+	width: 50%;
+	border: 3px solid green;
+}

@@ -28,16 +28,16 @@ public class connectionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/WEB-INF/formulaire.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/AccueilConnexion.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nom = request.getParameter("nom");
-		nom = nom.toUpperCase();
-		request.setAttribute("nom", nom);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/formulaire.jsp").forward(request, response);
+		//String nom = request.getParameter("nom");
+		//nom = nom.toUpperCase();
+		//request.setAttribute("nom", nom);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
 	}
 	}
