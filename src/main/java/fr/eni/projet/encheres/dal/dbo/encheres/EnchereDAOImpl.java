@@ -19,14 +19,16 @@ public class EnchereDAOImpl implements DAOEnchere {
 	private static final String SELECT_ALL_ENCHERES = "SELECT * FROM ENCHERES";
 
 	
-	public void ajouterEnchere(Enchere Enchere) {
+	public void ajouterEnchere(Enchere enchere, Utilisateur utilisateur, Article article) {
 		try {Connection connection = ConnectionProvider.getConnection();
 		PreparedStatement pStmt = connection.prepareStatement(INSERT_ENCHERE);
 		
-		pStmt.setInt(1, Enchere.getUtilisateur().getNoUtilisateur());
-		pStmt.setInt(2, Enchere.getArticle().getNoArticle());
-		pStmt.setDate(3, new java.sql.Date(Enchere.getDateEnchere().getTime()))
-		pStmt.setInt(4, Enchere.getmontantEnchere());
+		 // Assurez-vous que l'objet Utilisateur est associé à l'objet Enchere avant d'appeler la méthode ajouterEnchere()
+		
+        pStmt.setInt(1, utilisateur.getNoUtilisateur());
+        pStmt.setInt(2, article.getNoArticle());
+        pStmt.setTimestamp(3, new java.sql.Timestamp(enchere.getDateEnchere().getTime()));        
+        pStmt.setInt(4, enchere.getmontantEnchere());
 		
 		pStmt.executeUpdate();
 /**
@@ -49,22 +51,20 @@ public class EnchereDAOImpl implements DAOEnchere {
 	public void supprimerEnchere(Enchere Enchere) {
 		// TODO Auto-generated method stub
 	}
-	public List<Enchere> obtenirToutesLesEncheres() {
+	
+	
+	public List<Enchere> obtenirToutesLesEncheres()  {
 		try {Connection connection = ConnectionProvider.getConnection();
 		Statement Stmt = connection.createStatement();
 		ResultSet rs = Stmt.executeQuery(SELECT_ALL_ENCHERES);
 		List<Enchere> Encheres = new ArrayList<>();
 				while (rs.next()) {
 				
-		            Enchere Enchere = new Enchere(null);
-
-		            // Utilisation des méthodes setter pour définir les valeurs de l'Enchere
-		            Enchere.setNoUtilisateur(rs.getInt("no_utilisateur"));
-	                Enchere.setNoArticle(rs.getInt("no_article"));
-	                Enchere.setDateEnchere(rs.getDate("date_enchere"));
-	                Enchere.setMontantEnchere(rs.getInt("montant_enchere"))
-
-		            Encheres.add(Enchere);
+		           Enchere enchere = new Enchere(
+		           rs.getDate("date_enchere"),
+	                rs.getInt("montant_enchere")
+	                );
+		            Encheres.add(enchere);
 		        }
 
 	return Encheres;
@@ -75,4 +75,8 @@ public class EnchereDAOImpl implements DAOEnchere {
 
 		return null;
 	}
+
+
+
+
 }

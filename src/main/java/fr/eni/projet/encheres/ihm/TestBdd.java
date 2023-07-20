@@ -49,7 +49,7 @@ public class TestBdd extends HttpServlet {
 	
 	*/
 		
-		DAOUtilisateur adao1 = (DAOUtilisateur) DaoFactory.getAdao();
+		DAOUtilisateur adao1 = (DAOUtilisateur) DaoFactory.getDAOUtilisateur();
 		Utilisateur y = new Utilisateur ("ZANALIA","COUDERT", "NICOLAS", "nicolas@gmail.com", "0695063302", "2 rue Bisounours", 44300, "Nantes", "admin2023", 150, false);
 		adao1.ajouterUtilisateur(y);
 		
