@@ -12,6 +12,12 @@ public class Categorie {
 		this.libelle = libelle;
 	}
 	
+	public Categorie(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
+	
+	
 	// getter and setters
 	public static int getNoCategorie() {
 		return noCategorie;
@@ -21,13 +27,19 @@ public class Categorie {
 		
 	}
 	
-	// string
+	
+	
 	public String getLibelle() {
 		return libelle;
 	}
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+	
+	
+
+	// tOstring
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
