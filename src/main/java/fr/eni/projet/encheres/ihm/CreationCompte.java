@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.projet.encheres.BusinessException;
+import fr.eni.projet.encheres.bll.UtilisateurManager;
+
 /**
  * Servlet implementation class CreationCompte
  */
@@ -35,7 +38,18 @@ public class CreationCompte extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        String pseudo = request.getParameter("pseudo");
+        String motDePasse = request.getParameter("motDePasse");
+        String email =  request.getParameter("email");
+        String prenom =  request.getParameter("Prenom");
+        UtilisateurManager utilisateurManager = new UtilisateurManager();
+        try {
+			utilisateurManager.sinscrire(pseudo, motDePasse, email, prenom);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        doGet(request, response);
 
+	}
 }

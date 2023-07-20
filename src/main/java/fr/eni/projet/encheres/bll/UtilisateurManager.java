@@ -1,6 +1,6 @@
 package fr.eni.projet.encheres.bll;
 
-	// import fr.eni.encheres.BusinessException;
+	 import fr.eni.projet.encheres.BusinessException;
 	 import fr.eni.projet.encheres.bo.Utilisateur;
 	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
 	 import fr.eni.projet.encheres.dal.dbo.utilisateur.DaoFactory;
@@ -15,26 +15,32 @@ package fr.eni.projet.encheres.bll;
 	    }
 
 	    // Méthode pour l'inscription d'un nouvel utilisateur
-	    public void sinscrire (Utilisateur utilisateur, String motDePasse) throws BusinessException {
+	    public void sinscrire (String pseudo, String motDePasse, String email, String prenom) throws BusinessException {
 	        try {
-	            validateUtilisateur(utilisateur, motDePasse);
-	            DAOUtilisateur.ajouterUtilisateur(utilisateur, motDePasse);
+	        	Utilisateur u = new Utilisateur();
+	        	u.setPseudo(pseudo);
+	        	u.setMotDePasse(motDePasse);
+	        	u.setEmail(email);
+	        	u.setPrenom(prenom);
+	        	
+	        	//validateUtilisateur(utilisateur, motDePasse);
+	            DAOUtilisateur.ajouterUtilisateur(u);
 	        } catch (Exception e) {
-	            throw new BusinessException("Erreur lors de l'inscription de l'utilisateur", e);
+	            throw new BusinessException("Erreur lors de l'inscription de l'utilisateur");
 	        }
 	    }
 
 	    // Méthode pour la connexion d'un utilisateur
-	    public Utilisateur seConnecter(String pseudo, String motDePasse) throws BusinessException {
+	   /* public Utilisateur seConnecter(String pseudo, String motDePasse) throws BusinessException {
 	        try {
 	            Utilisateur utilisateur = DAOUtilisateur.selectByPseudo(pseudo);
-	            if (utilisateur == null (utilisateur.getPseudo) {
+	            if (utilisateur != null)  {
 	                return utilisateur;
 	            } else {
 	                throw new BusinessException("Un pseudo est obligatoire pour se connecter.");
 	            }
 	        } catch (Exception e) {
-	            throw new BusinessException("Erreur lors de la connexion de l'utilisateur", e);
+	            throw new BusinessException("Erreur lors de la connexion de l'utilisateur");
 	        }
 	    }
 
@@ -44,22 +50,22 @@ package fr.eni.projet.encheres.bll;
 	        try {
 	            return DAOUtilisateur.obtenirUtilisateurParId(noUtilisateur);
 	        } catch (Exception e) {
-	            throw new BusinessException("Erreur lors de l'affichage du profil de l'utilisateur", e);
+	            throw new BusinessException("Erreur lors de l'affichage du profil de l'utilisateur");
 	        }
 	    }
 
 	    // Méthode pour modifier le profil d'un utilisateur
-	    public void mettreAJourUtilisateurProfil(Utilisateur utilisateur) throws BusinessException {
+	   /* public void mettreAJourUtilisateurProfil(Utilisateur utilisateur) throws BusinessException {
 	        try {
 	            validateUtilisateur(utilisateur); 
 	            DAOUtilisateur.mettreAJourUtilisateur(utilisateur);
 	        } catch (Exception e) {
-	            throw new BusinessException("Erreur lors de la modification du profil de l'utilisateur", e);
+	            throw new BusinessException("Erreur lors de la modification du profil de l'utilisateur");
 	        }
 	    }
 
 	    // Méthode pour supprimer un compte utilisateur
-	    public void supprimerUtilisateur(Utilisateur utilisateur) throws BusinessException {
+	   /** public void supprimerUtilisateur(Utilisateur utilisateur) throws BusinessException {
 	        try {
 	        	DAOUtilisateur.supprimerUtilisateur(utilisateur, motDePasse);
 	        } catch (Exception e) {

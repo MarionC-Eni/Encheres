@@ -1,9 +1,9 @@
 package fr.eni.projet.encheres.bo;
 
 public class Utilisateur {
-	private static int noUtilisateur;
+	private  int noUtilisateur;
 	private String pseudo;
-	private static String nom;
+	private  String nom;
 	private String prenom;
 	private String email;
 	private String telephone;
@@ -13,6 +13,11 @@ public class Utilisateur {
 	private String motDePasse;
 	private int credit;
 	private boolean administrateur;
+	
+	public Utilisateur() {
+		
+	}
+
 	
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, int codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
@@ -52,12 +57,12 @@ public class Utilisateur {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static int getNoUtilisateur() {
+	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
 
 	public void setNoUtilisateur(int noUtilisateur) {
-		Utilisateur.noUtilisateur = noUtilisateur;
+		this.noUtilisateur = noUtilisateur;
 	}
 
 	public String getPseudo() {
@@ -68,12 +73,12 @@ public class Utilisateur {
 		this.pseudo = pseudo;
 	}
 
-	public static String getNom() {
+	public String getNom() {
 		return nom;
 	}
 
 	public void setNom(String nom) {
-		Utilisateur.nom = nom;
+		this.nom = nom;
 	}
 
 	public String getPrenom() {
