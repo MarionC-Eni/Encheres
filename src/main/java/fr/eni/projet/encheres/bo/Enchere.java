@@ -7,13 +7,14 @@ public class Enchere {
 	private Date dateEnchere;
 	private int montantEnchere;
 
-	
+	//constructeur
 	public Enchere(Date dateEnchere, int montantEnchere) {
 		super();
 		this.dateEnchere = dateEnchere;
 		this.montantEnchere = montantEnchere;
 	}
 
+	// 
 	public Date getDateEnchere() {
 		return dateEnchere;
 	}
