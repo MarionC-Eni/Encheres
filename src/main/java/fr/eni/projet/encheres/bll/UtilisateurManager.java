@@ -20,6 +20,7 @@ package fr.eni.projet.encheres.bll;
 
 	    public void sinscrire (String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse, String credit, String administrateur) throws BusinessException {
 
+<<<<<<< HEAD
 	        try {
 	        	Utilisateur u = new Utilisateur();
 	        	u.setPseudo(pseudo);
@@ -41,6 +42,31 @@ package fr.eni.projet.encheres.bll;
 	        }
 	    }
 	}
+=======
+            try {
+                Utilisateur u = new Utilisateur();
+                u.setPseudo(pseudo);
+                u.setNom(nom);
+                u.setPrenom(prenom);
+                u.setPseudo(email);
+                u.setMotDePasse(telephone);
+                u.setEmail(rue);
+                u.setPrenom(codePostal);
+                u.setMotDePasse(ville);
+                u.setEmail(motDePasse);
+                u.setPrenom(credit);
+                u.setEmail(administrateur);
+
+                //validateUtilisateur(utilisateur, motDePasse);
+                DAOUtilisateur.ajouterUtilisateur(u);
+            } catch (Exception e) {
+                throw new BusinessException("Erreur lors de l'inscription de l'utilisateur");
+            }
+        }
+	}
+	        
+
+>>>>>>> a63f03ffabe9c4b7915eff0249859bd4885c9774
 	    // Méthode pour la connexion d'un utilisateur
 	   /* public Utilisateur seConnecter(String pseudo, String motDePasse) throws BusinessException {
 	        try {
