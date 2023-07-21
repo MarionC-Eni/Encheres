@@ -17,37 +17,40 @@ package fr.eni.projet.encheres.bll;
 	    // Méthode pour l'inscription d'un nouvel utilisateur
 
 	    
-	    public void sinscrire (String pseudo, String nom, String prenom, String email, String telephone, String rue, int codePostal, String ville, String motDePasse, int credit, boolean administrateur) throws BusinessException {
+	    public void sinscrire(String pseudo, String nom, String prenom, String email, String telephone, String rue, int codePostal, String ville, String motDePasse, int credit, boolean administrateur) throws BusinessException {
+	        try {
+	            Utilisateur u = new Utilisateur();
+	            u.setPseudo(pseudo);
+	            u.setNom(nom);
+	            u.setPrenom(prenom);
+	            u.setEmail(email);
+	            u.setTelephone(telephone);
+	            u.setRue(rue);
+	            u.setCodePostal(codePostal);
+	            u.setVille(ville);
+	            u.setMotDePasse(motDePasse);
+	            u.setCredit(credit);
+	            u.setadministrateur(administrateur);
 
+	            // Vérification du pseudo unique
+	            if (DAOUtilisateur.pseudoExiste(pseudo)) {
+	                throw new BusinessException("Ce pseudo est déjà pris. Veuillez en choisir un autre.");
+	            }
 
-            try {
-                Utilisateur u = new Utilisateur();
-                u.setPseudo(pseudo);
-                u.setNom(nom);
-                u.setPrenom(prenom);
-                u.setEmail(email);
-                u.setTelephone(telephone);
-                u.setRue(rue);
-                u.setCodePostal(codePostal);
-                u.setVille(ville);
-                u.setMotDePasse(motDePasse);
-                u.setCredit(credit);
-                u.setadministrateur(administrateur);
-                
-              //  if (DAOUtilisateur.pseudoExiste(pseudo)) {
-              // throw new BusinessException("Ce pseudo est déjà pris. Veuillez en choisir un autre.");
-               // if (isEmailAlreadyUsed(u.getEmail())) {
-                 //   throw new BusinessException("Cette adresse e-mail est déjà utilisée par un autre utilisateur.");
-              //  }
-            
-                //validateUtilisateur(utilisateur, motDePasse);
-                DAOUtilisateur.ajouterUtilisateur(u);
-            } catch (Exception e) {
-                throw new BusinessException("Erreur lors de l'inscription de l'utilisateur");
-            }
-        }
+	            // Vérification de l'e-mail unique (vous pouvez implémenter une méthode similaire)
+	            if (DAOUtilisateur.emailExiste(email)) {
+	                throw new BusinessException("Cette adresse e-mail est déjà utilisée par un autre utilisateur.");
+	            }
 
-    }
+	            validateUtilisateur(utilisateur, motDePasse);
+	            DAOUtilisateur.ajouterUtilisateur(u);
+	        } catch (Exception e) {
+	            throw new BusinessException("Erreur lors de l'inscription de l'utilisateur");
+	        }
+	    }
+	}
+	        
+    
 	    // Méthode pour la connexion d'un utilisateur
 	   /* public Utilisateur seConnecter(String pseudo, String motDePasse) throws BusinessException {
 	        try {
