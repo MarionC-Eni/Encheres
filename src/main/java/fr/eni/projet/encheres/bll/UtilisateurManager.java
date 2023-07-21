@@ -36,6 +36,9 @@ package fr.eni.projet.encheres.bll;
                 
               //  if (DAOUtilisateur.pseudoExiste(pseudo)) {
               // throw new BusinessException("Ce pseudo est déjà pris. Veuillez en choisir un autre.");
+               // if (isEmailAlreadyUsed(u.getEmail())) {
+                 //   throw new BusinessException("Cette adresse e-mail est déjà utilisée par un autre utilisateur.");
+              //  }
             
                 //validateUtilisateur(utilisateur, motDePasse);
                 DAOUtilisateur.ajouterUtilisateur(u);
@@ -43,6 +46,9 @@ package fr.eni.projet.encheres.bll;
                 throw new BusinessException("Erreur lors de l'inscription de l'utilisateur");
             }
         }
+
+		
+	    
     }
 	    // Méthode pour la connexion d'un utilisateur
 	   /* public Utilisateur seConnecter(String pseudo, String motDePasse) throws BusinessException {
