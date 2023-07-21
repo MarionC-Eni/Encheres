@@ -10,7 +10,7 @@
 <body>
 <h1>ENI-Enchères</h1>
 <h2>Mon profil</h2>
-<form method="POST" action="/Enchere-Eni/CreationCompte">
+<form method="POST" action="/Enchere-Eni/PageCreerCompte">
 <label for="pseudo">pseudo :</label>
 <input type="text" id="pseudo" name="pseudo" required>
 <label for="nom">Nom :</label>

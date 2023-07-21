@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>vous etes sur le site et bien connecté</title>
+<title>PagesListeEncheresConnecté</title>
 </head>
 <body>
-
+<h1>PagesListeEncheresConnecté</h1>
 </body>
 </html>

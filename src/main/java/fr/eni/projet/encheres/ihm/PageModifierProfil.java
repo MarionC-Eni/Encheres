@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PageConnexion
+ * Servlet implementation class PageModifierProfil
  */
-@WebServlet("/PageConnexion")
-public class PageConnexion extends HttpServlet {
+@WebServlet("/PageModifierProfil")
+public class PageModifierProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PageConnexion() {
+    public PageModifierProfil() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class PageConnexion extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/html/PageConnexion.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/html/PageModifierProfil.jsp").forward(request, response);
 	}
 
 	/**

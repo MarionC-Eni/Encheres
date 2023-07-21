@@ -19,7 +19,7 @@
 <input type="checkbox" id="checkbox" name="checkbox" value="true" />
 <label for="checkbox"> Se souvenir de moi</label>
 </form>
-<form method="GET" action="/Enchere-Eni/CreationCompte">
+<form method="GET" action="/Enchere-Eni/PageCreerCompte">
 <input type="submit" value="Créer un compte" />
 </form>
 </body>
