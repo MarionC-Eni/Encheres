@@ -11,15 +11,15 @@ import fr.eni.projet.encheres.dal.exception.DALException;
 public class ArticleManager {
 
     // Ajouter un article
-    public void ajouterArticle(Article article) throws BusinessException {
+    public void ajouterArticle(Article article) throws BusinessException, DALException {
         // Validation
         validerArticle(article);
         DAOArticle articleDao = DaoFactory.getDAOArticle();
         try {
             articleDao.ajouterArticle(article);
-        } catch (DALException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            throw new BusinessException("Probleme dans l'ajout à la bdd!");
+            throw new DALException("Probleme dans l'ajout à la bdd!");
         }
     }
     
@@ -40,39 +40,39 @@ public class ArticleManager {
     }
 
     // Modifier un article
-    public void mettreAJourArticle(Article article) throws BusinessException {
+    public void mettreAJourArticle(Article article) throws BusinessException, DALException {
         // Validation
         validerArticle(article);
         DAOArticle articleDao = DaoFactory.getDAOArticle();
         try {
             articleDao.mettreAJourArticle(article);
-        } catch (DALException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            throw new BusinessException("Probleme dans la modification de l'article!");
+            throw new DALException("Probleme dans la modification de l'article!");
         }
     }
 
     // Supprimer un article
-    public void supprimerArticle(int noArticle) throws BusinessException {
+    public void supprimerArticle(int noArticle) throws BusinessException, DALException {
         // Vous pouvez ajouter des validations ou vérifications ici si nécessaire
         DAOArticle articleDao = DaoFactory.getDAOArticle();
         try {
             articleDao.supprimerArticle(noArticle);
-        } catch (DALException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            throw new BusinessException("Probleme dans la suppression de l'article!");
+            throw new DALException("Probleme dans la suppression de l'article!");
         }
     }
 
     // Lister les articles d'un utilisateur
-    public List<Article> obtenirTousLesArticles(int noUtilisateur) throws BusinessException {
+    public List<Article> obtenirTousLesArticles(int noUtilisateur) throws BusinessException, DALException {
         // Vous pouvez ajouter des validations ou vérifications ici si nécessaire
         DAOArticle articleDao = DaoFactory.getDAOArticle();
         try {
             return articleDao.obtenirTousLesArticles(noUtilisateur);
-        } catch (DALException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            throw new BusinessException("Probleme lors de la récupération des articles!");
+            throw new DALException("Probleme lors de la récupération des articles!");
         }
     }
 
