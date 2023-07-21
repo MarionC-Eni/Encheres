@@ -39,16 +39,16 @@ public class CreationCompte extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
         String pseudo = request.getParameter("pseudo");
-        String nom = request.getParameter("Nom");
-        String prenom =  request.getParameter("Prenom");
-        String email =  request.getParameter("Email");
+        String nom = request.getParameter("nom");
+        String prenom =  request.getParameter("prenom");
+        String email =  request.getParameter("email");
         String telephone =  request.getParameter("telephone");
         String rue = request.getParameter("rue");
-        String codePostal = request.getParameter("codePostal");
+        int codePostal = Integer.parseInt(request.getParameter("codePostal")); 
         String ville = request.getParameter("ville");
         String motDePasse = request.getParameter("motDePasse");
-        String credit = request.getParameter("0");
-        String administrateur = request.getParameter("false");
+        int credit = 100;
+        boolean administrateur = false;
         UtilisateurManager utilisateurManager = new UtilisateurManager();
         try {
 			utilisateurManager.sinscrire(pseudo, nom, prenom, email,telephone,rue,codePostal,ville,motDePasse,credit,administrateur);
