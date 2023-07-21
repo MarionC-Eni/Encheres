@@ -11,12 +11,11 @@ public interface DAOArticle {
 		
 		public void mettreAJourArticle(Article Article);
 				
-		public void supprimerArticle(Article Article);
+		public void supprimerArticle(int noArticle);
 				
 		Article obtenirArticleParId(int no_article);
 				
-		/**List<Article> obtenirTousLesArticles();
-		 * 
-		 */
+		List<Article> obtenirTousLesArticles(int noUtilisateur);
+		
 	}
 

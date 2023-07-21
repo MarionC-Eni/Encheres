@@ -16,61 +16,42 @@ package fr.eni.projet.encheres.bll;
 
 	    // Méthode pour l'inscription d'un nouvel utilisateur
 
+	    
+	    public void sinscrire (String pseudo, String nom, String prenom, String email, String telephone, String rue, int codePostal, String ville, String motDePasse, int credit, boolean administrateur) throws BusinessException {
 
 
-	    public void sinscrire (String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse, String credit, String administrateur) throws BusinessException {
-
-<<<<<<< HEAD
-	        try {
-	        	Utilisateur u = new Utilisateur();
-	        	u.setPseudo(pseudo);
-	        	u.setNom(nom);
-	        	u.setPrenom(prenom);
-	        	u.setPseudo(email);
-	        	u.setMotDePasse(telephone);
-	        	u.setEmail(rue);
-	        	u.setPrenom(codePostal);
-	        	u.setMotDePasse(ville);
-	        	u.setEmail(motDePasse);
-	        	u.setPrenom(credit);
-	        	u.setEmail(administrateur);
-
-	        	//validateUtilisateur(utilisateur, motDePasse);
-	            DAOUtilisateur.ajouterUtilisateur(u);
-	        } catch (Exception e) {
-	            throw new BusinessException("Erreur lors de l'inscription de l'utilisateur");
-	        }
-	    }
-	}
-=======
             try {
                 Utilisateur u = new Utilisateur();
                 u.setPseudo(pseudo);
                 u.setNom(nom);
                 u.setPrenom(prenom);
-                u.setPseudo(email);
-                u.setMotDePasse(telephone);
-                u.setEmail(rue);
-                u.setPrenom(codePostal);
-                u.setMotDePasse(ville);
-                u.setEmail(motDePasse);
-                u.setPrenom(credit);
-                u.setEmail(administrateur);
-
+                u.setEmail(email);
+                u.setTelephone(telephone);
+                u.setRue(rue);
+                u.setCodePostal(codePostal);
+                u.setVille(ville);
+                u.setMotDePasse(motDePasse);
+                u.setCredit(credit);
+                u.setadministrateur(administrateur);
+                
+              //  if (DAOUtilisateur.pseudoExiste(pseudo)) {
+              // throw new BusinessException("Ce pseudo est déjà pris. Veuillez en choisir un autre.");
+               // if (isEmailAlreadyUsed(u.getEmail())) {
+                 //   throw new BusinessException("Cette adresse e-mail est déjà utilisée par un autre utilisateur.");
+              //  }
+            
                 //validateUtilisateur(utilisateur, motDePasse);
                 DAOUtilisateur.ajouterUtilisateur(u);
             } catch (Exception e) {
                 throw new BusinessException("Erreur lors de l'inscription de l'utilisateur");
             }
         }
-	}
-	        
 
->>>>>>> a63f03ffabe9c4b7915eff0249859bd4885c9774
+    }
 	    // Méthode pour la connexion d'un utilisateur
 	   /* public Utilisateur seConnecter(String pseudo, String motDePasse) throws BusinessException {
 	        try {
-	            Utilisateur utilisateur = DAOUtilisateur.selectByPseudo(pseudo);
+	            Utilisateur utilisateur = DAOUtilisateur.selectByPseudo&motDePasse(pseudo, motDePasse);
 	            if (utilisateur != null)  {
 	                return utilisateur;
 	            } else {
@@ -80,7 +61,7 @@ package fr.eni.projet.encheres.bll;
 	            throw new BusinessException("Erreur lors de la connexion de l'utilisateur");
 	        }
 	    }
-
+		// modif bidon pour push
 
 	    // Méthode pour afficher le profil d'un utilisateur
 	    public Utilisateur afficherProfil(int noUtilisateur) throws BusinessException {
@@ -92,17 +73,17 @@ package fr.eni.projet.encheres.bll;
 	    }
 
 	    // Méthode pour modifier le profil d'un utilisateur
-	   /* public void mettreAJourUtilisateurProfil(Utilisateur utilisateur) throws BusinessException {
+	   /* public void mettreAJourUtilisateurProfil(String pseudo, String motDePasse, String nom, String prenom, String email, String telephone, String rue, int codePostal, String ville, Utilisateur u) throws BusinessException {
 	        try {
-	            validateUtilisateur(utilisateur); 
-	            DAOUtilisateur.mettreAJourUtilisateur(utilisateur);
+	            validateUtilisateur(u); 
+	            DAOUtilisateur.mettreAJourUtilisateur(u);
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de la modification du profil de l'utilisateur");
 	        }
 	    }
 
 	    // Méthode pour supprimer un compte utilisateur
-	   /** public void supprimerUtilisateur(Utilisateur utilisateur) throws BusinessException {
+	   /** public void supprimerUtilisateur(Utilisateur u) throws BusinessException {
 	        try {
 	        	DAOUtilisateur.supprimerUtilisateur(utilisateur, motDePasse);
 	        } catch (Exception e) {
