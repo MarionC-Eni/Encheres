@@ -93,11 +93,30 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 	}
 	
 	public boolean pseudoExiste(String pseudo) {
+		// méthode qui vérifie si un pseudo (passé en paramètre) existe déjà dans la base de données des utilisateurs
 	    try {
 	        Connection connection = ConnectionProvider.getConnection();
 	        String query = "SELECT COUNT(*) AS count FROM UTILISATEURS WHERE pseudo = ?";
 	        PreparedStatement pstmt = connection.prepareStatement(query);
 	        pstmt.setString(1, pseudo);
+	        ResultSet rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	            int count = rs.getInt("count");
+	            return count > 0;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
+	
+	public boolean emailExiste(String email) {
+		// méthode qui vérifie si un email (passé en paramètre) existe déjà dans la base de données des utilisateurs
+	    try {
+	        Connection connection = ConnectionProvider.getConnection();
+	        String query = "SELECT COUNT(*) AS count FROM UTILISATEURS WHERE pseudo = ?";
+	        PreparedStatement pstmt = connection.prepareStatement(query);
+	        pstmt.setString(1, email);
 	        ResultSet rs = pstmt.executeQuery();
 	        if (rs.next()) {
 	            int count = rs.getInt("count");
