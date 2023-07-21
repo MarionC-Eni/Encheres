@@ -19,7 +19,7 @@ public class EnchereDAOImpl implements DAOEnchere {
 	private static final String SELECT_ALL_ENCHERES = "SELECT * FROM ENCHERES";
 
 	
-	public void ajouterEnchere(Enchere enchere, Utilisateur utilisateur, Article article) {
+	public void faireEnchere(Enchere enchere, Utilisateur utilisateur, Article article) {
 		try {Connection connection = ConnectionProvider.getConnection();
 		PreparedStatement pStmt = connection.prepareStatement(INSERT_ENCHERE);
 		
@@ -74,6 +74,27 @@ public class EnchereDAOImpl implements DAOEnchere {
 	}
 
 		return null;
+	}
+
+
+	@Override
+	public void accepterEnchere(Enchere enchere) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void refuserEnchere(Enchere enchere) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void Rencherir(Enchere enchere) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

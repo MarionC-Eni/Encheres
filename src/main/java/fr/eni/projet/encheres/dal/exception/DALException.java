@@ -2,7 +2,7 @@ package fr.eni.projet.encheres.dal.exception;
 
 public class DALException extends Exception {
 
-	public DALException() {
+	public DALException(String string, Exception e) {
 		// TODO Auto-generated constructor stub
 	}
 	

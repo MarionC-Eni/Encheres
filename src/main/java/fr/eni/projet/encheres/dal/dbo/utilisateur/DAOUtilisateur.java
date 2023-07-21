@@ -12,8 +12,8 @@ public interface DAOUtilisateur {
 	public void mettreAJourUtilisateur(Utilisateur utilisateur);
 
 	public void supprimerUtilisateur(Utilisateur utilisateur);
-
-	Utilisateur obtenirUtilisateurParId(int id);
+	
+	public boolean pseudoExiste(String pseudo);
 
 	List<Utilisateur> obtenirTousLesUtilisateurs();
 }

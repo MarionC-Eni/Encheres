@@ -46,12 +46,6 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 		
 	}
 	
-	private String truncateString(String value, int maxLength) {
-	    if (value.length() > maxLength) {
-	        return value.substring(0, maxLength);
-	    }
-	    return value;
-	}
 	
 	public void mettreAJourUtilisateur(Utilisateur utilisateur) {
 		// TODO Auto-generated method stub
@@ -61,15 +55,13 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 		// TODO Auto-generated method stub
 		
 	}
-	public Utilisateur obtenirUtilisateurParId(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	public List<Utilisateur> obtenirTousLesUtilisateurs() {
+		List<Utilisateur> utilisateurs = new ArrayList<>();
+
 		try {Connection connection = ConnectionProvider.getConnection();
 		Statement Stmt = connection.createStatement();
 		ResultSet rs = Stmt.executeQuery(SELECT_ALL_USERS);
-		List<Utilisateur> utilisateurs = new ArrayList<>();
 				while (rs.next()) {
 				
 		            Utilisateur utilisateur = new Utilisateur(null, null, null, null, null, null, 0, null, null, 0, false);
@@ -99,4 +91,23 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 
 		return null;
 	}
+	
+	public boolean pseudoExiste(String pseudo) {
+	    try {
+	        Connection connection = ConnectionProvider.getConnection();
+	        String query = "SELECT COUNT(*) AS count FROM UTILISATEURS WHERE pseudo = ?";
+	        PreparedStatement pstmt = connection.prepareStatement(query);
+	        pstmt.setString(1, pseudo);
+	        ResultSet rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	            int count = rs.getInt("count");
+	            return count > 0;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
+
+
 }

@@ -6,7 +6,7 @@ import fr.eni.projet.encheres.dal.dbo.encheres.EnchereDAOImpl;
 
 public abstract class DaoFactory {
 
-	public static DAOEnchere getAdao() {
+	public static DAOEnchere getDAOEnchere() {
 		return new EnchereDAOImpl();
 	}
 }
