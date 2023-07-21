@@ -14,6 +14,10 @@ public interface DAOUtilisateur {
 	public void supprimerUtilisateur(Utilisateur utilisateur);
 	
 	public boolean pseudoExiste(String pseudo);
+	
+	public boolean emailExiste(String email);
+	
+	public Utilisateur obtenirUtilisateurParId(int noUtilisateur);
 
 	List<Utilisateur> obtenirTousLesUtilisateurs();
 }
