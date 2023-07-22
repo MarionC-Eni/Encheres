@@ -12,9 +12,9 @@
 <h2>Page de connexion</h2>
 <form method="POST" action="/Enchere-Eni/PagesListeEncheresConnecté">
 <label for="Identifiant">Identifiant :</label>
-<input type="text" id="Identifiant" name="Identifiant" placeholder="NineJea"/><br><br>
+<input type="text" id="Identifiant" name="Identifiant" placeholder="NineJea" required/><br><br>
 <label for="Mot de passe">password :</label>
-<input type="password" id="Mot de passe" name="Mot de passe" placeholder="*******"/><br><br>
+<input type="password" id="Mot de passe" name="Mot de passe" placeholder="*******" required/><br><br>
 <input type="submit" value="connexion" />
 <input type="checkbox" id="checkbox" name="checkbox" value="true" />
 <label for="checkbox"> Se souvenir de moi</label>

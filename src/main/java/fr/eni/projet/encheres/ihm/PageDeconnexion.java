@@ -1,7 +1,6 @@
 package fr.eni.projet.encheres.ihm;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class connectionServlet
+ * Servlet implementation class PageDeconnexion
  */
-@WebServlet("/PagesAccueilNonConnecte")
-public class PagesAccueilNonConnecte extends HttpServlet {
+@WebServlet("/PageDeconnexion")
+public class PageDeconnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PagesAccueilNonConnecte() {
+    public PageDeconnexion() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,17 +27,17 @@ public class PagesAccueilNonConnecte extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/html/PagesAccueilNonConnecte.jsp").forward(request, response);
+			HttpSession session = request.getSession();	
+			session.invalidate();
+			response.sendRedirect("/Enchere-Eni/PagesAccueilNonConnecte");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//String nom = request.getParameter("nom");
-		//nom = nom.toUpperCase();
-		//request.setAttribute("nom", nom);
-		//this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
-	}
+
+}

@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>ENI-Encheres</h1>
-	<p><a href="/Enchere-Eni/PageConnexion">Se connecter - S'inscrire</a></p>
+	<p><a href="/Enchere-Eni/PageConnexion">se connecter</a></p>
 	
 	<h2>Liste des enchères</h2>
 	<form>
