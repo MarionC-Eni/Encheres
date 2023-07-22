@@ -56,7 +56,7 @@ public class PageCreerCompte extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        doGet(request, response);
+        this.getServletContext().getRequestDispatcher("/PageCreationCompteOk").forward(request, response);
 
 	}
 }

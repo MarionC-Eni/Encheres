@@ -19,6 +19,8 @@
     </nav>
 	
 	<h2>Liste des enchères</h2>
+<%String identifiant = request.getParameter("Identifiant"); %>
+<h3>PageMonProfil de <%=identifiant%></h3>
 	<form>
 	<label for="filtresEnchere">Filtres :</label><br>
 	<input type=search id="filtresEnchere" name="filtreEnchere" placeholder="Le nom de l'article contient"><br>

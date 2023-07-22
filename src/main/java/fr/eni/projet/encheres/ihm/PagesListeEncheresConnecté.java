@@ -27,21 +27,26 @@ public class PagesListeEncheresConnecté extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+			HttpSession session = request.getSession();	
+			String identifiant = (String) request.getAttribute("identifiant");
+    		session.setAttribute("Identifiant",identifiant);
+    		System.out.println(identifiant);
+			if(identifiant.equals( "test" )) {
+				this.getServletContext().getRequestDispatcher("/html/PagesAccueilNonConnecte.jsp").forward(request, response);
+			}
+			else {
     		this.getServletContext().getRequestDispatcher("/html/PagesListeEncheresConnecté.jsp").forward(request, response);		
     		//this.getServletContext().getRequestDispatcher("/PagesAccueilNonConnecte").forward(request, response);
-    }
+			}
+			}
+			
+			
     
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String identifiant = request.getParameter("Identifiant");
-		if(identifiant!=null)
-			this.getServletContext().getRequestDispatcher("/html/PagesListeEncheresConnecté.jsp").forward(request, response);
-		else
-			this.getServletContext().getRequestDispatcher("/PagesListeEncheresConnecté.jsp").forward(request, response);
+		
 		doGet(request, response);
 	}
 

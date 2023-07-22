@@ -7,6 +7,7 @@
 <title>PageMonProfil</title>
 </head>
 <body>
-<h1>PageMonProfil</h1>
+<%String identifiant = request.getParameter("Identifiant"); %>
+<h1>PageMonProfil de <%=identifiant%></h1>
 </body>
 </html>
