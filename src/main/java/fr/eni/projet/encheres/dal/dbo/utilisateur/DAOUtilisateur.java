@@ -13,13 +13,15 @@ public interface DAOUtilisateur {
 
 	public void supprimerUtilisateur(Utilisateur utilisateur);
 	
+	public Utilisateur obtenirUtilisateurParId(int noUtilisateur);
+
+	List<Utilisateur> obtenirTousLesUtilisateurs();
+	
 	public boolean pseudoExiste(String pseudo);
 	
 	public boolean emailExiste(String email);
 	
-	public Utilisateur obtenirUtilisateurParId(int noUtilisateur);
 
-	List<Utilisateur> obtenirTousLesUtilisateurs();
 
 	public Utilisateur getUtilisateurByPseudoMdp(String pseudo, String motDePasse);
 }

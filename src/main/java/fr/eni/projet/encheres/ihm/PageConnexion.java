@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.projet.encheres.BusinessException;
+<<<<<<< Updated upstream
 import fr.eni.projet.encheres.bll.UtilisateurManager;
+=======
+>>>>>>> Stashed changes
 
 /**
  * Servlet implementation class PageConnexion
@@ -63,9 +66,14 @@ public class PageConnexion extends HttpServlet {
 
 		        // Si l'inscription est réussie, stocker l'identifiant de l'utilisateur dans la session
 		        //HttpSession session = request.getSession();
+<<<<<<< Updated upstream
 		        //String identifiant = utilisateurManager.getUtilisateurByPseudoMdp(email, motDePasse).getNoUtilisateur();
 		        session.setAttribute("email", email);
 		        session.setAttribute("motDePasse",motDePasse);
+=======
+		        String identifiant = utilisateurManager.getUtilisateurByPseudoMdp(email, motDePasse).getNoUtilisateur();
+		        session.setAttribute("identifiant", identifiant);
+>>>>>>> Stashed changes
 
 		        // Rediriger l'utilisateur vers la servlet "connecté"
 		        response.sendRedirect("/Enchere-Eni/PagesListeEncheresConnecte");
@@ -74,10 +82,14 @@ public class PageConnexion extends HttpServlet {
 		        // Rediriger l'utilisateur vers une page d'erreur ou une autre page appropriée
 		        response.sendRedirect("/PageConnexion");
 		    }
+<<<<<<< Updated upstream
 			
 		//doGet(request, response);
 	}
 	
 	
 
+=======
+		}
+>>>>>>> Stashed changes
 }
