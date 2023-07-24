@@ -32,7 +32,7 @@ public class UtilisateurManager {
             // Vérification du pseudo unique
             if (DAOUtilisateur.pseudoExiste(pseudo)) {
                 throw new BusinessException("Ce pseudo est déjà pris. Veuillez en choisir un autre.");
-            }
+           }
 
             // Vérification de l'e-mail unique
             if (DAOUtilisateur.emailExiste(email)) {
@@ -90,22 +90,20 @@ public class UtilisateurManager {
     }
 
 	    //  Méthode pour la connexion d'un utilisateur
-	    public Utilisateur seConnecter(String email, String motDePasse) throws BusinessException {
-	        try {
-	        	Utilisateur utilisateur = DAOUtilisateur.getUtilisateurByPseudoMdp(email, motDePasse);
-	            if (utilisateur == null) {
-	                throw new BusinessException("Pseudo ou e-mail invalide.");
-	            }
+    public Utilisateur seConnecter(String identifiant, String motDePasse) throws BusinessException {
 
-	            if (!utilisateur.getMotDePasse().equals(motDePasse)) {
-	                throw new BusinessException("Mot de passe incorrect.");
-	            }
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setEmail(identifiant);
+        
+        utilisateur.setPseudo(identifiant);
 
-	            return utilisateur; // Renvoie l'utilisateur connecté
-	        } catch (Exception e) {
-	            throw new BusinessException("Erreur lors de la connexion de l'utilisateur");
-	        }
-	    }
+        utilisateur.setMotDePasse(motDePasse);
+
+        this.DAOUtilisateur.seConnecter(utilisateur);
+
+        return utilisateur;
+    }
+	    
 	 // Méthode pour supprimer un compte utilisateur
 	    public void supprimerUtilisateur(Utilisateur u) throws BusinessException {
 	        try {
