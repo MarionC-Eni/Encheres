@@ -19,6 +19,7 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 	private static final String UPDATE_USER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ?, administrateur = ? WHERE no_utilisateur = ?";
 	private static final String DELETE_USER = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?";
 	private static final String SELECT_ONE_USER = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
+	private static final String SELECT_BY_IDENTIFIANT = "SELECT * FROM utilisateurs WHERE pseudo = ? AND motDePasse = ?";
 
 
 	public void ajouterUtilisateur(Utilisateur utilisateur) {
@@ -35,15 +36,12 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 		pStmt.setString(8, utilisateur.getVille());
 		pStmt.setString(9, utilisateur.getMotDePasse());
 		pStmt.setInt(10, utilisateur.getCredit());
-		pStmt.setBoolean(11, utilisateur.isadministrateur());
+		pStmt.setBoolean(11, utilisateur.isAdministrateur());
 
 		pStmt.executeUpdate();
 		/**
 		 * System.out.printf("L'utilisateur %s a bien été ajouté", Utilisateur.getNom()););	// phase de test : on affiche pas cette ligne	
 		 */
-
-
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -67,10 +65,9 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 		pStmt.setString(8, utilisateur.getVille());
 		pStmt.setString(9, utilisateur.getMotDePasse());
 		pStmt.setInt(10, utilisateur.getCredit());
-		pStmt.setBoolean(11, utilisateur.isadministrateur());
+		pStmt.setBoolean(11, utilisateur.isAdministrateur());
 
 		pStmt.executeUpdate();
-
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -94,7 +91,7 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 		pStmt.setString(8, utilisateur.getVille());
 		pStmt.setString(9, utilisateur.getMotDePasse());
 		pStmt.setInt(10, utilisateur.getCredit());
-		pStmt.setBoolean(11, utilisateur.isadministrateur());
+		pStmt.setBoolean(11, utilisateur.isAdministrateur());
 
 		pStmt.executeUpdate();
 
@@ -125,7 +122,7 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 			utilisateur.setVille(rs.getString("ville"));
 			utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
 			utilisateur.setCredit(rs.getInt("credit"));
-			utilisateur.setadministrateur(rs.getBoolean("administrateur"));
+			utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 
 			utilisateurs.add(utilisateur);
 		}
@@ -139,9 +136,7 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 		return null;
 	}
 
-	
-
-	
+		
 	public Utilisateur obtenirUtilisateurParId(int noUtilisateur) {
 		
 		
@@ -165,16 +160,13 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 	            utilisateur.setVille(rs.getString("ville"));
 	            utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
 	            utilisateur.setCredit(rs.getInt("credit"));
-	            utilisateur.setadministrateur(rs.getBoolean("administrateur"));
+	            utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
 
-	
 	return utilisateur;
-		
-
 	}
 	
 	public boolean pseudoExiste(String pseudo) {
@@ -199,7 +191,7 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 		// méthode qui vérifie si un email (passé en paramètre) existe déjà dans la base de données des utilisateurs
 		try {
 			Connection connection = ConnectionProvider.getConnection();
-			String query = "SELECT COUNT(*) AS count FROM UTILISATEURS WHERE pseudo = ?";
+			String query = "SELECT COUNT(*) AS count FROM UTILISATEURS WHERE email = ?";
 			PreparedStatement pstmt = connection.prepareStatement(query);
 			pstmt.setString(1, email);
 			ResultSet rs = pstmt.executeQuery();
@@ -211,6 +203,55 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+
+	public Utilisateur getUtilisateurByPseudoMdp(String pseudo, String motDePasse) {
+
+
+	    // Exemple d'implémentation fictive pour les fins de démonstration.
+	    // Remplacez cela par le code réel pour accéder à la base de données.
+	    Connection connection = null;
+	    PreparedStatement stmt = null;
+	    ResultSet rs = null;
+	    Utilisateur utilisateur = null;
+
+	    try {
+	        // Code pour se connecter à la base de données et exécuter la requête SQL
+	        // ...
+
+	        // Exemple d'une requête SQL pour récupérer l'utilisateur en fonction du pseudo et du mot de passe
+	        stmt = connection.prepareStatement(SELECT_BY_IDENTIFIANT);
+	        stmt.setString(1, pseudo);
+	        stmt.setString(2, motDePasse);
+	        rs = stmt.executeQuery();
+
+	        // Vérifier si l'utilisateur a été trouvé dans la base de données
+	        if (rs.next()) {
+	            // Créer un objet Utilisateur avec les informations de la base de données
+	            utilisateur = new Utilisateur();
+	            utilisateur.setPseudo(rs.getString("pseudo"));
+	            utilisateur.setNom(rs.getString("nom"));
+	            utilisateur.setPrenom(rs.getString("prenom"));
+	            utilisateur.setEmail(rs.getString("email"));
+	            utilisateur.setTelephone(rs.getString("telephone"));
+	            utilisateur.setRue(rs.getString("rue"));
+	            utilisateur.setCodePostal(rs.getInt("codePostal"));
+	            utilisateur.setVille(rs.getString("ville"));
+	            utilisateur.setMotDePasse(rs.getString("motDePasse"));
+	            utilisateur.setCredit(rs.getInt("credit"));
+	            utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
+	        }
+
+	    } catch (SQLException e) {
+	        // Gérer les erreurs éventuelles
+	        e.printStackTrace();
+	    } finally {
+	        // Fermer les ressources
+	        // ...
+	    }
+
+	    return utilisateur; // Renvoyer l'utilisateur trouvé ou null s'il n'est pas trouvé.
 	}
 
 	

@@ -27,7 +27,7 @@ public class UtilisateurManager {
             u.setVille(ville);
             u.setMotDePasse(motDePasse);
             u.setCredit(credit);
-            u.setadministrateur(administrateur);
+            u.setAdministrateur(administrateur);
 
             // Vérification du pseudo unique
             if (DAOUtilisateur.pseudoExiste(pseudo)) {
@@ -92,7 +92,7 @@ public class UtilisateurManager {
 	    //  Méthode pour la connexion d'un utilisateur
 	    public Utilisateur seConnecter(String pseudo, String motDePasse) throws BusinessException {
 	        try {
-	        	Utilisateur utilisateur = DAOUtilisateur.getUtilisateurByPseudo&MotDePasse(pseudo, motDePasse);
+	        	Utilisateur utilisateur = DAOUtilisateur.getUtilisateurByPseudoMdp(pseudo, motDePasse);
 	            if (utilisateur == null) {
 	                throw new BusinessException("Pseudo ou e-mail invalide.");
 	            }
@@ -109,7 +109,7 @@ public class UtilisateurManager {
 	 // Méthode pour supprimer un compte utilisateur
 	    public void supprimerUtilisateur(Utilisateur u) throws BusinessException {
 	        try {
-	            DAOUtilisateur.delete(u);
+	            DAOUtilisateur.supprimerUtilisateur(u);
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de la suppression de l'utilisateur");
 	        }

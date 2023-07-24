@@ -20,5 +20,7 @@ public interface DAOUtilisateur {
 	public Utilisateur obtenirUtilisateurParId(int noUtilisateur);
 
 	List<Utilisateur> obtenirTousLesUtilisateurs();
+
+	public Utilisateur getUtilisateurByPseudoMdp(String pseudo, String motDePasse);
 }
 

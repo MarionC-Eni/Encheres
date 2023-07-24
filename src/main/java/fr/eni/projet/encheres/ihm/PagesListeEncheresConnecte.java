@@ -12,13 +12,13 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class PagesListeEncheresConnecté
  */
 @WebServlet("/PagesListeEncheresConnecte")
-public class PagesListeEncheresConnecté extends HttpServlet {
+public class PagesListeEncheresConnecte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PagesListeEncheresConnecté() {
+    public PagesListeEncheresConnecte() {
         super();
         // TODO Auto-generated constructor stub
     }
