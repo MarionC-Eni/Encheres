@@ -12,7 +12,7 @@
 <h2>Page de connexion</h2>
 <form method="POST" action="/Enchere-Eni/PageConnexion">
 <label for="Identifiant">Identifiant :</label>
-<input type="text" id="Identifiant" name="Identifiant" placeholder="NineJea" required/><br><br>
+<input type="text" id="Identifiant" name="email" placeholder="NineJea@NineJea" required/><br><br>
 <label for="Mot de passe">password :</label>
 <input type="password" id="Mot de passe" name="Mot de passe" placeholder="*******" required/><br><br>
 <input type="submit" value="connexion" />
