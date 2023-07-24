@@ -14,7 +14,7 @@
 <label for="Identifiant">Identifiant :</label>
 <input type="text" id="Identifiant" name="email" placeholder="NineJea@NineJea" required/><br><br>
 <label for="Mot de passe">password :</label>
-<input type="password" id="Mot de passe" name="Mot de passe" placeholder="*******" required/><br><br>
+<input type="password" id="Mot de passe" name="motDePasse" placeholder="*******" required/><br><br>
 <input type="submit" value="connexion" />
 <input type="checkbox" id="checkbox" name="checkbox" value="true" />
 <label for="checkbox"> Se souvenir de moi</label>

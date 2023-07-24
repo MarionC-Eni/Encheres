@@ -19,7 +19,7 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 	private static final String UPDATE_USER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ?, administrateur = ? WHERE no_utilisateur = ?";
 	private static final String DELETE_USER = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?";
 	private static final String SELECT_ONE_USER = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
-	private static final String SELECT_BY_IDENTIFIANT = "SELECT * FROM utilisateurs WHERE pseudo = ? AND motDePasse = ?";
+	private static final String SELECT_BY_IDENTIFIANT = "SELECT * FROM utilisateurs WHERE email = ? AND mot_de_passe = ?";
 
 
 	public void ajouterUtilisateur(Utilisateur utilisateur) {
@@ -206,7 +206,7 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 	}
 
 
-	public Utilisateur getUtilisateurByPseudoMdp(String pseudo, String motDePasse) {
+	public Utilisateur getUtilisateurByPseudoMdp(String email, String motDePasse) {
 
 
 	    // Exemple d'implémentation fictive pour les fins de démonstration.
@@ -222,7 +222,7 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 
 	        // Exemple d'une requête SQL pour récupérer l'utilisateur en fonction du pseudo et du mot de passe
 	        stmt = connection.prepareStatement(SELECT_BY_IDENTIFIANT);
-	        stmt.setString(1, pseudo);
+	        stmt.setString(1, email);
 	        stmt.setString(2, motDePasse);
 	        rs = stmt.executeQuery();
 

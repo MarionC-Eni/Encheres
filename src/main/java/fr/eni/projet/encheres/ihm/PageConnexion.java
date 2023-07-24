@@ -46,7 +46,31 @@ public class PageConnexion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.setAttribute("identifiant", 5);
+		//session.setAttribute("identifiant", 5);
+		
+		   String email = request.getParameter("email");
+		   String motDePasse = request.getParameter("motDePasse");
+		    // récupérer les autres paramètres du formulaire d'inscription
+
+		    UtilisateurManager utilisateurManager = new UtilisateurManager();
+
+		    try {
+		        // Appeler la méthode sinscrire de la classe UtilisateurManager pour enregistrer le nouvel utilisateur dans la base de données
+		        utilisateurManager.seConnecter(email,motDePasse);
+
+		        // Si l'inscription est réussie, stocker l'identifiant de l'utilisateur dans la session
+		        //HttpSession session = request.getSession();
+		        int identifiant = utilisateurManager.getUtilisateurByPseudoMdp(email, motDePasse).getNoUtilisateur();
+		        session.setAttribute("identifiant", identifiant);
+
+		        // Rediriger l'utilisateur vers la servlet "connecté"
+		        response.sendRedirect("/Enchere-Eni/PagesListeEncheresConnecté");
+		    } catch (BusinessException e) {
+		        e.printStackTrace();
+		        // Rediriger l'utilisateur vers une page d'erreur ou une autre page appropriée
+		        response.sendRedirect("page_d_erreur.jsp");
+		    }
+		}
 		doGet(request, response);
 	}
 

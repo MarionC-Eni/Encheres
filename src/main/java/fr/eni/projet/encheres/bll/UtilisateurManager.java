@@ -90,9 +90,9 @@ public class UtilisateurManager {
     }
 
 	    //  Méthode pour la connexion d'un utilisateur
-	    public Utilisateur seConnecter(String pseudo, String motDePasse) throws BusinessException {
+	    public Utilisateur seConnecter(String email, String motDePasse) throws BusinessException {
 	        try {
-	        	Utilisateur utilisateur = DAOUtilisateur.getUtilisateurByPseudoMdp(pseudo, motDePasse);
+	        	Utilisateur utilisateur = DAOUtilisateur.getUtilisateurByPseudoMdp(email, motDePasse);
 	            if (utilisateur == null) {
 	                throw new BusinessException("Pseudo ou e-mail invalide.");
 	            }
