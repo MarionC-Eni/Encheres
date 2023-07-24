@@ -21,8 +21,6 @@ public interface DAOUtilisateur {
 	
 	public boolean emailExiste(String email);
 	
-
-
-	public void seConnecter(Utilisateur utilisateur);
+	public Utilisateur seConnecter(String email, String motDePasse);
 }
 

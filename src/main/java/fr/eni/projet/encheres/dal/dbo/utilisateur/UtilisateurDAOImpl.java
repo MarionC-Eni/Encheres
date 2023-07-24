@@ -210,34 +210,36 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 
 
 	
-	public void seConnecter(Utilisateur utilisateur) {
+	public Utilisateur seConnecter(String email, String motDePasse) {
 		    try {
 		    	Connection connection = ConnectionProvider.getConnection();
 		    	PreparedStatement pStmt = connection.prepareStatement(SELECT_BY_IDENTIFIANT);
-		        pStmt.setString(1, utilisateur.getEmail());
-		        pStmt.setString(2, utilisateur.getMotDePasse());
+		        pStmt.setString(1, email);
+		        pStmt.setString(2, motDePasse);
 		        ResultSet rs = pStmt.executeQuery();
 
 		        // Vérifier si l'utilisateur a été trouvé dans la base de données
 		        if (rs.next()) {
 		            // Créer un objet Utilisateur avec les informations de la base de données
-		            utilisateur = new Utilisateur();
-		            //utilisateur.setPseudo(rs.getString("pseudo"));
-		            //utilisateur.setNom(rs.getString("nom"));
-		           // utilisateur.setPrenom(rs.getString("prenom"));
-		            utilisateur.setEmail(rs.getString("email"));
-		           // utilisateur.setTelephone(rs.getString("telephone"));
-		            //utilisateur.setRue(rs.getString("rue"));
-		            //utilisateur.setCodePostal(rs.getInt("codePostal"));
-		           // utilisateur.setVille(rs.getString("ville"));
-		            utilisateur.setMotDePasse(rs.getString("motDePasse"));
-		           // utilisateur.setCredit(rs.getInt("credit"));
-		           // utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
-		        }
+		            Utilisateur u = new Utilisateur();
+		            u.setPseudo(rs.getString("pseudo"));
+		           u.setNom(rs.getString("nom"));
+		           u.setPrenom(rs.getString("prenom"));
+		            u.setEmail(rs.getString("email"));
+		           u.setTelephone(rs.getString("telephone"));
+		            u.setRue(rs.getString("rue"));
+		            u.setCodePostal(rs.getInt("code_postal"));
+		           u.setVille(rs.getString("ville"));
+		           u.setMotDePasse(rs.getString("mot_de_passe"));
+		           u.setCredit(rs.getInt("credit"));
+		           u.setAdministrateur(rs.getBoolean("administrateur"));
+		           return u ; } 		          
 		    } catch (SQLException e) {
 		        // Gérer les erreurs éventuelles
 		        e.printStackTrace();
 		    }
+		    
+		   return null ;
 	}
 }
 

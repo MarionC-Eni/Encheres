@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +10,9 @@
 <body>
 <h1>ENI-Enchères</h1>
 <h2>Page de connexion</h2>
+<% if (request.getAttribute("error") != null) { %> 
+<h1><%= request.getAttribute("error") %> !</h1>
+<% } %>
 <form method="POST" action="/Enchere-Eni/PageConnexion">
 <label for="Identifiant">Identifiant :</label>
 <input type="text" id="Identifiant" name="email" placeholder="NineJea@NineJea" required/><br><br>

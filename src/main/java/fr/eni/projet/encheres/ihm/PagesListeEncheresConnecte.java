@@ -29,6 +29,11 @@ public class PagesListeEncheresConnecte extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	HttpSession session = request.getSession();
 		System.out.println(session.getAttribute("identifiant"));
+			
+		if(session.getAttribute("identifiant") == null) {
+			response.sendRedirect("/Enchere-Eni/PageConnexion");
+			return;
+		}
 		
 		this.getServletContext().getRequestDispatcher("/html/PagesListeEncheresConnecte.jsp").forward(request, response);
 
