@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class PagesListeEncheresConnecté
  */
-@WebServlet("/PagesListeEncheresConnecté")
+@WebServlet("/PagesListeEncheresConnecte")
 public class PagesListeEncheresConnecté extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
@@ -27,18 +27,12 @@ public class PagesListeEncheresConnecté extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			HttpSession session = request.getSession();	
-			String identifiant = (String) request.getAttribute("identifiant");
-    		session.setAttribute("Identifiant",identifiant);
-    		System.out.println(identifiant);
-			if(identifiant.equals( "test" )) {
-				this.getServletContext().getRequestDispatcher("/html/PagesAccueilNonConnecte.jsp").forward(request, response);
-			}
-			else {
-    		this.getServletContext().getRequestDispatcher("/html/PagesListeEncheresConnecté.jsp").forward(request, response);		
-    		//this.getServletContext().getRequestDispatcher("/PagesAccueilNonConnecte").forward(request, response);
-			}
-			}
+    	HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("identifiant"));
+		
+		this.getServletContext().getRequestDispatcher("/html/PagesListeEncheresConnecte.jsp").forward(request, response);
+
+    }
 			
 			
     

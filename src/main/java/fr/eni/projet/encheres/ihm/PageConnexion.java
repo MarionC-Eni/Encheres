@@ -29,25 +29,24 @@ public class PageConnexion extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		// Obtenir la valeur de la variable que tu souhaites transmettre
-	    String identifiant = "identifiant";
 
-	    // Ajouter la variable à l'objet HttpServletRequest
-	    request.setAttribute("identifiant", identifiant);
+		if(session.getAttribute("identifiant")!= null) {
+			response.sendRedirect("/Enchere-Eni/PagesListeEncheresConnecte");
+			return;
+		}
 
-	    // Rediriger la requête vers la servlet de destination
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("/Enchere-Eni/PagesListeEncheresConnecté");
-	    dispatcher.forward(request, response);
 		this.getServletContext().getRequestDispatcher("/html/PageConnexion.jsp").forward(request, response);
 	}
+		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//HttpSession session = request.getSession();	
-		String identifiant = request.getParameter("Identifiant");
-		System.out.println(identifiant);
+		HttpSession session = request.getSession();
+		session.setAttribute("identifiant", 5);
 		doGet(request, response);
 	}
 
