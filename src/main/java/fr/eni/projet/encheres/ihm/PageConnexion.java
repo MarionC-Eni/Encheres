@@ -80,7 +80,7 @@ public class PageConnexion extends HttpServlet {
 		    } catch (BusinessException e) {
 		        e.printStackTrace();
 		        // Rediriger l'utilisateur vers une page d'erreur ou une autre page appropriée
-		        response.sendRedirect("/PageConnexion");
+		        response.sendRedirect("/Enchere-Eni/PageConnexion");
 		    }
 <<<<<<< Updated upstream
 			

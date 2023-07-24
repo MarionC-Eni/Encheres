@@ -23,6 +23,6 @@ public interface DAOUtilisateur {
 	
 
 
-	public Utilisateur getUtilisateurByPseudoMdp(String pseudo, String motDePasse);
+	public void seConnecter(Utilisateur utilisateur);
 }
 

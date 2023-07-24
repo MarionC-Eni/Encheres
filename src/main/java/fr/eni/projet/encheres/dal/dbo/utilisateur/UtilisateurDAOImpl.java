@@ -206,57 +206,44 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 	}
 
 
-	public Utilisateur getUtilisateurByPseudoMdp(String email, String motDePasse) {
+	
 
 
-	    // Exemple d'implémentation fictive pour les fins de démonstration.
-	    // Remplacez cela par le code réel pour accéder à la base de données.
-	    Connection connection = null;
-	    PreparedStatement stmt = null;
-	    ResultSet rs = null;
-	    Utilisateur utilisateur = null;
+	
+	public void seConnecter(Utilisateur utilisateur) {
+		    try {
+		    	Connection connection = ConnectionProvider.getConnection();
+		    	PreparedStatement pStmt = connection.prepareStatement(SELECT_BY_IDENTIFIANT);
+		        pStmt.setString(1, utilisateur.getEmail());
+		        pStmt.setString(2, utilisateur.getMotDePasse());
+		        ResultSet rs = pStmt.executeQuery();
 
-	    try {
-	        // Code pour se connecter à la base de données et exécuter la requête SQL
-	        // ...
-
-	        // Exemple d'une requête SQL pour récupérer l'utilisateur en fonction du pseudo et du mot de passe
-	        stmt = connection.prepareStatement(SELECT_BY_IDENTIFIANT);
-	        stmt.setString(1, email);
-	        stmt.setString(2, motDePasse);
-	        rs = stmt.executeQuery();
-
-	        // Vérifier si l'utilisateur a été trouvé dans la base de données
-	        if (rs.next()) {
-	            // Créer un objet Utilisateur avec les informations de la base de données
-	            utilisateur = new Utilisateur();
-	            //utilisateur.setPseudo(rs.getString("pseudo"));
-	            //utilisateur.setNom(rs.getString("nom"));
-	           // utilisateur.setPrenom(rs.getString("prenom"));
-	            utilisateur.setEmail(rs.getString("email"));
-	           // utilisateur.setTelephone(rs.getString("telephone"));
-	            //utilisateur.setRue(rs.getString("rue"));
-	            //utilisateur.setCodePostal(rs.getInt("codePostal"));
-	           // utilisateur.setVille(rs.getString("ville"));
-	            utilisateur.setMotDePasse(rs.getString("motDePasse"));
-	           // utilisateur.setCredit(rs.getInt("credit"));
-	           // utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
-	        }
-
-	    } catch (SQLException e) {
-	        // Gérer les erreurs éventuelles
-	        e.printStackTrace();
-	    } finally {
-	        // Fermer les ressources
-	        // ...
-	    }
-
-	    return utilisateur; // Renvoyer l'utilisateur trouvé ou null s'il n'est pas trouvé.
+		        // Vérifier si l'utilisateur a été trouvé dans la base de données
+		        if (rs.next()) {
+		            // Créer un objet Utilisateur avec les informations de la base de données
+		            utilisateur = new Utilisateur();
+		            //utilisateur.setPseudo(rs.getString("pseudo"));
+		            //utilisateur.setNom(rs.getString("nom"));
+		           // utilisateur.setPrenom(rs.getString("prenom"));
+		            utilisateur.setEmail(rs.getString("email"));
+		           // utilisateur.setTelephone(rs.getString("telephone"));
+		            //utilisateur.setRue(rs.getString("rue"));
+		            //utilisateur.setCodePostal(rs.getInt("codePostal"));
+		           // utilisateur.setVille(rs.getString("ville"));
+		            utilisateur.setMotDePasse(rs.getString("motDePasse"));
+		           // utilisateur.setCredit(rs.getInt("credit"));
+		           // utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
+		        }
+		    } catch (SQLException e) {
+		        // Gérer les erreurs éventuelles
+		        e.printStackTrace();
+		    }
 	}
+}
 
 	
 
-}
+
 
 
 
