@@ -12,7 +12,6 @@ public class ArticleManager {
 
     // Ajouter un article
     public void ajouterArticle(Article article) throws BusinessException, DALException {
-        // Validation
         validerArticle(article);
         DAOArticle articleDao = DaoFactory.getDAOArticle();
         try {
@@ -75,6 +74,9 @@ public class ArticleManager {
             throw new DALException("Probleme lors de la récupération des articles!");
         }
     }
+    
+	
+    
 
    
 }

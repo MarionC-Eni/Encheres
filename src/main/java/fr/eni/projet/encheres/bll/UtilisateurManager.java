@@ -41,8 +41,11 @@ public class UtilisateurManager {
             
             // Ajout de l'utilisateur à la base de données
             DAOUtilisateur.ajouterUtilisateur(u);
-        } catch (Exception e) {
-            throw new BusinessException("Erreur lors de l'inscription de l'utilisateur");
+        } catch (BusinessException be) {
+			throw be;
+		}
+        catch (Exception e) {
+              throw new BusinessException("Erreur lors de l'inscription de l'utilisateur");
         }
     }
 
@@ -92,16 +95,9 @@ public class UtilisateurManager {
 	    //  Méthode pour la connexion d'un utilisateur
     public Utilisateur seConnecter(String identifiant, String motDePasse) throws BusinessException {
 
-        Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setEmail(identifiant);
-        
-        utilisateur.setPseudo(identifiant);
-
-        utilisateur.setMotDePasse(motDePasse);
-
-        this.DAOUtilisateur.seConnecter(utilisateur);
-
-        return utilisateur;
+    	Utilisateur utilisateur = this.DAOUtilisateur.seConnecter(identifiant, motDePasse);
+		return utilisateur;
+		
     }
 	    
 	 // Méthode pour supprimer un compte utilisateur
