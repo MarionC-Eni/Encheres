@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.projet.encheres.BusinessException;
+import fr.eni.projet.encheres.bll.UtilisateurManager;
+
 /**
  * Servlet implementation class PageConnexion
  */
@@ -60,18 +63,21 @@ public class PageConnexion extends HttpServlet {
 
 		        // Si l'inscription est réussie, stocker l'identifiant de l'utilisateur dans la session
 		        //HttpSession session = request.getSession();
-		        int identifiant = utilisateurManager.getUtilisateurByPseudoMdp(email, motDePasse).getNoUtilisateur();
-		        session.setAttribute("identifiant", identifiant);
+		        //String identifiant = utilisateurManager.getUtilisateurByPseudoMdp(email, motDePasse).getNoUtilisateur();
+		        session.setAttribute("email", email);
+		        session.setAttribute("motDePasse",motDePasse);
 
 		        // Rediriger l'utilisateur vers la servlet "connecté"
-		        response.sendRedirect("/Enchere-Eni/PagesListeEncheresConnecté");
+		        response.sendRedirect("/Enchere-Eni/PagesListeEncheresConnecte");
 		    } catch (BusinessException e) {
 		        e.printStackTrace();
 		        // Rediriger l'utilisateur vers une page d'erreur ou une autre page appropriée
-		        response.sendRedirect("page_d_erreur.jsp");
+		        response.sendRedirect("/PageConnexion");
 		    }
-		}
-		doGet(request, response);
+			
+		//doGet(request, response);
 	}
+	
+	
 
 }

@@ -230,17 +230,17 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 	        if (rs.next()) {
 	            // Créer un objet Utilisateur avec les informations de la base de données
 	            utilisateur = new Utilisateur();
-	            utilisateur.setPseudo(rs.getString("pseudo"));
-	            utilisateur.setNom(rs.getString("nom"));
-	            utilisateur.setPrenom(rs.getString("prenom"));
+	            //utilisateur.setPseudo(rs.getString("pseudo"));
+	            //utilisateur.setNom(rs.getString("nom"));
+	           // utilisateur.setPrenom(rs.getString("prenom"));
 	            utilisateur.setEmail(rs.getString("email"));
-	            utilisateur.setTelephone(rs.getString("telephone"));
-	            utilisateur.setRue(rs.getString("rue"));
-	            utilisateur.setCodePostal(rs.getInt("codePostal"));
-	            utilisateur.setVille(rs.getString("ville"));
+	           // utilisateur.setTelephone(rs.getString("telephone"));
+	            //utilisateur.setRue(rs.getString("rue"));
+	            //utilisateur.setCodePostal(rs.getInt("codePostal"));
+	           // utilisateur.setVille(rs.getString("ville"));
 	            utilisateur.setMotDePasse(rs.getString("motDePasse"));
-	            utilisateur.setCredit(rs.getInt("credit"));
-	            utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
+	           // utilisateur.setCredit(rs.getInt("credit"));
+	           // utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 	        }
 
 	    } catch (SQLException e) {
