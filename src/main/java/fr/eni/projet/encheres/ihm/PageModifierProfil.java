@@ -30,7 +30,7 @@ public class PageModifierProfil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		int noUtilisateur = (Integer) session.getAttribute("identifiant");
+		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");
         if (noUtilisateur == null) {
             response.sendRedirect("/PageConnexion");
             return;
