@@ -109,7 +109,8 @@ public class UtilisateurManager {
 	        }
 	    }
 
-		    }
+		    
+
 
 	
 
@@ -124,14 +125,15 @@ public class UtilisateurManager {
 }
 */
 	    // Méthode pour modifier le profil d'un utilisateur
-	   /* public void mettreAJourUtilisateurProfil(Utilisateur u, String pseudo, String motDePasse, String nom, String prenom, String email, String telephone, String rue, int codePostal, String ville) throws BusinessException {
-	        try {
-	            validateUtilisateur(u); 
-	            DAOUtilisateur.mettreAJourUtilisateur(u);
-	        } catch (Exception e) {
-	            throw new BusinessException("Erreur lors de la modification du profil de l'utilisateur");
-	        }
-	    }
+	   // public void mettreAJourUtilisateurProfil(Utilisateur u, String pseudo, String motDePasse, String nom, String prenom, String email, String telephone, String rue, int codePostal, String ville) throws BusinessException {
+	       // try {
+	       //     validateUtilisateur(u, pseudo, motDePasse, nom, codePostal, email, telephone, rue, prenom, ville); 
+	       //     DAOUtilisateur.mettreAJourUtilisateur(u);
+	      //  } catch (Exception e) {
+	      //      throw new BusinessException("Erreur lors de la modification du profil de l'utilisateur");
+	      //  }
+	    //}
+}
 
 	    // Méthode pour retrouver son mot de passe
 	    
