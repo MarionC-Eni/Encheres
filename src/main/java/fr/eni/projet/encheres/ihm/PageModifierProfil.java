@@ -61,12 +61,17 @@ public class PageModifierProfil extends HttpServlet {
         String email = request.getParameter("email");
         String telephone = request.getParameter("telephone");
         String rue = request.getParameter("rue");
+<<<<<<< Updated upstream
         int codePostal = Integer.parseInt(request.getParameter("codePostal"));
+=======
+        int codePostal = Integer.parseInt(request.getParameter("codePostal")); 
+>>>>>>> Stashed changes
         String ville = request.getParameter("ville");
         String motDePasse = request.getParameter("motDePasse");
         String pseudo = request.getParameter("pseudo");
 
         // Mettre à jour les informations de l'utilisateur
+<<<<<<< Updated upstream
        /* utilisateur.setPseudo(pseudo);
         utilisateur.setNom(nom);
         utilisateur.setPrenom(prenom);
@@ -76,6 +81,17 @@ public class PageModifierProfil extends HttpServlet {
         utilisateur.setCodePostal(codePostal);
         utilisateur.setVille(ville);
         utilisateur.setMotDePasse(motDePasse);*/
+=======
+        utilisateur.setPseudo("pseudo");
+        utilisateur.setNom("nom");
+        utilisateur.setPrenom("prenom");
+        utilisateur.setEmail("email");
+        utilisateur.setTelephone("telephone");
+        utilisateur.setRue("rue");
+        utilisateur.setCodePostal(codePostal);
+        utilisateur.setVille("ville");
+        utilisateur.setMotDePasse("motDePasse");
+>>>>>>> Stashed changes
         
         UtilisateurManager utilisateurManager = new UtilisateurManager();
         //Utilisateur utilisateur = null;
