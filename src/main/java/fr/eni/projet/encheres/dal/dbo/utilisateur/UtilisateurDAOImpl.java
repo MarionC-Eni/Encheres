@@ -224,6 +224,7 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 		        if (rs.next()) {
 		            // Créer un objet Utilisateur avec les informations de la base de données
 		            Utilisateur u = new Utilisateur();
+		            u.setNoUtilisateur(rs.getInt("no_utilisateur"));
 		            u.setPseudo(rs.getString("pseudo"));
 		           u.setNom(rs.getString("nom"));
 		           u.setPrenom(rs.getString("prenom"));

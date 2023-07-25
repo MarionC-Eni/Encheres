@@ -33,7 +33,32 @@ public class PageMonProfil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String noUtilisateurStr = request.getParameter("noUtilisateur");
+		HttpSession session = request.getSession();	
+		
+		System.out.println(session.getAttribute("identifiant"));
+
+	    // Récuperer l'identifiant de l'utilisateur stocké dans la session >> on caste l'objet en integer, puis le integer en int
+		int noUtilisateur = (Integer) session.getAttribute("identifiant");		
+
+		UtilisateurManager um = new UtilisateurManager();
+		// utilise la DAO en fonction de la pk de la table utilisateur
+		Utilisateur utilisateur = null;
+
+		try {
+			utilisateur = um.obtenirUtilisateurParId(noUtilisateur);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    request.setAttribute("utilisateur", utilisateur);
+
+	    // pour afficher la jsp
+		this.getServletContext().getRequestDispatcher("/html/PageMonProfil.jsp").forward(request, response);
+	}
+
+		
+		
+		/**	TEST 1:	String noUtilisateurStr = request.getParameter("noUtilisateur");
 
 		if (noUtilisateurStr != null && !noUtilisateurStr.isEmpty()) {
 			try {   
@@ -63,26 +88,9 @@ public class PageMonProfil extends HttpServlet {
 			}
 		}}
 
-
-	/**	TEST 1:	HttpSession session = request.getSession();	
-	    // Récuperer l'identifiant de l'utilisateur stocké dans la session
-		Utilisateur utilisateur = (Utilisateur) session.getAttribute(noUtilisateur);
-
-
-		UtilisateurManager um = new UtilisateurManager();
-		// utilise la DAO en fonction de la pk de la table utilisateur
-		try {
-			utilisateur = um.obtenirUtilisateurParId(noUtilisateur);
-		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    request.setAttribute("utilisateur", utilisateur);
-
-	    // pour afficher la jsp
-		this.getServletContext().getRequestDispatcher("/html/PageMonProfil.jsp").forward(request, response);
-	}
-
+*/
+		
+		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

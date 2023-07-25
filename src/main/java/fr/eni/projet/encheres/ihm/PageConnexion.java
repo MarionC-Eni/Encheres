@@ -69,6 +69,7 @@ public class PageConnexion extends HttpServlet {
 			} else {
 				
 				session.setAttribute("identifiant", utilisateur.getNoUtilisateur());
+				System.out.println(utilisateur.getNoUtilisateur());
 				
 				// Rediriger l'utilisateur vers la servlet "connecté"
 				response.sendRedirect("/Enchere-Eni/PagesListeEncheresConnecte");
