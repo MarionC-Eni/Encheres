@@ -7,7 +7,7 @@
 <title>Felicitation vous venez de creer un compte</title>
 </head>
 <body>
-<h1>Felicitation vous venez de creer un compte</h1>
+<h1>Félicitations vous venez de créer un compte</h1>
 <a href="/Enchere-Eni/PagesAccueilNonConnecte"><button>Retour Menu Principal</button></a>
 </body>
 </html>
