@@ -30,9 +30,9 @@ public class PageModifierProfil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
-        if (utilisateur == null) {
-            response.sendRedirect("Enchere-Eni/PageConnexion");
+		int noUtilisateur = (Integer) session.getAttribute("identifiant");
+        if (noUtilisateur == null) {
+            response.sendRedirect("/PageConnexion");
             return;
         }
 		this.getServletContext().getRequestDispatcher("/html/PageModifierProfil.jsp").forward(request, response);
