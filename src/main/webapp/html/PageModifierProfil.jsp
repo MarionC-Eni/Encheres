@@ -9,7 +9,10 @@
 <body>
 <h1>PageModifierProfil</h1>
 <% if (request.getAttribute("Profilajour") != null) { %> 
-<h1><%= request.getAttribute("Profilajour") %> !</h1>
+<h2><%= request.getAttribute("Profilajour") %> !</h2>
+<% } %>
+<% if (request.getAttribute("Profilsupprime") != null) { %> 
+<h3><%= request.getAttribute("Profilsupprime") %> !</h3>
 <% } %>
 <form method="POST" action="/Enchere-Eni/PageModifierProfil">
 <label for="pseudo">pseudo :</label>
@@ -30,8 +33,8 @@
 <input type="text" id="ville" name="ville" maxlength= "25" required>
 <label for="motDePasse">Mot de passe :</label>
 <input type="password" id="motDePasse" name="motDePasse" required>
-<input type="submit" value="Valider">
-<a href="/Enchere-Eni/PagesListeEncheresConnecte"><button>Annuler</button></a>
+<input type="submit" value="Enregistrer">
+<a href="/Enchere-Eni/PageSuppressionProfil"><button>Supprimer mon compte</button></a>
 </form>
 </body>
 </html>

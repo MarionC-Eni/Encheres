@@ -13,16 +13,16 @@ import fr.eni.projet.encheres.bll.UtilisateurManager;
 import fr.eni.projet.encheres.bo.Utilisateur;
 
 /**
- * Servlet implementation class PageModifierProfil
+ * Servlet implementation class PageSuppressionProfil
  */
-@WebServlet("/PageModifierProfil")
-public class PageModifierProfil extends HttpServlet {
+@WebServlet("/PageSuppressionProfil")
+public class PageSuppressionProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PageModifierProfil() {
+    public PageSuppressionProfil() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,7 +30,7 @@ public class PageModifierProfil extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");
 		System.out.println(noUtilisateur);
@@ -39,7 +39,7 @@ public class PageModifierProfil extends HttpServlet {
             response.sendRedirect("/PageConnexion");
             return;
         }
-		this.getServletContext().getRequestDispatcher("/html/PageModifierProfil.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/html/PagesAccueilNonConnecte.jsp").forward(request, response);
 	}
 
 	/**
@@ -48,7 +48,6 @@ public class PageModifierProfil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");
-		
         // Récupérer les données du formulaire de modification
         String pseudo = request.getParameter("pseudo");
         String nom = request.getParameter("nom");
@@ -60,9 +59,9 @@ public class PageModifierProfil extends HttpServlet {
         String ville = request.getParameter("ville");
         String motDePasse = request.getParameter("motDePasse");
 
-
-        // Mettre à jour les informations de l'utilisateur
         Utilisateur utilisateur = new Utilisateur ();
+
+     // Mettre à jour les informations de l'utilisateur
         utilisateur.setNoUtilisateur(noUtilisateur);
         utilisateur.setPseudo(pseudo);
         utilisateur.setNom(nom);
@@ -78,13 +77,13 @@ public class PageModifierProfil extends HttpServlet {
         //Utilisateur utilisateur = null;
         
         try {
-			utilisateurManager.mettreAJourUtilisateur(utilisateur);
+			utilisateurManager.supprimerUtilisateur(utilisateur);
 		} catch (BusinessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
        // response.sendRedirect("Enchere-Eni/PageModifierProfil");
-        request.setAttribute("Profilajour", "Votre profil a été mis à jour");
+        request.setAttribute("Profilsupprime", "Votre profil a été supprimé");
         
 		doGet(request, response);
 	}

@@ -93,6 +93,7 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 		pStmt.setString(9, utilisateur.getMotDePasse());
 		pStmt.setInt(10, utilisateur.getCredit());
 		pStmt.setBoolean(11, utilisateur.isAdministrateur());
+		pStmt.setInt(12, utilisateur.getNoUtilisateur());
 
 		pStmt.executeUpdate();
 
