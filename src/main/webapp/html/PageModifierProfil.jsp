@@ -33,7 +33,14 @@
 <input type="text" id="ville" name="ville" maxlength= "25" required>
 <label for="motDePasse">Mot de passe :</label>
 <input type="password" id="motDePasse" name="motDePasse" required>
+
+<input type="submit" value="Créer">
+<input type="submit" value="Valider">
+<a href="/Enchere-Eni/PagesListeEncheresConnecte"><button>Annuler</button></a>
+
 <input type="submit" value="Enregistrer">
+<a href="/Enchere-Eni/ListeEncheresConnecte"><button>Enregistrer</button></a>
+<input type="submit" value="Supprimer">
 <a href="/Enchere-Eni/PageSuppressionProfil"><button>Supprimer mon compte</button></a>
 </form>
 </body>

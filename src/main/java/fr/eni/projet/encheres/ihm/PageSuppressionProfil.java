@@ -39,7 +39,7 @@ public class PageSuppressionProfil extends HttpServlet {
             response.sendRedirect("/PageConnexion");
             return;
         }
-		this.getServletContext().getRequestDispatcher("/html/PagesAccueilNonConnecte.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/html/PageProfilSupprime.jsp").forward(request, response);
 	}
 
 	/**
@@ -48,7 +48,9 @@ public class PageSuppressionProfil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");
-        // Récupérer les données du formulaire de modification
+       /**
+        *  // Récupérer les données du formulaire de modification
+      
         String pseudo = request.getParameter("pseudo");
         String nom = request.getParameter("nom");
         String prenom =  request.getParameter("prenom");
@@ -73,19 +75,25 @@ public class PageSuppressionProfil extends HttpServlet {
         utilisateur.setVille(ville);
         utilisateur.setMotDePasse(motDePasse);
         
+          */
+        
         UtilisateurManager utilisateurManager = new UtilisateurManager();
         //Utilisateur utilisateur = null;
         
         try {
 			utilisateurManager.supprimerUtilisateur(utilisateur);
+			session.invalidate(); // Supprimer la session de l'utilisateur après la suppression
+	        request.setAttribute("Profilsupprime", "Votre profil a été supprimé");
+	        request.getRequestDispatcher("/html/PagesAccueilNonConnecte.jsp").forward(request, response);
+	    
 		} catch (BusinessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-       // response.sendRedirect("Enchere-Eni/PageModifierProfil");
-        request.setAttribute("Profilsupprime", "Votre profil a été supprimé");
         
 		doGet(request, response);
-	}
 
+   
+
+}
 }

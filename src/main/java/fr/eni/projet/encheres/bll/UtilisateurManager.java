@@ -101,9 +101,9 @@ public class UtilisateurManager {
     }
 	    
 	 // Méthode pour supprimer un compte utilisateur
-	    public void supprimerUtilisateur(Utilisateur u) throws BusinessException {
+	    public void supprimerUtilisateur(Utilisateur utilisateur) throws BusinessException {
 	        try {
-	            DAOUtilisateur.supprimerUtilisateur(u);
+	            DAOUtilisateur.supprimerUtilisateur(utilisateur);
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de la suppression de l'utilisateur");
 	        }
