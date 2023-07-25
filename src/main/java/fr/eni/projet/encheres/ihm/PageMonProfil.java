@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import fr.eni.projet.encheres.bll.UtilisateurManager;
+import fr.eni.projet.encheres.bo.Utilisateur;
 
 /**
  * Servlet implementation class PageMonProfil
@@ -28,10 +30,13 @@ public class PageMonProfil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();	
-		String identifiant = request.getParameter("Identifiant");
-		session.setAttribute("Identifiant",identifiant);
+	
+		UtilisateurManager utilisateurManager = new UtilisateurManager();
+		// utilise la DAO en fonction de la pk de la table utilisateur
+	    Utilisateur utilisateur = UtilisateurManager.obtenirUtilisateurParId(noUtilisateur);
+	    request.setAttribute("utilisateur", utilisateur);
+		
 		this.getServletContext().getRequestDispatcher("/html/PageMonProfil.jsp").forward(request, response);
-		System.out.println(identifiant);
 	}
 	
 	/**

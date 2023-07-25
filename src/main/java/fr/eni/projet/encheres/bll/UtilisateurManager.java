@@ -110,20 +110,16 @@ public class UtilisateurManager {
 	    }
 
 		    
-
-
-	
-
 	    // Méthode pour afficher le profil d'un utilisateur
-	  /** public Utilisateur afficherProfil(int noUtilisateur) throws BusinessException {
+	    public Utilisateur obtenirUtilisateurParId(int noUtilisateur) throws BusinessException {
 	        try {
 	            return DAOUtilisateur.obtenirUtilisateurParId(noUtilisateur);
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de l'affichage du profil de l'utilisateur");
 	        }
 	    }
-}
-*/
+
+
 	    // Méthode pour modifier le profil d'un utilisateur
 	    public void mettreAJourUtilisateurProfil(Utilisateur u, String pseudo, String motDePasse, String nom, String prenom, String email, String telephone, String rue, int codePostal, String ville) throws BusinessException {
 	        try {
@@ -134,6 +130,13 @@ public class UtilisateurManager {
 	       }
 	    }
 }
+
+/** autre syntaxe possible :
+public Utilisateur mettreAJourUtilisateurProfil(Utilisateur u, String pseudo, String motDePasse, String nom, String prenom, String email, String telephone, String rue, int codePostal, String ville) throws BusinessException {
+    Utilisateur utilisateur = this.DAOUtilisateur.mettreAJourUtilisateurProfil(u, pseudo, motDePasse, nom, prenom, email, telephone, rue, codePostal, ville);
+    return utilisateur;
+}
+**/
 
 	    // Méthode pour retrouver son mot de passe
 	    

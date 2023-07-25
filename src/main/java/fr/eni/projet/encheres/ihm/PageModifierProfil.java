@@ -57,7 +57,7 @@ public class PageModifierProfil extends HttpServlet {
         String email = request.getParameter("email");
         String telephone = request.getParameter("telephone");
         String rue = request.getParameter("rue");
-        String codePostal = request.getParameter("codePostal");
+        int codePostal = request.getParameter("codePostal");
         String ville = request.getParameter("ville");
         String motDePasse = request.getParameter("motDePasse");
         String pseudo = request.getParameter("pseudo");
