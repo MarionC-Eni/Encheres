@@ -32,7 +32,7 @@ public class PageModifierProfil extends HttpServlet {
 		HttpSession session = request.getSession();
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
         if (utilisateur == null) {
-            response.sendRedirect("Enchere-Eni/PageModifierProfil");
+            response.sendRedirect("Enchere-Eni/PageConnexion");
             return;
         }
 		this.getServletContext().getRequestDispatcher("/html/PageModifierProfil.jsp").forward(request, response);
