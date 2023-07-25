@@ -34,6 +34,7 @@ public class PageMonProfil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();	
+<<<<<<< HEAD
 		
 		System.out.println(session.getAttribute("identifiant"));
 
@@ -91,6 +92,23 @@ public class PageMonProfil extends HttpServlet {
 */
 		
 		
+=======
+		int noUtilisateur = (int) session.getAttribute("Identifiant");
+		
+		UtilisateurManager utilisateurManager = new UtilisateurManager();
+
+		try {
+			utilisateurManager.obtenirUtilisateurParId(noUtilisateur);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+		this.getServletContext().getRequestDispatcher("/html/PageMonProfil.jsp").forward(request, response);
+	}
+
+>>>>>>> 54265a1b0f53180633b3df09edb0aaa2920f014f
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
