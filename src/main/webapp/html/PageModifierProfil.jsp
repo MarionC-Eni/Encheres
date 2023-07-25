@@ -8,6 +8,9 @@
 </head>
 <body>
 <h1>PageModifierProfil</h1>
+<% if (request.getAttribute("Profil à jour") != null) { %> 
+<h1><%= request.getAttribute("Profil à jour") %> !</h1>
+<% } %>
 <form method="POST" action="/Enchere-Eni/PageModifierProfil">
 <label for="pseudo">pseudo :</label>
 <input type="text" id="pseudo" name="pseudo" required>
@@ -27,7 +30,7 @@
 <input type="text" id="ville" name="ville" maxlength= "25" required>
 <label for="motDePasse">Mot de passe :</label>
 <input type="password" id="motDePasse" name="motDePasse" required>
-<input type="submit" value="Créer">
+<input type="submit" value="Valider">
 <a href="/Enchere-Eni/PagesListeEncheresConnecte"><button>Annuler</button></a>
 </form>
 </body>

@@ -121,10 +121,9 @@ public class UtilisateurManager {
 
 
 	    // Méthode pour modifier le profil d'un utilisateur
-	    public void mettreAJourUtilisateurProfil(Utilisateur u, String pseudo, String motDePasse, String nom, String prenom, String email, String telephone, String rue, int codePostal, String ville) throws BusinessException {
+	    public void mettreAJourUtilisateur(Utilisateur utilisateur) throws BusinessException {
 	        try {
-	           validateUtilisateur(u, pseudo, motDePasse, nom, codePostal, email, telephone, rue, prenom, ville); 
-	            DAOUtilisateur.mettreAJourUtilisateur(u);
+	        	DAOUtilisateur.mettreAJourUtilisateur(utilisateur);
 	        } catch (Exception e) {
 	            throw new BusinessException("Erreur lors de la modification du profil de l'utilisateur");
 	       }

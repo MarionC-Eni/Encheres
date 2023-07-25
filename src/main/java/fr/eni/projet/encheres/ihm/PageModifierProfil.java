@@ -56,15 +56,15 @@ public class PageModifierProfil extends HttpServlet {
         }
 
         // Récupérer les données du formulaire de modification
+        String pseudo = request.getParameter("pseudo");
         String nom = request.getParameter("nom");
-        String prenom = request.getParameter("prenom");
-        String email = request.getParameter("email");
-        String telephone = request.getParameter("telephone");
+        String prenom =  request.getParameter("prenom");
+        String email =  request.getParameter("email");
+        String telephone =  request.getParameter("telephone");
         String rue = request.getParameter("rue");
         int codePostal = Integer.parseInt(request.getParameter("codePostal"));
         String ville = request.getParameter("ville");
         String motDePasse = request.getParameter("motDePasse");
-        String pseudo = request.getParameter("pseudo");
 
         // Mettre à jour les informations de l'utilisateur
        /* utilisateur.setPseudo(pseudo);
@@ -80,12 +80,13 @@ public class PageModifierProfil extends HttpServlet {
         UtilisateurManager utilisateurManager = new UtilisateurManager();
         //Utilisateur utilisateur = null;
         try {
-			utilisateurManager.mettreAJourUtilisateurProfil(utilisateur,pseudo,motDePasse,nom,prenom,email,telephone,rue,codePostal,ville);
+			utilisateurManager.mettreAJourUtilisateur(utilisateur);
 		} catch (BusinessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        response.sendRedirect("Enchere-Eni/PageModifierProfil");
+       // response.sendRedirect("Enchere-Eni/PageModifierProfil");
+        request.setAttribute("Profil a jour", "Votre profil a été mis à jour");
         
 		doGet(request, response);
 	}
