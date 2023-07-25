@@ -47,13 +47,11 @@ public class PageModifierProfil extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+      ;
+		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");
+		
 
-        if (utilisateur == null) {
-            // Si l'utilisateur n'est pas connecté, rediriger vers la page de connexion
-            response.sendRedirect("/PageModifierProfil");
-            return;
-        }
+     
 
         // Récupérer les données du formulaire de modification
         String pseudo = request.getParameter("pseudo");
@@ -69,10 +67,17 @@ public class PageModifierProfil extends HttpServlet {
 >>>>>>> Stashed changes
         String ville = request.getParameter("ville");
         String motDePasse = request.getParameter("motDePasse");
+<<<<<<< HEAD
 
         // Mettre à jour les informations de l'utilisateur
 <<<<<<< Updated upstream
        /* utilisateur.setPseudo(pseudo);
+=======
+        
+        Utilisateur utilisateur = new Utilisateur ();
+        utilisateur.setNoUtilisateur(noUtilisateur);
+        utilisateur.setPseudo(pseudo);
+>>>>>>> main
         utilisateur.setNom(nom);
         utilisateur.setPrenom(prenom);
         utilisateur.setEmail(email);
@@ -80,6 +85,7 @@ public class PageModifierProfil extends HttpServlet {
         utilisateur.setRue(rue);
         utilisateur.setCodePostal(codePostal);
         utilisateur.setVille(ville);
+<<<<<<< HEAD
         utilisateur.setMotDePasse(motDePasse);*/
 =======
         utilisateur.setPseudo("pseudo");
@@ -92,9 +98,13 @@ public class PageModifierProfil extends HttpServlet {
         utilisateur.setVille("ville");
         utilisateur.setMotDePasse("motDePasse");
 >>>>>>> Stashed changes
+=======
+        utilisateur.setMotDePasse(motDePasse);
+>>>>>>> main
         
         UtilisateurManager utilisateurManager = new UtilisateurManager();
         //Utilisateur utilisateur = null;
+        
         try {
 			utilisateurManager.mettreAJourUtilisateur(utilisateur);
 		} catch (BusinessException e) {
@@ -102,7 +112,7 @@ public class PageModifierProfil extends HttpServlet {
 			e.printStackTrace();
 		}
        // response.sendRedirect("Enchere-Eni/PageModifierProfil");
-        request.setAttribute("Profil a jour", "Votre profil a été mis à jour");
+        request.setAttribute("Profilajour", "Votre profil a été mis à jour");
         
 		doGet(request, response);
 	}

@@ -8,8 +8,8 @@
 </head>
 <body>
 <h1>PageModifierProfil</h1>
-<% if (request.getAttribute("Profil à jour") != null) { %> 
-<h1><%= request.getAttribute("Profil à jour") %> !</h1>
+<% if (request.getAttribute("Profilajour") != null) { %> 
+<h1><%= request.getAttribute("Profilajour") %> !</h1>
 <% } %>
 <form method="POST" action="/Enchere-Eni/PageModifierProfil">
 <label for="pseudo">pseudo :</label>
