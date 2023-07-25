@@ -144,9 +144,11 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 
 	    try {
 	        Connection connection = ConnectionProvider.getConnection();        
-	        CallableStatement cstmt = connection.prepareCall(SELECT_ONE_USER);
+	        PreparedStatement cstmt = connection.prepareStatement(SELECT_ONE_USER);
 	        cstmt.setInt(1, noUtilisateur);
 	        ResultSet rs = cstmt.executeQuery();
+	        // La méthode rs.next() est appelée pour 
+	        // avancer le curseur du ResultSet vers la première ligne (s'il y en a une)
 	        if (rs.next()) {
 	            utilisateur = new Utilisateur();
 	            utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
