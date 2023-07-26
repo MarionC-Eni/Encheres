@@ -1,5 +1,6 @@
 package fr.eni.projet.encheres.bll;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import fr.eni.projet.encheres.BusinessException;
@@ -20,12 +21,22 @@ public class ArticleManager {
     }
 	
     // Ajouter un article
-	public void ajouterArticle(Article article, Utilisateur utilisateur, Categorie categorie)  throws BusinessException, DALException {
-      //  validerArticle(article); Nous ferons ça plus tard
+	public void ajouterArticle(String nomArticle, String description, double prixVente, double miseAPrix, boolean etatVente, LocalDate dateDebut, LocalDate dateFin, Utilisateur utilisateur, Categorie categorie)  throws BusinessException, DALException {
         DAOArticle articleDao = DaoFactory.getDAOArticle();
         try {
-        	// Article a = new Article();a.setNom(nom); -> SI necessaire
-            DAOArticle.ajouterArticle(article, utilisateur, categorie);
+        	Article a = new Article(); 
+        	a.setNomArticle(nomArticle);
+        	a.setDescription(description);
+        	a.setPrixVente(prixVente);
+        	a.setMiseAPrix(miseAPrix);
+        	a.setEtatVente(etatVente);
+        	a.setDateDebut(dateDebut);
+        	a.setDateFin(dateFin);
+        	
+            //  validerArticle(article); Nous ferons ça plus tard
+
+        	
+            DAOArticle.ajouterArticle(a, utilisateur, categorie);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DALException("Probleme dans l'ajout à la bdd!");
