@@ -24,7 +24,6 @@ public class PageSuppressionProfil extends HttpServlet {
      */
     public PageSuppressionProfil() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -76,12 +75,12 @@ public class PageSuppressionProfil extends HttpServlet {
        UtilisateurManager utilisateurManager = new UtilisateurManager();
         
         try {
+        	// Notre methode supprimerUtilisateurById permet de retrouver l'utilisateur par son noUtilisateur
 			utilisateurManager.supprimerUtilisateurById(noUtilisateur);
 			session.invalidate(); // Supprimer la session de l'utilisateur après la suppression
 	        request.setAttribute("Profilsupprime", "Votre profil a été supprimé");
 	    
 		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         

@@ -9,7 +9,10 @@
 </head>
 <body>
 <h1>ENI-Enchères</h1>
-<h2>Page de connexion</h2>
+<h2>Se connecter</h2>
+
+<!-- On insere du Java dans le Html, on fait appel à la ligne 76 dans PageConnexion -->
+
 <% if (request.getAttribute("error") != null) { %> 
 <h1><%= request.getAttribute("error") %> !</h1>
 <% } %>
@@ -22,8 +25,9 @@
 <input type="checkbox" id="checkbox" name="checkbox" value="true" />
 <label for="checkbox"> Se souvenir de moi</label>
 </form>
+<!-- On renvoie bien au doGet de la servlet. On aurait pu faire un href aussi -->
 <form method="GET" action="/Enchere-Eni/PageCreerCompte">
-<input type="submit" value="Créer un compte" />
+<input type="submit" value="Créer mon compte" />
 </form>
 </body>
 </html>

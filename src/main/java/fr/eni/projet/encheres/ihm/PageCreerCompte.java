@@ -22,14 +22,13 @@ public class PageCreerCompte extends HttpServlet {
      */
     public PageCreerCompte() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// Permet de lire la page web PageCreerCompte
 		this.getServletContext().getRequestDispatcher("/html/PageCreerCompte.jsp").forward(request, response);
 	}
 
@@ -37,7 +36,7 @@ public class PageCreerCompte extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// Permet de stocker dans les variables ce qui a été ecrit dans le formulaire
         String pseudo = request.getParameter("pseudo");
         String nom = request.getParameter("nom");
         String prenom =  request.getParameter("prenom");
@@ -49,13 +48,17 @@ public class PageCreerCompte extends HttpServlet {
         String motDePasse = request.getParameter("motDePasse");
         int credit = 100;
         boolean administrateur = false;
+        
+		// On a créée une instance de UtilisateurManager pour pouvoir faire appel a la methode de la classe UtilisateurManager
         UtilisateurManager utilisateurManager = new UtilisateurManager();
         try {
+        	// ATTENTION la methode sinscire ne comprends pas le noUtilisateur
 			utilisateurManager.sinscrire(pseudo,nom,prenom,email,telephone,rue,codePostal,ville,motDePasse,credit,administrateur);
 		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        // Redirection vers la servlet qui gere le message " felicitation vous avez créée un compte" 
+        // On aurait pu faire un ternaire pour gérer ça
         this.getServletContext().getRequestDispatcher("/PageCreationCompteOk").forward(request, response);
 
 	}

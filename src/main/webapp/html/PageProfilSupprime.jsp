@@ -14,4 +14,4 @@
 <% } %>
 <a href="/Enchere-Eni/PagesAccueilNonConnecte"><button>Retour à la page d'accueil</button></a>
 </body>
-</html>
+</html> 
