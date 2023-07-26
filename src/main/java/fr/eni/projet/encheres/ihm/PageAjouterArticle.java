@@ -48,11 +48,17 @@ public class PageAjouterArticle extends HttpServlet {
 	       System.out.println(nomArticle);
 
 	       String description = request.getParameter("description");
-	      double prixVente = Double.parseDouble(request.getParameter("prixVente"));
+	       double prixVente = Double.parseDouble(request.getParameter("prixVente"));
 	       double miseAPrix = Double.parseDouble(request.getParameter("miseAPrix"));
 	       boolean etatVente = Boolean.parseBoolean(request.getParameter("etatVente"));
-	       LocalDate dateDebut = LocalDate.parse(request.getParameter("dateDebut"));
-	       LocalDate dateFin = LocalDate.parse(request.getParameter("dateFin"));
+	       
+	       String dateDebutString = request.getParameter("dateDebut");
+	       LocalDate dateDebut = LocalDate.parse(dateDebutString);
+	      // essai n°1: LocalDate dateDebut = LocalDate.parse(request.getParameter("dateDebut"));
+	       
+	       String dateFinString = request.getParameter("dateFin");
+	       LocalDate dateFin = LocalDate.parse(dateFinString);
+	       // essai n°1: LocalDate dateFin = LocalDate.parse(request.getParameter("dateFin"));
 	       
  
 	     
