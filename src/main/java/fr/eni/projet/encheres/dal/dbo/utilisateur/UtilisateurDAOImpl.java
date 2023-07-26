@@ -21,27 +21,33 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 	private static final String SELECT_ONE_USER = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
 	private static final String SELECT_BY_IDENTIFIANT = "SELECT * FROM utilisateurs WHERE email = ? AND mot_de_passe = ?";
 
-
+// méthode détaillée pour ajouter un Utilisateur
 	public void ajouterUtilisateur(Utilisateur utilisateur) {
+		
+		// pour se connecter à la base de données
 		try {Connection connection = ConnectionProvider.getConnection();
+		// pour chercher la requête SQl Insert_User pour éviter les problèmes de sécurité
 		PreparedStatement pStmt = connection.prepareStatement(INSERT_USER);
 
+		// pour chercher ce qui est rempli dans le formulaire défini dans la jsp "page connexion" 
 		pStmt.setString(1, utilisateur.getPseudo());
 		pStmt.setString(2, utilisateur.getNom());
 		pStmt.setString(3, utilisateur.getPrenom());
 		pStmt.setString(4, utilisateur.getEmail());
-		pStmt.setString(5, utilisateur.getTelephone()); // Truncate 'telephone' value if necessary
+		pStmt.setString(5, utilisateur.getTelephone()); 
 		pStmt.setString(6, utilisateur.getRue());
 		pStmt.setInt(7, utilisateur.getCodePostal());
 		pStmt.setString(8, utilisateur.getVille());
 		pStmt.setString(9, utilisateur.getMotDePasse());
 		pStmt.setInt(10, utilisateur.getCredit());
 		pStmt.setBoolean(11, utilisateur.isAdministrateur());
-
+		// on insère ici les nouvelles données dans la BDD avec un executeUpdate et non executeQuery
 		pStmt.executeUpdate();
-		/**
-		 * System.out.printf("L'utilisateur %s a bien été ajouté", Utilisateur.getNom()););	// phase de test : on affiche pas cette ligne	
-		 */
+		
+		// cette ligne nous confirme dans la console que notre utilisateur a bien été ajouté !
+		 System.out.printf("L'utilisateur %s a bien été ajouté", utilisateur.getNom());	
+		 
+		// cette exception gère les pbs avec la BDD 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -49,32 +55,117 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 	}
 
 
-	public void mettreAJourUtilisateur(Utilisateur utilisateur) {
-		// TODO Auto-generated method stub
+	
+	// méthode détaillée pour se connecter qui ne prend en compte que 2 paramètres, cad email et mdp.
+	public Utilisateur seConnecter(String email, String motDePasse) {
+		
+		// pour se connecter à la base de données
+		    try {
+		    	Connection connection = ConnectionProvider.getConnection();
+		    	
+		    	PreparedStatement pStmt = connection.prepareStatement(SELECT_BY_IDENTIFIANT);
+		    	
+		        pStmt.setString(1, email);
+		        pStmt.setString(2, motDePasse);
+		        
+				// on récupère dans une variable rs les données dans la BDD avec un executeQuery et pas un executeUpdate
+		        ResultSet rs = pStmt.executeQuery();
 
-		try {Connection connection = ConnectionProvider.getConnection();
-		PreparedStatement pStmt = connection.prepareStatement(UPDATE_USER);
-
-		pStmt.setString(1, utilisateur.getPseudo());
-		pStmt.setString(2, utilisateur.getNom());
-		pStmt.setString(3, utilisateur.getPrenom());
-		pStmt.setString(4, utilisateur.getEmail());
-		pStmt.setString(5, utilisateur.getTelephone()); // Truncate 'telephone' value if necessary
-		pStmt.setString(6, utilisateur.getRue());
-		pStmt.setInt(7, utilisateur.getCodePostal());
-		pStmt.setString(8, utilisateur.getVille());
-		pStmt.setString(9, utilisateur.getMotDePasse());
-		pStmt.setInt(10, utilisateur.getCredit());
-		pStmt.setBoolean(11, utilisateur.isAdministrateur());
-		pStmt.setInt(12, utilisateur.getNoUtilisateur());
-
-		pStmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		        // Condition pour vérifier si l'utilisateur a été trouvé dans la base de données
+		        if (rs.next()) {
+		            // Créer un objet Utilisateur avec les informations de la base de données
+		            Utilisateur u = new Utilisateur();
+		            u.setNoUtilisateur(rs.getInt("no_utilisateur"));
+		            u.setPseudo(rs.getString("pseudo"));
+		           u.setNom(rs.getString("nom"));
+		           u.setPrenom(rs.getString("prenom"));
+		            u.setEmail(rs.getString("email"));
+		           u.setTelephone(rs.getString("telephone"));
+		            u.setRue(rs.getString("rue"));
+		            u.setCodePostal(rs.getInt("code_postal"));
+		           u.setVille(rs.getString("ville"));
+		           u.setMotDePasse(rs.getString("mot_de_passe"));
+		           u.setCredit(rs.getInt("credit"));
+		           u.setAdministrateur(rs.getBoolean("administrateur"));
+		           return u ; } 		          
+		    } 
+		    catch (SQLException e) {
+		        // Gérer les erreurs éventuelles
+		        e.printStackTrace();
+		    }
+		    
+		   return null ;
 	}
 
+	
+public boolean pseudoExiste(String pseudo) {
+	// méthode qui vérifie si un pseudo (passé en paramètre) existe déjà dans la base de données des utilisateurs
+	try {
+		Connection connection = ConnectionProvider.getConnection();
+		String query = "SELECT COUNT(*) AS count FROM UTILISATEURS WHERE pseudo = ?";
+		PreparedStatement pstmt = connection.prepareStatement(query);
+		pstmt.setString(1, pseudo);
+		ResultSet rs = pstmt.executeQuery();
+		if (rs.next()) {
+			int count = rs.getInt("count");
+			return count > 0;
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return false;
+}
+
+public boolean emailExiste(String email) {
+	// méthode qui vérifie si un email (passé en paramètre) existe déjà dans la base de données des utilisateurs
+	try {
+		Connection connection = ConnectionProvider.getConnection();
+		String query = "SELECT COUNT(*) AS count FROM UTILISATEURS WHERE email = ?";
+		PreparedStatement pstmt = connection.prepareStatement(query);
+		pstmt.setString(1, email);
+		ResultSet rs = pstmt.executeQuery();
+		if (rs.next()) {
+			int count = rs.getInt("count");
+			return count > 0;
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return false;
+}
+
+
+// méthode détaillée pour mettre à jour un Utilisateur
+
+public void mettreAJourUtilisateur(Utilisateur utilisateur) {
+	// TODO Auto-generated method stub
+
+	try {Connection connection = ConnectionProvider.getConnection();
+	PreparedStatement pStmt = connection.prepareStatement(UPDATE_USER);
+
+	pStmt.setString(1, utilisateur.getPseudo());
+	pStmt.setString(2, utilisateur.getNom());
+	pStmt.setString(3, utilisateur.getPrenom());
+	pStmt.setString(4, utilisateur.getEmail());
+	pStmt.setString(5, utilisateur.getTelephone()); // Truncate 'telephone' value if necessary
+	pStmt.setString(6, utilisateur.getRue());
+	pStmt.setInt(7, utilisateur.getCodePostal());
+	pStmt.setString(8, utilisateur.getVille());
+	pStmt.setString(9, utilisateur.getMotDePasse());
+	pStmt.setInt(10, utilisateur.getCredit());
+	pStmt.setBoolean(11, utilisateur.isAdministrateur());
+	pStmt.setInt(12, utilisateur.getNoUtilisateur());
+
+	pStmt.executeUpdate();
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+}
+
+
+	
+	
 
 	public void supprimerUtilisateurById(int noUtilisateur) {
 		// TODO Auto-generated method stub
@@ -176,82 +267,11 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 	return utilisateur;
 	}
 	
-	public boolean pseudoExiste(String pseudo) {
-		// méthode qui vérifie si un pseudo (passé en paramètre) existe déjà dans la base de données des utilisateurs
-		try {
-			Connection connection = ConnectionProvider.getConnection();
-			String query = "SELECT COUNT(*) AS count FROM UTILISATEURS WHERE pseudo = ?";
-			PreparedStatement pstmt = connection.prepareStatement(query);
-			pstmt.setString(1, pseudo);
-			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) {
-				int count = rs.getInt("count");
-				return count > 0;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	public boolean emailExiste(String email) {
-		// méthode qui vérifie si un email (passé en paramètre) existe déjà dans la base de données des utilisateurs
-		try {
-			Connection connection = ConnectionProvider.getConnection();
-			String query = "SELECT COUNT(*) AS count FROM UTILISATEURS WHERE email = ?";
-			PreparedStatement pstmt = connection.prepareStatement(query);
-			pstmt.setString(1, email);
-			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) {
-				int count = rs.getInt("count");
-				return count > 0;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
 
 	
 
-
-	
-	public Utilisateur seConnecter(String email, String motDePasse) {
-		    try {
-		    	Connection connection = ConnectionProvider.getConnection();
-		    	PreparedStatement pStmt = connection.prepareStatement(SELECT_BY_IDENTIFIANT);
-		        pStmt.setString(1, email);
-		        pStmt.setString(2, motDePasse);
-		        ResultSet rs = pStmt.executeQuery();
-
-		        // Vérifier si l'utilisateur a été trouvé dans la base de données
-		        if (rs.next()) {
-		            // Créer un objet Utilisateur avec les informations de la base de données
-		            Utilisateur u = new Utilisateur();
-		            u.setNoUtilisateur(rs.getInt("no_utilisateur"));
-		            u.setPseudo(rs.getString("pseudo"));
-		           u.setNom(rs.getString("nom"));
-		           u.setPrenom(rs.getString("prenom"));
-		            u.setEmail(rs.getString("email"));
-		           u.setTelephone(rs.getString("telephone"));
-		            u.setRue(rs.getString("rue"));
-		            u.setCodePostal(rs.getInt("code_postal"));
-		           u.setVille(rs.getString("ville"));
-		           u.setMotDePasse(rs.getString("mot_de_passe"));
-		           u.setCredit(rs.getInt("credit"));
-		           u.setAdministrateur(rs.getBoolean("administrateur"));
-		           return u ; } 		          
-		    } catch (SQLException e) {
-		        // Gérer les erreurs éventuelles
-		        e.printStackTrace();
-		    }
-		    
-		   return null ;
-	}
 }
 
-	
 
 
 

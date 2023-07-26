@@ -64,9 +64,22 @@ public class PageConnexion extends HttpServlet {
 
 			Utilisateur utilisateur = utilisateurManager.seConnecter(email,motDePasse);
 			System.out.println(utilisateur);
+			
+			// cette condition permet de prendre en compte quand un utilisateur se trompe d'identifiant ou de mdp
 			if (utilisateur == null) { 
 				request.setAttribute("error", "identifiants invalides");
-			} else {
+			} 
+			
+			/** 
+			 * // cette condition permet de prendre en compte quand un utilisateur utilise un pseuo déjà pris >>> code incomplet
+			
+						if (utilisateur == null) { 
+							request.setAttribute("error", "identifiants invalides");
+						}
+						
+			*/
+			
+			else {
 				
 				session.setAttribute("identifiant", utilisateur.getNoUtilisateur());
 				System.out.println(utilisateur.getNoUtilisateur());
