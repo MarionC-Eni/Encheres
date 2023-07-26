@@ -17,6 +17,8 @@ public class Article {
 	
 	// Constructeur
 	
+	
+	
 	public Article(int noArticle, String nomArticle, String description, double prixVente, double miseAPrix,
 			boolean etatVente, LocalDate dateDebut, LocalDate dateFin) {
 		this.noArticle = noArticle;
@@ -29,6 +31,10 @@ public class Article {
 		this.dateFin = dateFin;
 	}
 	
+	public Article() {
+		super();
+	}
+
 	// Constructeur sans noArticle
 	
 	public Article(String nomArticle, String description, double prixVente, double miseAPrix, boolean etatVente,

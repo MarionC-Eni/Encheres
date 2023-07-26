@@ -30,8 +30,10 @@ public class ArticleDAOImpl implements DAOArticle {
 		pStmt.setDouble(5, article.getPrixVente());
 		pStmt.setDouble(6, article.getMiseAPrix());
 		pStmt.setInt(7, utilisateur.getNoUtilisateur());
-		pStmt.setInt(8, categorie.getNoCategorie());
-			
+		// pStmt.setInt(8, categorie.getNoCategorie()); Categorie ID dans la BDD
+		pStmt.setInt(8, 1);
+
+		
 		pStmt.executeUpdate();
 	
 		
