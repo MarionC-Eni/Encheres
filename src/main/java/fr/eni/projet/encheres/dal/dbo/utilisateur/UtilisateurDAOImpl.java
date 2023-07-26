@@ -76,13 +76,14 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 	}
 
 
-	public void supprimerUtilisateur(Utilisateur utilisateur) {
+	public void supprimerUtilisateurById(int noUtilisateur) {
 		// TODO Auto-generated method stub
 
 		try {Connection connection = ConnectionProvider.getConnection();
 		PreparedStatement pStmt = connection.prepareStatement(DELETE_USER);
 
-		pStmt.setString(1, utilisateur.getPseudo());
+	/** Je n'ai besoin que du numero utilsiateur pour le supprier :
+	 * 	pStmt.setString(1, utilisateur.getPseudo());
 		pStmt.setString(2, utilisateur.getNom());
 		pStmt.setString(3, utilisateur.getPrenom());
 		pStmt.setString(4, utilisateur.getEmail());
@@ -93,7 +94,9 @@ public class UtilisateurDAOImpl implements DAOUtilisateur {
 		pStmt.setString(9, utilisateur.getMotDePasse());
 		pStmt.setInt(10, utilisateur.getCredit());
 		pStmt.setBoolean(11, utilisateur.isAdministrateur());
-		pStmt.setInt(12, utilisateur.getNoUtilisateur());
+		
+		*/
+		pStmt.setInt(1, noUtilisateur);
 
 		pStmt.executeUpdate();
 

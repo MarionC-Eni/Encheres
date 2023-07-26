@@ -33,14 +33,37 @@ public class PageModifierProfil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");
+		//Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+		
 		System.out.println(noUtilisateur);
 		System.out.println("identifiant");
+		
         if (noUtilisateur == null) {
             response.sendRedirect("/PageConnexion");
             return;
         }
+        
+        // requête pour préremplir le formulaire
+        Utilisateur utilisateur = null;
+       
+     
+        UtilisateurManager utilisateurManager = new UtilisateurManager();
+        
+        try {
+			utilisateur = utilisateurManager.obtenirUtilisateurParId(noUtilisateur);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+  
+    	request.setAttribute("utilisateur", utilisateur);
+
 		this.getServletContext().getRequestDispatcher("/html/PageModifierProfil.jsp").forward(request, response);
 	}
+	
+
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -48,6 +71,7 @@ public class PageModifierProfil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");
+
 		
         // Récupérer les données du formulaire de modification
         String pseudo = request.getParameter("pseudo");
@@ -74,8 +98,10 @@ public class PageModifierProfil extends HttpServlet {
         utilisateur.setVille(ville);
         utilisateur.setMotDePasse(motDePasse);
         
+    
+
         UtilisateurManager utilisateurManager = new UtilisateurManager();
-        //Utilisateur utilisateur = null;
+        
         
         try {
 			utilisateurManager.mettreAJourUtilisateur(utilisateur);
@@ -83,6 +109,9 @@ public class PageModifierProfil extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        
+
+        
         request.setAttribute("Profilajour", "Votre profil a été mis à jour");
         
 		doGet(request, response);

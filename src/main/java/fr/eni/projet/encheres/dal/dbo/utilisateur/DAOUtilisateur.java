@@ -11,7 +11,7 @@ public interface DAOUtilisateur {
 
 	public void mettreAJourUtilisateur(Utilisateur utilisateur);
 
-	public void supprimerUtilisateur(Utilisateur utilisateur);
+	public void supprimerUtilisateurById(int noUtilisateur);
 	
 	public Utilisateur obtenirUtilisateurParId(int noUtilisateur);
 
