@@ -48,8 +48,10 @@ public class PageSuppressionProfil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");
-       /**
-        *  // Récupérer les données du formulaire de modification
+		
+   /** 
+		
+		//Récupérer les données du formulaire de modification
       
         String pseudo = request.getParameter("pseudo");
         String nom = request.getParameter("nom");
@@ -75,16 +77,16 @@ public class PageSuppressionProfil extends HttpServlet {
         utilisateur.setVille(ville);
         utilisateur.setMotDePasse(motDePasse);
         
-          */
-        
+        */
+         
         UtilisateurManager utilisateurManager = new UtilisateurManager();
-        //Utilisateur utilisateur = null;
+       Utilisateur utilisateur = null;
         
         try {
 			utilisateurManager.supprimerUtilisateur(utilisateur);
 			session.invalidate(); // Supprimer la session de l'utilisateur après la suppression
 	        request.setAttribute("Profilsupprime", "Votre profil a été supprimé");
-	        request.getRequestDispatcher("/html/PagesAccueilNonConnecte.jsp").forward(request, response);
+	        response.sendRedirect("/PagesAccueilNonConnecte");
 	    
 		} catch (BusinessException e) {
 			// TODO Auto-generated catch block

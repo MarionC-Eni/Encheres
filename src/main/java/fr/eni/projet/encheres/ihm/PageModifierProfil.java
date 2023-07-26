@@ -83,7 +83,6 @@ public class PageModifierProfil extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-       // response.sendRedirect("Enchere-Eni/PageModifierProfil");
         request.setAttribute("Profilajour", "Votre profil a été mis à jour");
         
 		doGet(request, response);
