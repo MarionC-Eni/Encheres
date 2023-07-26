@@ -196,41 +196,7 @@ public void mettreAJourUtilisateur(Utilisateur utilisateur) {
 		}
 	}
 
-	public List<Utilisateur> obtenirTousLesUtilisateurs() {
-		List<Utilisateur> utilisateurs = new ArrayList<>();
-
-		try {Connection connection = ConnectionProvider.getConnection();
-		Statement Stmt = connection.createStatement();
-		ResultSet rs = Stmt.executeQuery(SELECT_ALL_USERS);
-		while (rs.next()) {
-
-			Utilisateur utilisateur = new Utilisateur(null, null, null, null, null, null, 0, null, null, 0, false);
-
-			// Utilisation des méthodes setter pour définir les valeurs de l'utilisateur
-			utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
-			utilisateur.setPseudo(rs.getString("pseudo"));
-			utilisateur.setNom(rs.getString("nom"));
-			utilisateur.setPrenom(rs.getString("prenom"));
-			utilisateur.setEmail(rs.getString("email"));
-			utilisateur.setTelephone(rs.getString("telephone"));
-			utilisateur.setRue(rs.getString("rue"));
-			utilisateur.setCodePostal(rs.getInt("code_postal"));
-			utilisateur.setVille(rs.getString("ville"));
-			utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
-			utilisateur.setCredit(rs.getInt("credit"));
-			utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
-
-			utilisateurs.add(utilisateur);
-		}
-
-		return utilisateurs;
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return null;
-	}
+	
 
 		
 	public Utilisateur obtenirUtilisateurParId(int noUtilisateur) {
@@ -267,8 +233,42 @@ public void mettreAJourUtilisateur(Utilisateur utilisateur) {
 	return utilisateur;
 	}
 	
+	// Cette methode n'est pas appelée pour le moment
+	public List<Utilisateur> obtenirTousLesUtilisateurs() {
+		List<Utilisateur> utilisateurs = new ArrayList<>();
 
-	
+		try {Connection connection = ConnectionProvider.getConnection();
+		Statement Stmt = connection.createStatement();
+		ResultSet rs = Stmt.executeQuery(SELECT_ALL_USERS);
+		while (rs.next()) {
+
+			Utilisateur utilisateur = new Utilisateur(null, null, null, null, null, null, 0, null, null, 0, false);
+
+			// Utilisation des méthodes setter pour définir les valeurs de l'utilisateur
+			utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
+			utilisateur.setPseudo(rs.getString("pseudo"));
+			utilisateur.setNom(rs.getString("nom"));
+			utilisateur.setPrenom(rs.getString("prenom"));
+			utilisateur.setEmail(rs.getString("email"));
+			utilisateur.setTelephone(rs.getString("telephone"));
+			utilisateur.setRue(rs.getString("rue"));
+			utilisateur.setCodePostal(rs.getInt("code_postal"));
+			utilisateur.setVille(rs.getString("ville"));
+			utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+			utilisateur.setCredit(rs.getInt("credit"));
+			utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
+
+			utilisateurs.add(utilisateur);
+		}
+
+		return utilisateurs;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 
 }
 

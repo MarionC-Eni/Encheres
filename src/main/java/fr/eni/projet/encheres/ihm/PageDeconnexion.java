@@ -20,15 +20,17 @@ public class PageDeconnexion extends HttpServlet {
      */
     public PageDeconnexion() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			HttpSession session = request.getSession();	
+			HttpSession session = request.getSession();
+			// Methode de la biblio java
 			session.invalidate();
+			// Utilisateur du sendRedirect et non forward parce que on renvoie vers une servlet 
+			// Alors que le forward renvoie vers une jsp
 			response.sendRedirect("/Enchere-Eni/PagesAccueilNonConnecte");
 	}
 
@@ -36,7 +38,6 @@ public class PageDeconnexion extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

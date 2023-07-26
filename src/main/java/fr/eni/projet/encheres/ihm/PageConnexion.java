@@ -34,15 +34,18 @@ public class PageConnexion extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Initialisation de la session, c'est une interface qui fait partie de la biblio java
 		HttpSession session = request.getSession();
+		
 		// Obtenir la valeur de la variable que tu souhaites transmettre
-
 		if(session.getAttribute("identifiant")!= null) {
 			response.sendRedirect("/Enchere-Eni/PagesListeEncheresConnecte");
 			return;
 		}
 
+		// Permet de lire notre page web PageConnexion
 		this.getServletContext().getRequestDispatcher("/html/PageConnexion.jsp").forward(request, response);
+			
 	}
 
 
@@ -53,18 +56,21 @@ public class PageConnexion extends HttpServlet {
 		HttpSession session = request.getSession();
 		//session.setAttribute("identifiant", 5);
 
+		// On recupere les infos dont on a besoin soit juste email et mdp
 		String email = request.getParameter("email");
 		String motDePasse = request.getParameter("motDePasse");
-		// récupérer les autres paramètres du formulaire d'inscription
+		
 
+		// On a créée une instance de UtilisateurManager pour pouvoir faire appel a la methode de la classe UtilisateurManager
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
-
+		// Maintenant que l'instance est créée on peut accéder aux methodes fournis par la classe
 		try {
-			// Appeler la méthode sinscrire de la classe UtilisateurManager pour enregistrer le nouvel utilisateur dans la base de données
+			// Appeler la méthode seConnecter de la classe UtilisateurManager pour enregistrer le nouvel utilisateur dans la base de données
 
 			Utilisateur utilisateur = utilisateurManager.seConnecter(email,motDePasse);
+			// Ligne pour afficher dans la console que l'utilisateur est bien connecté
 			System.out.println(utilisateur);
-			
+				
 			// cette condition permet de prendre en compte quand un utilisateur se trompe d'identifiant ou de mdp
 			if (utilisateur == null) { 
 				request.setAttribute("error", "identifiants invalides");
@@ -74,14 +80,18 @@ public class PageConnexion extends HttpServlet {
 			 * // cette condition permet de prendre en compte quand un utilisateur utilise un pseuo déjà pris >>> code incomplet
 			
 						if (utilisateur == null) { 
-							request.setAttribute("error", "identifiants invalides");
+							request.setAttribute("error", " Pseudo déjà utilisé ");
 						}
 						
 			*/
 			
 			else {
 				
+				// Notre variable session est definie ligne 56
+				// La methode setAttribute associe la clé "identifiant" et la valeur utilisateur.getNoUtilisateur());
 				session.setAttribute("identifiant", utilisateur.getNoUtilisateur());
+				
+				// Ligne pour afficher dans la console que l'utilisateur est bien connecté
 				System.out.println(utilisateur.getNoUtilisateur());
 				
 				// Rediriger l'utilisateur vers la servlet "connecté"
@@ -96,6 +106,7 @@ public class PageConnexion extends HttpServlet {
 			// Rediriger l'utilisateur vers une page d'erreur ou une autre page appropriée
 		}
 		
+		// Cette ligne nous permet de prendre en compte la condition du doGet ligne 40 à 44 
 		doGet(request, response);
 
 	}

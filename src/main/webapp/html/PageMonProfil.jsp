@@ -10,6 +10,8 @@
 </head>
 <body>
 <h1>PageProfil</h1>
+<!-- On utilise des expression language pour ne pas melanger le java du html qui nous permet de recupérer les attributs dans la servlet PageMonProfil -->
+<!-- Voila à quoi sert le setAttribute -->
 <c:if test="${utilisateur != null}">
 <p>Nom : ${utilisateur.nom}</p>
 <p>Prenom : ${utilisateur.prenom}</p>

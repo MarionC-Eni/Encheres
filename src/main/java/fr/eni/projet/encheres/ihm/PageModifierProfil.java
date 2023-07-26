@@ -24,7 +24,6 @@ public class PageModifierProfil extends HttpServlet {
      */
     public PageModifierProfil() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -32,31 +31,35 @@ public class PageModifierProfil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");
-		//Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
 		
+		// On récupere la ligne 92 de la servlet PageConnexion dans la variable noUtilisateur
+		// getAttribute() renvoie un Object donc on doit effectuer un casting explicite pour obtenir un Integer
+		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");
+		
+		// Verification qu'on retournait bien le noUtilisateur ( seulement visible dans la console )
 		System.out.println(noUtilisateur);
 		System.out.println("identifiant");
 		
+		// Condition qui valide le fait qu'on ne peut pas modifier le profil s'il n'existe pas
         if (noUtilisateur == null) {
             response.sendRedirect("/PageConnexion");
             return;
         }
         
-        // requête pour préremplir le formulaire
+        // Creation d'une variable initialisée à null pour pouvoir l'utiliser ligne 56
         Utilisateur utilisateur = null;
        
-     
+		// On a créée une instance de UtilisateurManager pour pouvoir faire appel a la methode de la classe UtilisateurManager
         UtilisateurManager utilisateurManager = new UtilisateurManager();
         
         try {
+        	// Notre variable utilisateur stocke le resultat de la requete obternirUtilisateurParId
 			utilisateur = utilisateurManager.obtenirUtilisateurParId(noUtilisateur);
 		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
-  
+        // A EXPLIQUER  Cette ligne permet de récuperer l'objet utilisateur modifié dans d'autre partie du code A EXPLIQUER
     	request.setAttribute("utilisateur", utilisateur);
 
 		this.getServletContext().getRequestDispatcher("/html/PageModifierProfil.jsp").forward(request, response);
@@ -106,12 +109,11 @@ public class PageModifierProfil extends HttpServlet {
         try {
 			utilisateurManager.mettreAJourUtilisateur(utilisateur);
 		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
 
-        
+        // Ligne 12-13 PageModifierProfil.jsp 
         request.setAttribute("Profilajour", "Votre profil a été mis à jour");
         
 		doGet(request, response);

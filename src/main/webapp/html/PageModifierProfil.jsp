@@ -17,11 +17,11 @@
 <input type="text" id="pseudo" name="pseudo" value="${utilisateur.pseudo}" required>
 <label for="nom">Nom :</label>
 <input type="text" id="nom" name="nom" value="${utilisateur.nom}" required>
-<label for="Prenom">Prénom :</label>
+<label for="Prenom">Prenom :</label>
 <input type="text" id="Prenom" name="prenom" value="${utilisateur.prenom}"required>
 <label for="email">Email :</label>
 <input type="email" id="email" name="email" maxlength= "40" value="${utilisateur.email}"required>
-<label for="telephone">Téléphone :</label>
+<label for="telephone">Telephone :</label>
 <input type="tel" id="telephone" name="telephone" maxlength= "10" value="${utilisateur.telephone}"required>
 <label for="rue">Rue :</label>
 <input type="text" id="rue" name="rue" value="${utilisateur.pseudo}"required>
