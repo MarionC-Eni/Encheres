@@ -45,14 +45,17 @@ public class PageAjouterArticle extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	       String nomArticle = request.getParameter("nomArticle");
+	       System.out.println(nomArticle);
+
 	       String description = request.getParameter("description");
-	       double prixVente = Integer.parseInt(request.getParameter("prixVente"));
-	       double miseAPrix = Integer.parseInt(request.getParameter("miseAPrix"));
+	      double prixVente = Double.parseDouble(request.getParameter("prixVente"));
+	       double miseAPrix = Double.parseDouble(request.getParameter("miseAPrix"));
 	       boolean etatVente = Boolean.parseBoolean(request.getParameter("etatVente"));
 	       LocalDate dateDebut = LocalDate.parse(request.getParameter("dateDebut"));
 	       LocalDate dateFin = LocalDate.parse(request.getParameter("dateFin"));
 	       
  
+	     
 	       ArticleManager articleManager = new ArticleManager();
 	       Utilisateur utilisateur = new Utilisateur();
 	       // On instancie utilisateur et categorie pour pouvoir faire appek à la methode ajouterArticle
