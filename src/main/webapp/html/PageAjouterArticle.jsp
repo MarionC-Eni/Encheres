@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Nouvelle Vente</title>
 </head>
 <body>
 <form method="POST" action="/Enchere-Eni/PageAjouterArticle">

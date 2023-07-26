@@ -12,6 +12,10 @@ public class Categorie {
 		this.libelle = libelle;
 	}
 	
+	public Categorie() {
+		super();
+	}
+
 	public Categorie(String libelle) {
 		super();
 		this.libelle = libelle;
