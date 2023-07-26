@@ -13,33 +13,27 @@ import fr.eni.projet.encheres.dal.ConnectionProvider;
 
 public class ArticleDAOImpl implements DAOArticle {
 
-	private static final String INSERT_ARTICLES = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?,?)";
+	private static final String INSERT_ARTICLE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?,?)";
 	private static final String SELECT_ALL_ARTICLES = null;
 
 	//private static final String SELECT_ALL_ARTICLES = "SELECT * FROM ARTICLES_VENDUS";
 
-	public void ajouterArticle(Article Article) {
+	public void ajouterArticle(Article article, Utilisateur utilisateur, Categorie categorie) {
 		try {Connection connection = ConnectionProvider.getConnection();
-		PreparedStatement pStmt = connection.prepareStatement(INSERT_ARTICLES);
+		PreparedStatement pStmt = connection.prepareStatement(INSERT_ARTICLE);
 		
 		// pStmt.setInt(1, Article.getNoArticle()); > cette colonne est autoincrémentée
-		pStmt.setString(1, Article.getNomArticle());
-		pStmt.setString(2, Article.getDescription());
-		pStmt.setDate(3, Date.valueOf(Article.getDateDebut())); // Conversion LocalDate en java.sql.Date
-		pStmt.setDate(4, Date.valueOf(Article.getDateFin())); // Conversion LocalDate en java.sql.Date
-		pStmt.setDouble(5, Article.getPrixVente());
-		pStmt.setDouble(6, Article.getMiseAPrix());
-		int categorieIdFictif = -1;
-		pStmt.setInt(7, categorieIdFictif);
-		int categorieIdFictif2 = -1;
-		pStmt.setInt(8, categorieIdFictif2);
-		//pStmt.setInt(7, -1); // il faut remplacer "-1" par "Utilisateur.getNoUtilisateur()" >> Utilisation d'une valeur fictive pour la clé étrangère 'no_utilisateur'
-		//pStmt.setInt(8, -1); // il faut remplacer "-1" par "Categorie.getNoCategorie() n" >> Utilisation d'une valeur fictive pour la clé étrangère 'no_categorie'
-		
-		
-		
+		pStmt.setString(1, article.getNomArticle());
+		pStmt.setString(2, article.getDescription());
+		pStmt.setDate(3, Date.valueOf(article.getDateDebut())); // Conversion LocalDate en java.sql.Date
+		pStmt.setDate(4, Date.valueOf(article.getDateFin())); // Conversion LocalDate en java.sql.Date
+		pStmt.setDouble(5, article.getPrixVente());
+		pStmt.setDouble(6, article.getMiseAPrix());
+		pStmt.setInt(7, utilisateur.getNoUtilisateur());
+		pStmt.setInt(8, categorie.getNoCategorie());
+			
 		pStmt.executeUpdate();
-		System.out.printf("L'Article %s a bien été ajouté", Article.getNomArticle());
+	
 		
 	} catch (SQLException e) {
 		e.printStackTrace();
@@ -49,13 +43,11 @@ public class ArticleDAOImpl implements DAOArticle {
 	
 
 	public void mettreAJourArticle(Article Article) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	
 	public void supprimerArticle(Article Article) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -66,7 +58,7 @@ public class ArticleDAOImpl implements DAOArticle {
 	
 
 	
-	public List<Article> obtenirTousLesArticles() {
+	/** public List<Article> obtenirTousLesArticles() {
 		try {Connection connection = ConnectionProvider.getConnection();
 		Statement Stmt = connection.createStatement();
 		ResultSet rs = Stmt.executeQuery(SELECT_ALL_ARTICLES);
@@ -87,6 +79,22 @@ public class ArticleDAOImpl implements DAOArticle {
 		e.printStackTrace();
 	}
 
+		return null;
+	}
+
+*/
+
+	@Override
+	public void supprimerArticle(int noArticle) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public List<Article> obtenirTousLesArticles(int noUtilisateur) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	}
