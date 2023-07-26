@@ -4,18 +4,28 @@ import java.util.List;
 
 import fr.eni.projet.encheres.BusinessException;
 import fr.eni.projet.encheres.bo.Article;
+import fr.eni.projet.encheres.bo.Categorie;
+import fr.eni.projet.encheres.bo.Utilisateur;
 import fr.eni.projet.encheres.dal.dbo.articles.DAOArticle;
 import fr.eni.projet.encheres.dal.dbo.articles.DaoFactory;
 import fr.eni.projet.encheres.dal.exception.DALException;
 
 public class ArticleManager {
 
+	private final DAOArticle DAOArticle ;
+	
+	// Constructeur BLL qui créer une instance de DAOArticle pour faire appel a la classe DaoFactory
+	public ArticleManager() {
+        this.DAOArticle = DaoFactory.getDAOArticle();
+    }
+	
     // Ajouter un article
-    public void ajouterArticle(Article article) throws BusinessException, DALException {
-        validerArticle(article);
+	public void ajouterArticle(Article article, Utilisateur utilisateur, Categorie categorie)  throws BusinessException, DALException {
+      //  validerArticle(article); Nous ferons ça plus tard
         DAOArticle articleDao = DaoFactory.getDAOArticle();
         try {
-            articleDao.ajouterArticle(article);
+        	// Article a = new Article();a.setNom(nom); -> SI necessaire
+            DAOArticle.ajouterArticle(article, utilisateur, categorie);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DALException("Probleme dans l'ajout à la bdd!");
@@ -23,7 +33,7 @@ public class ArticleManager {
     }
     
     // Valider un article
-    private void validerArticle(Article article) throws BusinessException {
+   /** private void validerArticle(Article article) throws BusinessException {
         if (article == null) {
             throw new BusinessException("L'objet Article est null!");
         }
@@ -38,6 +48,7 @@ public class ArticleManager {
         // Ajoutez d'autres validations si nécessaire
     }
 
+	
     // Modifier un article
     public void mettreAJourArticle(Article article) throws BusinessException, DALException {
         // Validation
@@ -77,6 +88,6 @@ public class ArticleManager {
     
 	
     
-
+*/
    
 }
