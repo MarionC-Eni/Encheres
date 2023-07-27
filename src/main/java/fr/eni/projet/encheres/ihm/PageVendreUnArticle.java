@@ -115,11 +115,15 @@ public class PageVendreUnArticle extends HttpServlet {
     	    
     	    
     	       Categorie categorie = new Categorie();
-
+    	       
+    	       // on crée la variable en dehors du try car on en a besoin ligne 136
+    	       // test > int noArticle = 0;
     	     
     	            try {
     					try {
+    						// la méthode ajouter article renvoie le noArticle créé par la bdd
     						articleManager.ajouterArticle(nomArticle,description,prixVente,miseAPrix,etatVente,dateDebut,dateFin,utilisateur,categorie);
+    					
     					} catch (BusinessException e) {
     						// TODO Auto-generated catch block
     						e.printStackTrace();
@@ -129,12 +133,12 @@ public class PageVendreUnArticle extends HttpServlet {
     					e.printStackTrace();
     				}
 
-    	      
+    	            //request.setAttribute("noArticle", noArticle);
     		
     	            this.getServletContext().getRequestDispatcher("/PageCreationArticleOk").forward(request, response);
 
     		
-    		doGet(request, response);
+    		//doGet(request, response);
     	}
 
     }

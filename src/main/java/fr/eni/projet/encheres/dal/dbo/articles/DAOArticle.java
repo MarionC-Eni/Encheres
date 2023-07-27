@@ -9,7 +9,7 @@ import fr.eni.projet.encheres.bo.Utilisateur;
 public interface DAOArticle {
 
 
-	public void ajouterArticle(Article article, Utilisateur utilisateur, Categorie categorie);
+		public void ajouterArticle(Article article, Utilisateur utilisateur, Categorie categorie);
 		
 		public void mettreAJourArticle(Article Article);
 				
@@ -17,6 +17,8 @@ public interface DAOArticle {
 				
 		Article obtenirArticleParId(int no_article);
 				
+		Article obtenirLastArticle();
+		
 		List<Article> obtenirTousLesArticles(int noUtilisateur);
 		
 		

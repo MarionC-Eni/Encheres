@@ -70,12 +70,14 @@ public class ArticleManager {
         	// ArticleManager utilise l'objet Utilisateur comme paramètre dans la méthode ajouterArticle
         	// c'est nécessaire pour passer directement l'objet Utilisateur depuis la servlet.
         	  	
-            DAOArticle.ajouterArticle(a, utilisateur, categorie);
+           DAOArticle.ajouterArticle(a, utilisateur, categorie);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DALException("Probleme dans l'ajout à la bdd!");
         }
     }
+	
+
     
     // Valider un article
    /** private void validerArticle(Article article) throws BusinessException {
@@ -107,6 +109,18 @@ public class ArticleManager {
         }
     }*/
 
+  
+    public Article obtenirArticleParId(int noArticle) throws BusinessException, DALException  {
+    	// DAOArticle articleDao = DaoFactory.getDAOArticle();
+         try {
+             return DAOArticle.obtenirArticleParId(noArticle);
+         } catch (Exception e) {
+             e.printStackTrace();
+             throw new DALException("Erreur lors de l'affichage de l'article!");
+         }
+    	
+    }
+    
     // Supprimer un article
     public void supprimerArticleParId(int noArticle) throws BusinessException, DALException {
         // Vous pouvez ajouter des validations ou vérifications ici si nécessaire
@@ -118,16 +132,20 @@ public class ArticleManager {
             throw new DALException("Probleme dans la suppression de l'article!");
         }
     }
-    public Article obtenirArticleParId(int noArticle) throws BusinessException, DALException  {
+    
+    
+    public Article obtenirLastArticle() throws BusinessException, DALException  {
     	// DAOArticle articleDao = DaoFactory.getDAOArticle();
          try {
-             return DAOArticle.obtenirArticleParId(noArticle);
+             return DAOArticle.obtenirLastArticle();
          } catch (Exception e) {
              e.printStackTrace();
-             throw new DALException("Erreur lors de l'affichage de l'article!");
+             throw new DALException("Erreur lors de l'affichage du dernier article!");
          }
     	
     }
+    
+    
 /*
     // Lister les articles d'un utilisateur
     public List<Article> obtenirTousLesArticles(int noUtilisateur) throws BusinessException, DALException {

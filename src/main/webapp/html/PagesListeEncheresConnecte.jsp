@@ -13,6 +13,7 @@
         <ul class="navbar">
             <li class="nav-item"><a href="">Enchères</a></li>
             <li class="nav-item"><a href="/Enchere-Eni/PageVendreUnArticle">Vendre un article</a></li>
+            <li class="nav-item"><a href="/Enchere-Eni/PageCreationArticleOK">Voir mes articles</a></li>
             <li class="nav-item"><a href="/Enchere-Eni/PageMonProfil">Mon profil</a></li>
             <li class="nav-item"><a href="/Enchere-Eni/PageDeconnexion">Déconnexion</a></li>
         </ul>

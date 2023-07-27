@@ -36,7 +36,50 @@ public class PageSuppressionVente extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+        
+		if(request.getAttribute("noArticle")!= null) {
+			response.sendRedirect("/Enchere-Eni/PageVendreUnArticle");
+			return;
+		}
+		
+		
+	       //ici on appelle la méthode Suppression
+		    ArticleManager articleManager = new ArticleManager();
+		    
+		    // getParameter nous renvoie un objet mais comme noArticle on y a stocké une chaine de caractère, donc un string
+		    // mais on sait que noArticle est un entier, on caste le string en Integer, le integer refait un cast en type primitif
+	        int noArticle = Integer.parseInt((String) request.getParameter("noArticle"));
+
+
+	        try {
+	  	
+				articleManager.supprimerArticleParId(noArticle);
+		        request.setAttribute("Ventesupprime", "Votre vente a été supprimé");
+	        
+			} catch (BusinessException e) {
+				e.printStackTrace();
+			} catch (DALException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        
+        
+       /** Article article = null;
+        int noArticle = (int) request.getAttribute("noArticle");
+       
+        ArticleManager articleManager = new ArticleManager();
+        
+        try {
+			article = articleManager.obtenirArticleParId(noArticle);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		} catch (DALException e) {
+			e.printStackTrace();
+		}
+	
+    	request.setAttribute("article", article);
+		*/
+		
 		this.getServletContext().getRequestDispatcher("/html/PageVenteSupprime.jsp").forward(request, response);
 	}
 
@@ -45,37 +88,6 @@ public class PageSuppressionVente extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/**
-        //ici on appelle la méthode RechercheArticleparsonID
-	    // Creation d'une variable initialisée à null pour pouvoir l'utiliser 
-      
-	// On a créée une instance de ArticleManager pour pouvoir faire appel a la methode de la classe ArticleManager
-       ArticleManager articleManager = new ArticleManager();
-       try {
-        	// Notre variable article stocke le resultat de la requete obternirarticleParId
-			article = articleManager.obtenirArticleParId(noArticle);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-	 
-       */
-        
-        //ici on appelle la méthode Suppression
-	    ArticleManager articleManager = new ArticleManager();
-
-        try {
-  	
-			int noArticle = (Integer) null;
-			articleManager.supprimerArticleParId(noArticle );
-	        request.setAttribute("Ventesupprime", "Votre vente a été supprimé");
-        
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		} catch (DALException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
         
 		doGet(request, response);
 
