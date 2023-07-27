@@ -134,7 +134,7 @@ public class ArticleManager {
     }
     
     
-    public Article obtenirLastArticle() throws BusinessException, DALException  {
+    public int  obtenirLastArticle() throws BusinessException, DALException  {
     	// DAOArticle articleDao = DaoFactory.getDAOArticle();
          try {
              return DAOArticle.obtenirLastArticle();

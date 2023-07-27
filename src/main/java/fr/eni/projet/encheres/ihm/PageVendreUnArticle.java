@@ -132,8 +132,17 @@ public class PageVendreUnArticle extends HttpServlet {
     				} catch (DALException e) {
     					e.printStackTrace();
     				}
-
-    	            //request.setAttribute("noArticle", noArticle);
+    	            int noArticle = 0;
+    	            try {
+						 noArticle = articleManager.obtenirLastArticle();
+					} catch (BusinessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (DALException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+    	            request.setAttribute("noArticle", noArticle);
     		
     	            this.getServletContext().getRequestDispatcher("/PageCreationArticleOk").forward(request, response);
 

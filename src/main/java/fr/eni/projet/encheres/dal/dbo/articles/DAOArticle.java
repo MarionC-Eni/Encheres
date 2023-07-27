@@ -17,7 +17,7 @@ public interface DAOArticle {
 				
 		Article obtenirArticleParId(int no_article);
 				
-		Article obtenirLastArticle();
+		public int  obtenirLastArticle();
 		
 		List<Article> obtenirTousLesArticles(int noUtilisateur);
 		

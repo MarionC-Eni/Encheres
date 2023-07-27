@@ -16,7 +16,7 @@ public class ArticleDAOImpl implements DAOArticle {
 	private static final String INSERT_ARTICLE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?,?)";
 	private static final String DELETE_ARTICLE = "DELETE FROM ARTICLES_VENDUS WHERE no_article = ?";
 	private static final String SELECT_ONE_ARTICLE = "SELECT * FROM ARTICLES_VENDUS WHERE no_article = ?";
-	private static final String SELECT_LAST_ARTICLE = "SELECT * FROM ARTICLES_VENDUS ORDER BY no_article DESC LIMIT 1";
+	private static final String SELECT_LAST_ARTICLE = "SELECT TOP 1 no_article FROM ARTICLES_VENDUS ORDER BY no_article DESC";
 	//private static final String SELECT_ALL_ARTICLES = null;
 
 	//private static final String SELECT_ALL_ARTICLES = "SELECT * FROM ARTICLES_VENDUS";
@@ -83,7 +83,7 @@ public class ArticleDAOImpl implements DAOArticle {
 }
 		
 	
-	public Article obtenirLastArticle() {
+	public int obtenirLastArticle() {
 		Article article = null;
 		Utilisateur utilisateur=null;
 		Categorie categorie=null;
@@ -95,27 +95,13 @@ public class ArticleDAOImpl implements DAOArticle {
 		        // La méthode rs.next() est appelée pour 
 		        // avancer le curseur du ResultSet vers la première ligne (s'il y en a une)
 		        if (rs.next()) {
-		        	utilisateur = new Utilisateur();
-		        	article = new Article();
-		        	categorie = new Categorie();
-		        	article.setNoArticle(rs.getInt("no_article"));
-		        	article.setNomArticle(rs.getString("nom_article"));
-		        	article.setDescription(rs.getString("description"));
-		        	//article.setDateDebut(rs.getLocalDate("date_debut_encheres"));
-		        	article.setDateDebut(rs.getDate("date_debut_encheres").toLocalDate());
-		        	article.setDateFin(rs.getDate("date_fin_encheres").toLocalDate());
-		        	article.setMiseAPrix(rs.getDouble("mise_a_prix"));
-		        	article.setPrixVente(rs.getDouble("prix_vente"));
-		        	article.setEtatVente(rs.getBoolean("etat_vente"));
-		        	//importation clés étrangères
-		        	utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
-		        	categorie.setNoCategorie(rs.getInt("no_categorie"));
+		        	return rs.getInt(0);
 		        }
 		    } catch (SQLException e) {
 		        e.printStackTrace();
 		    }
 
-		return article;
+		return 0;
 		}
 		
 		
