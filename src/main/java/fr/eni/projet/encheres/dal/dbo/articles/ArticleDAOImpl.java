@@ -14,6 +14,8 @@ import fr.eni.projet.encheres.dal.ConnectionProvider;
 public class ArticleDAOImpl implements DAOArticle {
 
 	private static final String INSERT_ARTICLE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?,?)";
+	private static final String DELETE_ARTICLE = "DELETE FROM ARTICLES_VENDUS WHERE no_article = ?";
+	private static final String SELECT_ONE_ARTICLE = "SELECT * FROM ARTICLES_VENDUS WHERE no_article = ?";
 	//private static final String SELECT_ALL_ARTICLES = null;
 
 	//private static final String SELECT_ALL_ARTICLES = "SELECT * FROM ARTICLES_VENDUS";
@@ -48,14 +50,58 @@ public class ArticleDAOImpl implements DAOArticle {
 	}
 
 	
-	public void supprimerArticle(Article Article) {
+	public void supprimerArticle1ParId(int noArticle) {
 		
+		try {Connection connection = ConnectionProvider.getConnection();
+		PreparedStatement pStmt = connection.prepareStatement(DELETE_ARTICLE);
+		
+		pStmt.setInt(1, noArticle);
+		pStmt.executeUpdate();
+	
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
 	}
+}
+		
+	
 
-	public Article obtenirArticleParId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Article obtenirArticleParId(int noArticle) {
+		Article article = null;
+		Utilisateur utilisateur=null;
+		Categorie categorie=null;
+
+	    try {
+	        Connection connection = ConnectionProvider.getConnection();        
+	        PreparedStatement cstmt = connection.prepareStatement(SELECT_ONE_ARTICLE);
+	        cstmt.setInt(1, noArticle);
+	        ResultSet rs = cstmt.executeQuery();
+	        // La méthode rs.next() est appelée pour 
+	        // avancer le curseur du ResultSet vers la première ligne (s'il y en a une)
+	        if (rs.next()) {
+	        	utilisateur = new Utilisateur();
+	        	article = new Article();
+	        	categorie = new Categorie();
+	        	article.setNoArticle(rs.getInt("no_article"));
+	        	article.setNomArticle(rs.getString("nom_article"));
+	        	article.setDescription(rs.getString("description"));
+	        	//article.setDateDebut(rs.getLocalDate("date_debut_encheres"));
+	        	article.setDateDebut(rs.getDate("date_debut_encheres").toLocalDate());
+	        	article.setDateFin(rs.getDate("date_fin_encheres").toLocalDate());
+	        	article.setMiseAPrix(rs.getDouble("mise_a_prix"));
+	        	article.setPrixVente(rs.getDouble("prix_vente"));
+	        	article.setEtatVente(rs.getBoolean("etat_vente"));
+	        	//importation clés étrangères
+	        	utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
+	        	categorie.setNoCategorie(rs.getInt("no_categorie"));
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	return article;
 	}
+	
 	
 
 	
@@ -85,11 +131,7 @@ public class ArticleDAOImpl implements DAOArticle {
 
 */
 
-	@Override
-	public void supprimerArticle(int noArticle) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 
 

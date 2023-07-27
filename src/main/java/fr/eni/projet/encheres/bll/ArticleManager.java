@@ -105,20 +105,30 @@ public class ArticleManager {
             e.printStackTrace();
             throw new DALException("Probleme dans la modification de l'article!");
         }
-    }
+    }*/
 
     // Supprimer un article
-    public void supprimerArticle(int noArticle) throws BusinessException, DALException {
+    public void supprimerArticle1ParId(int noArticle) throws BusinessException, DALException {
         // Vous pouvez ajouter des validations ou vérifications ici si nécessaire
-        DAOArticle articleDao = DaoFactory.getDAOArticle();
+       // DAOArticle articleDao = DaoFactory.getDAOArticle();
         try {
-            articleDao.supprimerArticle(noArticle);
+             DAOArticle.supprimerArticle1ParId(noArticle);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DALException("Probleme dans la suppression de l'article!");
         }
     }
-
+    public Article obtenirArticleParId(int noArticle) throws BusinessException, DALException  {
+    	// DAOArticle articleDao = DaoFactory.getDAOArticle();
+         try {
+             return DAOArticle.obtenirArticleParId(noArticle);
+         } catch (Exception e) {
+             e.printStackTrace();
+             throw new DALException("Erreur lors de l'affichage de l'article!");
+         }
+    	
+    }
+/*
     // Lister les articles d'un utilisateur
     public List<Article> obtenirTousLesArticles(int noUtilisateur) throws BusinessException, DALException {
         // Vous pouvez ajouter des validations ou vérifications ici si nécessaire
