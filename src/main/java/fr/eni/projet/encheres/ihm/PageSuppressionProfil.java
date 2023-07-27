@@ -42,35 +42,7 @@ public class PageSuppressionProfil extends HttpServlet {
 		HttpSession session = request.getSession();
 		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");
 		
-   /** 
-		
-		//Récupérer les données du formulaire de modification
-      
-        String pseudo = request.getParameter("pseudo");
-        String nom = request.getParameter("nom");
-        String prenom =  request.getParameter("prenom");
-        String email =  request.getParameter("email");
-        String telephone =  request.getParameter("telephone");
-        String rue = request.getParameter("rue");
-        int codePostal = Integer.parseInt(request.getParameter("codePostal")); 
-        String ville = request.getParameter("ville");
-        String motDePasse = request.getParameter("motDePasse");
 
-        Utilisateur utilisateur = new Utilisateur ();
-
-     // Mettre à jour les informations de l'utilisateur
-        utilisateur.setNoUtilisateur(noUtilisateur);
-        utilisateur.setPseudo(pseudo);
-        utilisateur.setNom(nom);
-        utilisateur.setPrenom(prenom);
-        utilisateur.setEmail(email);
-        utilisateur.setTelephone(telephone);
-        utilisateur.setRue(rue);
-        utilisateur.setCodePostal(codePostal);
-        utilisateur.setVille(ville);
-        utilisateur.setMotDePasse(motDePasse);
-        
-        */
          
        UtilisateurManager utilisateurManager = new UtilisateurManager();
         

@@ -26,8 +26,10 @@ public class PageModifierVente extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// on peux essayer de mettre un filtre pour afficher bouton modif ou suppr si 
+		// la vente est celle de l'utilisateur.
+		
+		this.getServletContext().getRequestDispatcher("/html/PageModifierVente.jsp").forward(request, response);
 	}
 
 	/**
