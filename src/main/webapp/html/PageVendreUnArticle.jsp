@@ -9,7 +9,7 @@
 <body>
 <form method="POST" action="/Enchere-Eni/PageVendreUnArticle">
 <label for="nom">Nom :</label>
-<input type="text" id="nom" name="nom" required>
+<input type="text" id="nom" name="nomArticle" required>
 <label for="Description">Description :</label>
 <input type="text" id="description" name="description" required>
 <label for="date">Début d'enchère :</label>

@@ -9,6 +9,7 @@ import fr.eni.projet.encheres.bo.Categorie;
 import fr.eni.projet.encheres.bo.Utilisateur;
 import fr.eni.projet.encheres.dal.dbo.articles.DAOArticle;
 import fr.eni.projet.encheres.dal.dbo.articles.DaoFactory;
+import fr.eni.projet.encheres.dal.dbo.utilisateur.DAOUtilisateur;
 import fr.eni.projet.encheres.dal.exception.DALException;
 
 public class ArticleManager {
@@ -23,7 +24,38 @@ public class ArticleManager {
     // Ajouter un article
 	public void ajouterArticle(String nomArticle, String description, double prixVente, double miseAPrix, boolean etatVente, LocalDate dateDebut, LocalDate dateFin, Utilisateur utilisateur, Categorie categorie)  throws BusinessException, DALException {
         DAOArticle articleDao = DaoFactory.getDAOArticle();
+        
+        /** // on a essayé de relier les 2 DaoFactory pour récupérer la clé étrangère
         try {
+			try {
+				DAOUtilisateur utilisateurDao = DaoFactory.getDAOUtilisateur();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        */
+        
+        
+
+        try {
+        	
+        	/**
+        	test >> // Récupérer le numéro d'utilisateur (clé étrangère)
+            Utilisateur utilisateur;
+
+			try {
+				utilisateur = DAOUtilisateur.obtenirUtilisateurParId(noUtilisateur);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			*/
+      
         	Article a = new Article(); 
         	a.setNomArticle(nomArticle);
         	a.setDescription(description);
@@ -35,7 +67,9 @@ public class ArticleManager {
         	
             //  validerArticle(article); Nous ferons ça plus tard
 
-        	
+        	// ArticleManager utilise l'objet Utilisateur comme paramètre dans la méthode ajouterArticle
+        	// c'est nécessaire pour passer directement l'objet Utilisateur depuis la servlet.
+        	  	
             DAOArticle.ajouterArticle(a, utilisateur, categorie);
         } catch (Exception e) {
             e.printStackTrace();

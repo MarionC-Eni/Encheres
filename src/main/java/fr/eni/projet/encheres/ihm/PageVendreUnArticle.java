@@ -40,23 +40,17 @@ public class PageVendreUnArticle extends HttpServlet {
     		
     		HttpSession session = request.getSession();	
 
-    		
+    		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");		
+
     		System.out.println(session.getAttribute("identifiant"));
-
-    	    // Récuperer l'identifiant de l'utilisateur stocké dans la session >> on caste l'objet en integer, puis le integer en int
-    		int noUtilisateur = (Integer) session.getAttribute("identifiant");		
-
-    		UtilisateurManager um = new UtilisateurManager();
-    		// utilise la DAO en fonction de la pk de la table utilisateur
-    		Utilisateur utilisateur = null;
-
-    		try {
-    			utilisateur = um.obtenirUtilisateurParId(noUtilisateur);
-    		} catch (BusinessException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    		}
-    	    request.setAttribute("utilisateur", utilisateur);
+    		
+    		
+    		// Condition qui valide le fait qu'on ne peut pas modifier le profil s'il n'existe pas
+            if (noUtilisateur == null) {
+                response.sendRedirect("/PageConnexion");
+                return;
+            }
+            
             
     		this.getServletContext().getRequestDispatcher("/html/PageVendreUnArticle.jsp").forward(request, response);
 
@@ -74,7 +68,8 @@ public class PageVendreUnArticle extends HttpServlet {
     	       String description = request.getParameter("description");
     	       double prixVente = Double.parseDouble(request.getParameter("prixVente"));
     	       double miseAPrix = Double.parseDouble(request.getParameter("miseAPrix"));
-    	       boolean etatVente = Boolean.parseBoolean(request.getParameter("etatVente"));
+    	       //test1 : boolean etatVente = Boolean.parseBoolean(request.getParameter("etatVente"));
+    	      boolean etatVente = true;
     	       
     	       String dateDebutString = request.getParameter("dateDebut");
     	       LocalDate dateDebut = LocalDate.parse(dateDebutString);
@@ -83,12 +78,42 @@ public class PageVendreUnArticle extends HttpServlet {
     	       String dateFinString = request.getParameter("dateFin");
     	       LocalDate dateFin = LocalDate.parse(dateFinString);
     	       // essai n°1: LocalDate dateFin = LocalDate.parse(request.getParameter("dateFin"));
-    	       
-     
+    	   
+    	       /**essai d'ajout du numero utilisateur
+    	       Utilisateur noUtilisateur;
+			request.setAttribute("noUtilisateur", noUtilisateur);
+			*/
+
     	     
-    	       ArticleManager articleManager = new ArticleManager();
-    	       Utilisateur utilisateur = new Utilisateur();
-    	       // On instancie utilisateur et categorie pour pouvoir faire appek à la methode ajouterArticle
+    	   ArticleManager articleManager = new ArticleManager();
+    	       
+    	      /** tentative n°1:
+    	       *   // On instancie utilisateur et categorie pour pouvoir faire appek à la methode ajouterArticle
+    	       *  Utilisateur utilisateur = new Utilisateur();
+    	       */
+    	       
+    	   	HttpSession session = request.getSession();	
+
+    		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");		
+
+    		System.out.println(session.getAttribute("identifiant"));
+    		
+    	    // Creation d'une variable initialisée à null pour pouvoir l'utiliser ligne 56
+            Utilisateur utilisateur = null;
+           
+    		// On a créée une instance de UtilisateurManager pour pouvoir faire appel a la methode de la classe UtilisateurManager
+            UtilisateurManager utilisateurManager = new UtilisateurManager();
+            
+            try {
+            	// Notre variable utilisateur stocke le resultat de la requete obternirUtilisateurParId
+    			utilisateur = utilisateurManager.obtenirUtilisateurParId(noUtilisateur);
+    		} catch (BusinessException e) {
+    			e.printStackTrace();
+    		}
+    	 
+    	    
+    	    
+    	    
     	       Categorie categorie = new Categorie();
 
     	     
