@@ -15,7 +15,6 @@
 <% if (request.getAttribute("Ventemodifiee") != null) { %> 
 <h3><%= request.getAttribute("Ventemodifiee") %> !</h3>
 <% } %>
-<a href="/Enchere-Eni/PagesListeEncheresConnecte"><button>Retour à la liste des encheres</button></a>
 
 <form method="POST" action="/Enchere-Eni/PageModifierVente?noArticle=${article.noArticle}">
 
@@ -36,7 +35,8 @@
 <form method="POST" action="/Enchere-Eni/PageSuppressionVente">
 <input type="submit" value="Supprimer">
 </form>
-<a href="/Enchere-Eni/PagesAccueilNonConnecte"><button>Retour Menu Principal</button></a>
+<a href="/Enchere-Eni/PagesListeEncheresConnecte"><button>Retour à la liste des encheres</button></a>
+
 
 </body>
 </html>

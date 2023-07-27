@@ -154,8 +154,8 @@ public class ArticleDAOImpl implements DAOArticle {
 	        	//article.setDateDebut(rs.getLocalDate("date_debut_encheres"));
 	        	article.setDateDebut(rs.getDate("date_debut_encheres").toLocalDate());
 	        	article.setDateFin(rs.getDate("date_fin_encheres").toLocalDate());
-	        	article.setMiseAPrix(rs.getDouble("mise_a_prix"));
-	        	article.setPrixVente(rs.getDouble("prix_vente"));
+	        	article.setPrixVente(rs.getDouble("prix_initial"));
+	        	article.setMiseAPrix(rs.getDouble("prix_vente"));
 	        	article.setEtatVente(rs.getBoolean("etat_vente"));
 	        	//importation clés étrangères
 	        	utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
