@@ -36,7 +36,7 @@ public class ArticleDAOImpl implements DAOArticle {
 		// pStmt.setInt(8, categorie.getNoCategorie()); Categorie ID dans la BDD
 		pStmt.setInt(8, 1);
 
-		pStmt.executeQuery();
+		pStmt.executeUpdate();
 		
 		/** 
 	
@@ -95,7 +95,7 @@ public class ArticleDAOImpl implements DAOArticle {
 		        // La méthode rs.next() est appelée pour 
 		        // avancer le curseur du ResultSet vers la première ligne (s'il y en a une)
 		        if (rs.next()) {
-		        	return rs.getInt(0);
+		        	return rs.getInt(1);
 		        }
 		    } catch (SQLException e) {
 		        e.printStackTrace();
