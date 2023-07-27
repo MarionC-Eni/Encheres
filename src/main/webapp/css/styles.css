@@ -14,13 +14,16 @@ html,body {
 }
 h1 {
     margin: 2% auto 10% auto;
+    color:  (150, 0, 0);
+    ;
+    
     text-align: center;
 }
 /* Login title form form */
 h2 {
     font-size: 250%;
     font-family: 'Playfair Display', serif;
-    color: #3e403f;
+    color: rgb(255, 0, 0);
 }
 .form-structor {
 	background-color: #222;
@@ -54,3 +57,8 @@ li.nav-item a {
 li.nav-item a:hover {
             background-color: #111;
         }
+        
+ a {
+ 	display: flex;
+ 
+ }

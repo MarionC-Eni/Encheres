@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>Félicitations vous venez de créer un compte</h1>
-<a href="/Enchere-Eni/PagesAccueilNonConnecte"><button>Retour Menu Principal</button></a>
+<a href="/Enchere-Eni/PageConnexion"><button>Retour Menu Principal</button></a>
 </body>
 </html>
