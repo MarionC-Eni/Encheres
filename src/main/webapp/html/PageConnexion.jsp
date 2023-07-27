@@ -8,8 +8,8 @@
 <title>Page connexion</title>
 </head>
 <body>
-<h1>ENI-Enchères</h1>
-<h2>Se connecter</h2>
+<h1>ENI-Enchères</h1><br>
+<h2>Se connecter</h2><br>
 
 <!-- On insere du Java dans le Html, on fait appel à la ligne 76 dans PageConnexion -->
 

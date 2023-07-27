@@ -5,26 +5,30 @@ html,body {
 	min-height: 100vh;
 	background-color: #E1E8EE;
 	display: flex;
+	display: column;
 	align-items: center;
 	justify-content: center;
 	font-family: "Fira Sans", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-form {
-	display :column;
-	border: 3px solid black;
-	max-width: 35%;
+h1 {
+    margin: 2% auto 10% auto;
+    text-align: center;
 }
-h1
-{
-	font-size:16px;
-	
-}
+/* Login title form form */
 h2 {
-	margin : auto;
-	width: 50%;
-	border: 3px solid black;
+    font-size: 250%;
+    font-family: 'Playfair Display', serif;
+    color: #3e403f;
+}
+.form-structor {
+	background-color: #222;
+	border-radius: 15px;
+	height: 550px;
+	width: 350px;
+	position: relative;
+	overflow: hidden;
 }
 
 ul.navbar {
