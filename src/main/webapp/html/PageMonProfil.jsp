@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="css/styles.css" rel="stylesheet" type="text/css">
 <title>PageProfil</title>
 </head>
 <body>

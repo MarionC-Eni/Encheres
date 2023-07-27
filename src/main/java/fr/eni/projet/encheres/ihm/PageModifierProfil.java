@@ -116,7 +116,7 @@ public class PageModifierProfil extends HttpServlet {
         // Ligne 12-13 PageModifierProfil.jsp 
         request.setAttribute("Profilajour", "Votre profil a été mis à jour");
         
-		doGet(request, response);
+		//doGet(request, response);
 	}
 
 }
