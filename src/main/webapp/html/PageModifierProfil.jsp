@@ -35,6 +35,7 @@
 </form>
 <form method="POST" action="/Enchere-Eni/PageSuppressionProfil">
 <input type="submit" value="Supprimer">
+<a href="/Enchere-Eni/PagesAccueilNonConnecte"><button>Retour Menu Principal</button></a>
 </form>
 <a href="/Enchere-Eni/PagesAccueilNonConnecte"><button>Retour Menu Principal</button></a>
 </body>

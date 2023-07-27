@@ -26,8 +26,7 @@
 <label for="checkbox"> Se souvenir de moi</label>
 </form>
 <!-- On renvoie bien au doGet de la servlet. On aurait pu faire un href aussi -->
-<form method="GET" action="/Enchere-Eni/PageCreerCompte">
-<input type="submit" value="Créer mon compte" />
+<a href="/Enchere-Eni/PagesCreerCompte"><button>Creation Compte</button></a>
 </form>
 </body>
 </html>
