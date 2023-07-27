@@ -14,7 +14,7 @@ import fr.eni.projet.encheres.dal.ConnectionProvider;
 public class ArticleDAOImpl implements DAOArticle {
 
 	private static final String INSERT_ARTICLE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?,?)";
-	private static final String SELECT_ALL_ARTICLES = null;
+	//private static final String SELECT_ALL_ARTICLES = null;
 
 	//private static final String SELECT_ALL_ARTICLES = "SELECT * FROM ARTICLES_VENDUS";
 
@@ -43,7 +43,6 @@ public class ArticleDAOImpl implements DAOArticle {
 	}
 	
 	
-
 	public void mettreAJourArticle(Article Article) {
 		
 	}
