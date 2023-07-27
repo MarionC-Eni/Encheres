@@ -17,6 +17,8 @@ public class ArticleDAOImpl implements DAOArticle {
 	private static final String DELETE_ARTICLE = "DELETE FROM ARTICLES_VENDUS WHERE no_article = ?";
 	private static final String SELECT_ONE_ARTICLE = "SELECT * FROM ARTICLES_VENDUS WHERE no_article = ?";
 	private static final String SELECT_LAST_ARTICLE = "SELECT TOP 1 no_article FROM ARTICLES_VENDUS ORDER BY no_article DESC";
+	private static final String UPDATE_ARTICLE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, no_utilisateur = ?, no_categorie = ? WHERE no_article = ?";
+
 	//private static final String SELECT_ALL_ARTICLES = null;
 
 	//private static final String SELECT_ALL_ARTICLES = "SELECT * FROM ARTICLES_VENDUS";
@@ -63,10 +65,31 @@ public class ArticleDAOImpl implements DAOArticle {
 	}
 	
 	
-	public void mettreAJourArticle(Article Article) {
+	public void mettreAJourArticle(Article article, Utilisateur utilisateur) {
 		
-	}
 
+		try {Connection connection = ConnectionProvider.getConnection();
+		PreparedStatement pStmt = connection.prepareStatement(UPDATE_ARTICLE);
+
+		pStmt.setString(1, article.getNomArticle());
+		pStmt.setString(2, article.getDescription());
+		pStmt.setDate(3, Date.valueOf(article.getDateDebut())); // Conversion LocalDate en java.sql.Date
+		pStmt.setDate(4, Date.valueOf(article.getDateFin())); // Conversion LocalDate en java.sql.Date
+		pStmt.setDouble(5, article.getPrixVente());
+		pStmt.setDouble(6, article.getMiseAPrix());
+		pStmt.setInt(7, utilisateur.getNoUtilisateur());
+		// pStmt.setInt(8, categorie.getNoCategorie()); Categorie ID dans la BDD
+		pStmt.setInt(8, 1);
+
+
+		pStmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+		
+		
 	
 	public void supprimerArticleParId(int noArticle) {
 		

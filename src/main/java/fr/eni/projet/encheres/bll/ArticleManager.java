@@ -94,20 +94,18 @@ public class ArticleManager {
         }
         // Ajoutez d'autres validations si nécessaire
     }
-
+*/
 	
-    // Modifier un article
-    public void mettreAJourArticle(Article article) throws BusinessException, DALException {
+    public void mettreAJourArticle(Article article, Utilisateur utilisateur) throws BusinessException, DALException {
         // Validation
-        validerArticle(article);
         DAOArticle articleDao = DaoFactory.getDAOArticle();
         try {
-            articleDao.mettreAJourArticle(article);
+            articleDao.mettreAJourArticle(article, utilisateur);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new DALException("Probleme dans la modification de l'article!");
+            throw new DALException("Probleme dans la mise à jour de l'article!");
         }
-    }*/
+    }
 
   
     public Article obtenirArticleParId(int noArticle) throws BusinessException, DALException  {

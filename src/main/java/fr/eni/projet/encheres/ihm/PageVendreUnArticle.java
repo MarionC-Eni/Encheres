@@ -111,9 +111,7 @@ public class PageVendreUnArticle extends HttpServlet {
     			e.printStackTrace();
     		}
     	 
-    	    
-    	    
-    	    
+    	  
     	       Categorie categorie = new Categorie();
     	       
     	       // on crée la variable en dehors du try car on en a besoin ligne 136
@@ -132,6 +130,12 @@ public class PageVendreUnArticle extends HttpServlet {
     				} catch (DALException e) {
     					e.printStackTrace();
     				}
+    	            
+    	            
+    	            
+    	            
+    	            
+    	            
     	            int noArticle = 0;
     	            try {
 						 noArticle = articleManager.obtenirLastArticle();

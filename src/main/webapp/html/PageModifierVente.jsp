@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,25 +10,27 @@
 </head>
 <h1>Page des ventes</h1>
 <body>
-<form method="POST" action="/Enchere-Eni/PageModifierVente">
-<label for="pseudo">pas fait :</label>
-<input type="text" id="pseudo" name="pseudo" value="${utilisateur.pseudo}" required>
-<label for="nom">pas fait :</label>
-<input type="text" id="nom" name="nom" value="${utilisateur.nom}" required>
-<label for="Prenom">pas fait :</label>
-<input type="text" id="Prenom" name="prenom" value="${utilisateur.prenom}"required>
-<label for="email">pas fait :</label>
-<input type="email" id="email" name="email" maxlength= "40" value="${utilisateur.email}"required>
-<label for="telephone">pas fait :</label>
-<input type="tel" id="telephone" name="telephone" maxlength= "10" value="${utilisateur.telephone}"required>
-<label for="rue">pas fait:</label>
-<input type="text" id="rue" name="rue" value="${utilisateur.pseudo}"required>
-<label for="codePostal">pas fait :</label>
-<input type="number" id="codePostal" name="codePostal" maxlength= "5" value="${utilisateur.codePostal}"required>
-<label for="ville">pas fait :</label>
-<input type="text" id="ville" name="ville" maxlength= "25" value="${utilisateur.ville}"required>
-<label for="motDePasse">pas fait :</label>
-<input type="password" id="motDePasse" name="motDePasse" required>
+
+
+<% if (request.getAttribute("Ventemodifiee") != null) { %> 
+<h3><%= request.getAttribute("Ventemodifiee") %> !</h3>
+<% } %>
+<a href="/Enchere-Eni/PagesListeEncheresConnecte"><button>Retour à la liste des encheres</button></a>
+
+<form method="POST" action="/Enchere-Eni/PageModifierVente?noArticle=${article.noArticle}">
+
+<label for="nom">Nom :</label>
+<input type="text" id="nom" name="nomArticle" required>
+<label for="Description">Description :</label>
+<input type="text" id="description" name="description" required>
+<label for="date">Début d'enchère :</label>
+<input type="date"  id="date" name="dateDebut" required> 
+<label for="date">Fin de l'enchère :</label>
+<input type="date"  id="date" name="dateFin" required> 
+<label for="prixVente">Le prix initial de mon article est :</label>
+<input type="number"  id="prixVente" name="prixVente" required> 
+<label for="miseAPrix">Je ne descendrai pas en dessous de (euros) :</label>
+<input type="number"  id="miseAPrix" name="miseAPrix" required> 
 <input type="submit" value="Enregistrer">
 </form>
 <form method="POST" action="/Enchere-Eni/PageSuppressionVente">

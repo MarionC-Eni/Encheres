@@ -11,7 +11,7 @@ public interface DAOArticle {
 
 		public void ajouterArticle(Article article, Utilisateur utilisateur, Categorie categorie);
 		
-		public void mettreAJourArticle(Article Article);
+		public void mettreAJourArticle(Article article, Utilisateur utilisateur); 
 				
 		public void supprimerArticleParId(int noArticle);
 				

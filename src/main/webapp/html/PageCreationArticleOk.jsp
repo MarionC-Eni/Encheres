@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Félicitations vous venez de créer un article</h1>
-<a href="/Enchere-Eni/PageModifierVente"><button>Modifier mon article</button></a>
+<a href="/Enchere-Eni/PageModifierVente?noArticle=${noArticle}"><button>Modifier mon article</button></a>
 
 <a href="/Enchere-Eni/PageSuppressionVente?noArticle=${noArticle}"><button>Supprimer mon article</button></a>
 

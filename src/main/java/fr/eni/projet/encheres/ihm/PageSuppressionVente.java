@@ -54,7 +54,7 @@ public class PageSuppressionVente extends HttpServlet {
 	        try {
 	  	
 				articleManager.supprimerArticleParId(noArticle);
-		        request.setAttribute("Ventesupprime", "Votre vente a été supprimé");
+		        request.setAttribute("Ventesupprime", "Votre article a été supprimé");
 	        
 			} catch (BusinessException e) {
 				e.printStackTrace();
