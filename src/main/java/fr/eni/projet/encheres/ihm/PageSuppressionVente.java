@@ -12,6 +12,10 @@ import fr.eni.projet.encheres.BusinessException;
 import fr.eni.projet.encheres.bll.ArticleManager;
 import fr.eni.projet.encheres.bll.UtilisateurManager;
 import fr.eni.projet.encheres.bo.Utilisateur;
+import fr.eni.projet.encheres.bo.Article;
+import fr.eni.projet.encheres.dal.dbo.articles.DAOArticle;
+import fr.eni.projet.encheres.dal.exception.DALException;
+
 
 /**
  * Servlet implementation class PageSuppressionVente
@@ -41,39 +45,39 @@ public class PageSuppressionVente extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArticleManager arcticleManager = new ArticleManager();
-	   	HttpSession session = request.getSession();	
-		
-		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");		
-
-		System.out.println(session.getAttribute("identifiant"));
-		
-	    // Creation d'une variable initialisée à null pour pouvoir l'utiliser ligne 56
-        Utilisateur utilisateur = null;
-       
-		// On a créée une instance de UtilisateurManager pour pouvoir faire appel a la methode de la classe UtilisateurManager
-        UtilisateurManager utilisateurManager = new UtilisateurManager();
-        
-        try {
-        	// Notre variable utilisateur stocke le resultat de la requete obternirUtilisateurParId
-			utilisateur = utilisateurManager.obtenirUtilisateurParId(noUtilisateur);
+		/**
+        //ici on appelle la méthode RechercheArticleparsonID
+	    // Creation d'une variable initialisée à null pour pouvoir l'utiliser 
+      
+	// On a créée une instance de ArticleManager pour pouvoir faire appel a la methode de la classe ArticleManager
+       ArticleManager articleManager = new ArticleManager();
+       try {
+        	// Notre variable article stocke le resultat de la requete obternirarticleParId
+			article = articleManager.obtenirArticleParId(noArticle);
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
 	 
-        try {
+       */
         
-        	// Notre methode supprimerUtilisateurById permet de retrouver l'utilisateur par son noUtilisateur
-			//utilisateurManager.supprimerUtilisateurById(noUtilisateur);
-			arcticleManager.supprimerArticleParId(noArticle);
+        //ici on appelle la méthode Suppression
+	    ArticleManager articleManager = new ArticleManager();
+
+        try {
+  	
+			int noArticle = (Integer) null;
+			articleManager.supprimerArticleParId(noArticle );
 	        request.setAttribute("Ventesupprime", "Votre vente a été supprimé");
         
 		} catch (BusinessException e) {
+			e.printStackTrace();
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
         
 		doGet(request, response);
 
-
+	}
 }

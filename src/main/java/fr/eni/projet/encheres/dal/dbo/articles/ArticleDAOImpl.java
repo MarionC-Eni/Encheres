@@ -50,7 +50,7 @@ public class ArticleDAOImpl implements DAOArticle {
 	}
 
 	
-	public void supprimerArticle1ParId(int noArticle) {
+	public void supprimerArticleParId(int noArticle) {
 		
 		try {Connection connection = ConnectionProvider.getConnection();
 		PreparedStatement pStmt = connection.prepareStatement(DELETE_ARTICLE);

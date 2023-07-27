@@ -131,7 +131,8 @@ public class PageVendreUnArticle extends HttpServlet {
 
     	      
     		
-    		
+    	            this.getServletContext().getRequestDispatcher("/PageCreationArticleOk").forward(request, response);
+
     		
     		doGet(request, response);
     	}

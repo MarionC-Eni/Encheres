@@ -13,7 +13,7 @@ public interface DAOArticle {
 		
 		public void mettreAJourArticle(Article Article);
 				
-		public void supprimerArticle1ParId(int noArticle);
+		public void supprimerArticleParId(int noArticle);
 				
 		Article obtenirArticleParId(int no_article);
 				

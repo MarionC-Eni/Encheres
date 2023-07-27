@@ -108,11 +108,11 @@ public class ArticleManager {
     }*/
 
     // Supprimer un article
-    public void supprimerArticle1ParId(int noArticle) throws BusinessException, DALException {
+    public void supprimerArticleParId(int noArticle) throws BusinessException, DALException {
         // Vous pouvez ajouter des validations ou vérifications ici si nécessaire
        // DAOArticle articleDao = DaoFactory.getDAOArticle();
         try {
-             DAOArticle.supprimerArticle1ParId(noArticle);
+             DAOArticle.supprimerArticleParId(noArticle);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DALException("Probleme dans la suppression de l'article!");

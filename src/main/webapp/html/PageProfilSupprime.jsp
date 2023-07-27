@@ -10,7 +10,7 @@
 <body>
 <h1>Suppression de mon Profil</h1>
 
-<!-- On fait appel a la ligne 81 de la servlet PageSuppressionProfil -->
+<!-- test -->
 
 <% if (request.getAttribute("Profilsupprime") != null) { %> 
 <h3><%= request.getAttribute("Profilsupprime") %> !</h3>
