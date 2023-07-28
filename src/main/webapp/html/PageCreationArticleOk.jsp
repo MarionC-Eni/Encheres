@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
 <meta charset="ISO-8859-1">
 <title>Felicitation vous venez de créer un article</title>
 </head>

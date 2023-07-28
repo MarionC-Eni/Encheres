@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="css/styles.css" rel="stylesheet" type="text/css">
+<script src="stylesjs.js"></script>
 <title>Eni-Encheres</title>
 </head>
 <body>

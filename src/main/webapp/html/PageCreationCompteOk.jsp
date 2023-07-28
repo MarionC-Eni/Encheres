@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="css/styles.css" rel="stylesheet" type="text/css">
 <title>Felicitation vous venez de creer un compte</title>
 </head>
 <body>

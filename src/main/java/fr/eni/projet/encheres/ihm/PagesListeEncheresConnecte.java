@@ -31,16 +31,16 @@ public class PagesListeEncheresConnecte extends HttpServlet {
 		System.out.println(session.getAttribute("identifiant"));
 		
 			
-		if(session.getAttribute("identifiant") == null) {
+		/*if(session.getAttribute("identifiant") == null) {
 			response.sendRedirect("/Enchere-Eni/PageConnexion");
 			return;
 		}
-		
+		*/
 		this.getServletContext().getRequestDispatcher("/html/PagesListeEncheresConnecte.jsp").forward(request, response);
 
     }
 			
-			
+		
     
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

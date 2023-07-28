@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="css/styles.css" rel="stylesheet" type="text/css">
 <title>PageProfilSupprimer</title>
 </head>
 <body>

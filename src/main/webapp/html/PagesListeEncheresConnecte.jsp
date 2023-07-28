@@ -5,12 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <link href="css/styles.css" rel="stylesheet" type="text/css">
+<script src="stylesjs.js"></script>
 <title>Eni-Encheres</title>
 </head>
 <body>
 <h1>ENI-Encheres</h1>
 	    <nav>
-        <ul class="navbar">
+        <ul class="navbar-nav">
             <li class="nav-item"><a href="">Enchères</a></li>
             <li class="nav-item"><a href="/Enchere-Eni/PageVendreUnArticle">Vendre un article</a></li>
             <li class="nav-item"><a href="/Enchere-Eni/PageMonProfil">Mon profil</a></li>
