@@ -46,15 +46,12 @@ public class UtilisateurManager {
             DAOUtilisateur.ajouterUtilisateur(u);
             
         } catch (BusinessException be) {
-        	// cette exception est liée à la méthode ajouterUtilisateur
 			throw be;
 		}
         catch (Exception e) {
-        	// cette exception est liée la méthode sinscrire
               throw new BusinessException("Erreur lors de l'inscription de l'utilisateur");
         }
     }
-
     
    
 	//  Méthode pour la connexion d'un utilisateur : le détail est dans la DAO

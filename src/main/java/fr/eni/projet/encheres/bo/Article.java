@@ -11,7 +11,7 @@ public class Article {
 	private String description;
 	private double prixVente;
 	private double miseAPrix;
-	private boolean etatVente;
+	//private boolean etatVente;
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
 	
@@ -26,7 +26,7 @@ public class Article {
 		this.description = description;
 		this.prixVente = prixVente;
 		this.miseAPrix = miseAPrix;
-		this.etatVente = etatVente;
+		//this.etatVente = etatVente;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 	}
@@ -43,7 +43,7 @@ public class Article {
 		this.description = description;
 		this.prixVente = prixVente;
 		this.miseAPrix = miseAPrix;
-		this.etatVente = etatVente;
+		//this.etatVente = etatVente;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 	}
@@ -80,12 +80,14 @@ public class Article {
 	public void setMiseAPrix(double miseAPrix) {
 		this.miseAPrix = miseAPrix;
 	}
-	public boolean isEtatVente() {
+	/**public boolean isEtatVente() {
 		return etatVente;
 	}
 	public void setEtatVente(boolean etatVente) {
 		this.etatVente = etatVente;
 	}
+	*/
+	
 	public LocalDate getDateDebut() {
 		return dateDebut;
 	}
@@ -104,7 +106,7 @@ public class Article {
 	@Override
 	public String toString() {
 		return "Article [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
-				+ ", prixVente=" + prixVente + ", miseAPrix=" + miseAPrix + ", etatVente=" + etatVente + ", dateDebut="
+				+ ", prixVente=" + prixVente + ", miseAPrix=" + miseAPrix + ", etatVente=" + ", dateDebut="
 				+ dateDebut + ", dateFin=" + dateFin + "]";
 	}
 	

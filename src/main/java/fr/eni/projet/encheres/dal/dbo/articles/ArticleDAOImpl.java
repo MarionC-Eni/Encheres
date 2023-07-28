@@ -71,6 +71,7 @@ public class ArticleDAOImpl implements DAOArticle {
 		try {Connection connection = ConnectionProvider.getConnection();
 		PreparedStatement pStmt = connection.prepareStatement(UPDATE_ARTICLE);
 
+		
 		pStmt.setString(1, article.getNomArticle());
 		pStmt.setString(2, article.getDescription());
 		pStmt.setDate(3, Date.valueOf(article.getDateDebut())); // Conversion LocalDate en java.sql.Date
@@ -80,8 +81,7 @@ public class ArticleDAOImpl implements DAOArticle {
 		pStmt.setInt(7, utilisateur.getNoUtilisateur());
 		// pStmt.setInt(8, categorie.getNoCategorie()); Categorie ID dans la BDD
 		pStmt.setInt(8, 1);
-
-
+		pStmt.setInt(9, article.getNoArticle());
 		pStmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -156,7 +156,7 @@ public class ArticleDAOImpl implements DAOArticle {
 	        	article.setDateFin(rs.getDate("date_fin_encheres").toLocalDate());
 	        	article.setPrixVente(rs.getDouble("prix_initial"));
 	        	article.setMiseAPrix(rs.getDouble("prix_vente"));
-	        	article.setEtatVente(rs.getBoolean("etat_vente"));
+	        	//article.setEtatVente(rs.getBoolean("etat_vente"));
 	        	//importation clés étrangères
 	        	utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
 	        	categorie.setNoCategorie(rs.getInt("no_categorie"));

@@ -97,14 +97,14 @@ public class PageModifierVente extends HttpServlet {
 				e.printStackTrace();
 			}
 
-  
+	    article.setNoArticle(noArticle);
     	article.setNomArticle(nomArticle);
     	article.setDescription(description);
     	article.setDateDebut(dateDebut);
     	article.setDateFin(dateFin);
     	article.setPrixVente(prixVente);
     	article.setMiseAPrix(miseAPrix);
-    	article.setEtatVente(true);
+    	//article.setEtatVente(true);
     	utilisateur.setNoUtilisateur(noUtilisateur);
     	categorie.setNoCategorie(1);
     

@@ -69,7 +69,7 @@ public class PageVendreUnArticle extends HttpServlet {
     	       double prixVente = Double.parseDouble(request.getParameter("prixVente"));
     	       double miseAPrix = Double.parseDouble(request.getParameter("miseAPrix"));
     	       //test1 : boolean etatVente = Boolean.parseBoolean(request.getParameter("etatVente"));
-    	      boolean etatVente = true;
+    	     // boolean etatVente = true;
     	       
     	       String dateDebutString = request.getParameter("dateDebut");
     	       LocalDate dateDebut = LocalDate.parse(dateDebutString);
@@ -120,7 +120,7 @@ public class PageVendreUnArticle extends HttpServlet {
     	            try {
     					try {
     						// la méthode ajouter article renvoie le noArticle créé par la bdd
-    						articleManager.ajouterArticle(nomArticle,description,prixVente,miseAPrix,etatVente,dateDebut,dateFin,utilisateur,categorie);
+    						articleManager.ajouterArticle(nomArticle,description,prixVente,miseAPrix,dateDebut,dateFin,utilisateur,categorie);
     					
     					} catch (BusinessException e) {
     						// TODO Auto-generated catch block

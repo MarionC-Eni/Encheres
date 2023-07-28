@@ -22,7 +22,7 @@ public class ArticleManager {
     }
 	
     // Ajouter un article
-	public void ajouterArticle(String nomArticle, String description, double prixVente, double miseAPrix, boolean etatVente, LocalDate dateDebut, LocalDate dateFin, Utilisateur utilisateur, Categorie categorie)  throws BusinessException, DALException {
+	public void ajouterArticle(String nomArticle, String description, double prixVente, double miseAPrix, LocalDate dateDebut, LocalDate dateFin, Utilisateur utilisateur, Categorie categorie)  throws BusinessException, DALException {
         DAOArticle articleDao = DaoFactory.getDAOArticle();
         
         /** // on a essayé de relier les 2 DaoFactory pour récupérer la clé étrangère
@@ -61,7 +61,7 @@ public class ArticleManager {
         	a.setDescription(description);
         	a.setPrixVente(prixVente);
         	a.setMiseAPrix(miseAPrix);
-        	a.setEtatVente(etatVente);
+        	//a.setEtatVente(etatVente);
         	a.setDateDebut(dateDebut);
         	a.setDateFin(dateFin);
         	

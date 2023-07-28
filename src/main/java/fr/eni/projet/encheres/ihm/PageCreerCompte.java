@@ -55,8 +55,11 @@ public class PageCreerCompte extends HttpServlet {
         	// ATTENTION la methode sinscire ne comprends pas le noUtilisateur
 			utilisateurManager.sinscrire(pseudo,nom,prenom,email,telephone,rue,codePostal,ville,motDePasse,credit,administrateur);
 		} catch (BusinessException e) {
-			e.printStackTrace();
+			//String errorIdentifiant = be.getMessage();
+		    //request.setAttribute("errorIdentifiant", "Adresse email ou mot de passe incorrect");
+		    e.printStackTrace();
 		}
+   
         // Redirection vers la servlet qui gere le message " felicitation vous avez créée un compte" 
         // On aurait pu faire un ternaire pour gérer ça
         this.getServletContext().getRequestDispatcher("/PageCreationCompteOk").forward(request, response);
