@@ -29,9 +29,7 @@
 <br>
 
 <!-- On renvoie bien au doGet de la servlet. On aurait pu faire un href aussi -->
-<a href="/Enchere-Eni/PageCreerCompte"><button>Creation compte</button></a>
-
-
-
+<a href="/Enchere-Eni/PageCreerCompte"><button>Creation Compte</button></a>
+</form>
 </body>
 </html>

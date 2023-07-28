@@ -12,10 +12,6 @@ import fr.eni.projet.encheres.BusinessException;
 import fr.eni.projet.encheres.bll.ArticleManager;
 import fr.eni.projet.encheres.bll.UtilisateurManager;
 import fr.eni.projet.encheres.bo.Utilisateur;
-import fr.eni.projet.encheres.bo.Article;
-import fr.eni.projet.encheres.dal.dbo.articles.DAOArticle;
-import fr.eni.projet.encheres.dal.exception.DALException;
-
 
 /**
  * Servlet implementation class PageSuppressionVente
@@ -36,50 +32,7 @@ public class PageSuppressionVente extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-		if(request.getAttribute("noArticle")!= null) {
-			response.sendRedirect("/Enchere-Eni/PageVendreUnArticle");
-			return;
-		}
-		
-		
-	       //ici on appelle la méthode Suppression
-		    ArticleManager articleManager = new ArticleManager();
-		    
-		    // getParameter nous renvoie un objet mais comme noArticle on y a stocké une chaine de caractère, donc un string
-		    // mais on sait que noArticle est un entier, on caste le string en Integer, le integer refait un cast en type primitif
-	        int noArticle = Integer.parseInt((String) request.getParameter("noArticle"));
-
-
-	        try {
-	  	
-				articleManager.supprimerArticleParId(noArticle);
-		        request.setAttribute("Ventesupprime", "Votre article a été supprimé");
-	        
-			} catch (BusinessException e) {
-				e.printStackTrace();
-			} catch (DALException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        
-        
-       /** Article article = null;
-        int noArticle = (int) request.getAttribute("noArticle");
-       
-        ArticleManager articleManager = new ArticleManager();
-        
-        try {
-			article = articleManager.obtenirArticleParId(noArticle);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		} catch (DALException e) {
-			e.printStackTrace();
-		}
-	
-    	request.setAttribute("article", article);
-		*/
-		
+		// TODO Auto-generated method stub
 		this.getServletContext().getRequestDispatcher("/html/PageVenteSupprime.jsp").forward(request, response);
 	}
 
@@ -88,8 +41,40 @@ public class PageSuppressionVente extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		ArticleManager arcticleManager = new ArticleManager();
+		
+	   	HttpSession session = request.getSession();	
+		
+		Integer noUtilisateur = (Integer) session.getAttribute("identifiant");		
+
+		System.out.println(session.getAttribute("identifiant"));
+		
+	    // Creation d'une variable initialisée à null pour pouvoir l'utiliser ligne 56
+        Utilisateur utilisateur = null;
+       
+		// On a créée une instance de UtilisateurManager pour pouvoir faire appel a la methode de la classe UtilisateurManager
+        UtilisateurManager utilisateurManager = new UtilisateurManager();
+        
+        try {
+        	// Notre variable utilisateur stocke le resultat de la requete obternirUtilisateurParId
+			utilisateur = utilisateurManager.obtenirUtilisateurParId(noUtilisateur);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+	 
+        try {
+        
+        	// Notre methode supprimerUtilisateurById permet de retrouver l'utilisateur par son noUtilisateur
+			//utilisateurManager.supprimerUtilisateurById(noUtilisateur);
+			arcticleManager.supprimerArticleParId(noArticle);
+	        request.setAttribute("Ventesupprime", "Votre vente a été supprimé");
+        
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+        
         
 		doGet(request, response);
 
-	}
+
 }
