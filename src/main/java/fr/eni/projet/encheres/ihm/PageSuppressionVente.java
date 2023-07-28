@@ -1,5 +1,6 @@
 package fr.eni.projet.encheres.ihm;
 
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
