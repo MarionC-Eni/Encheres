@@ -19,17 +19,17 @@
 <form method="POST" action="/Enchere-Eni/PageModifierVente?noArticle=${article.noArticle}">
 
 <label for="nom">Nom :</label>
-<input type="text" id="nom" name="nomArticle" required>
+<input type="text" id="nom" name="nomArticle" value="${article.nomArticle}" required>
 <label for="Description">Description :</label>
-<input type="text" id="description" name="description" required>
+<input type="text" id="description" name="description"  value="${article.description}" required>
 <label for="date">Début d'enchère :</label>
-<input type="date"  id="date" name="dateDebut" required> 
+<input type="date"  id="date" name="dateDebut"  value="${article.dateDebut}" required> 
 <label for="date">Fin de l'enchère :</label>
-<input type="date"  id="date" name="dateFin" required> 
+<input type="date"  id="date" name="dateFin"  value="${article.dateFin}" required> 
 <label for="prixVente">Le prix initial de mon article est :</label>
-<input type="number"  id="prixVente" name="prixVente" required> 
+<input type="number"  id="prixVente" name="prixVente"  value="${article.prixVente}" required> 
 <label for="miseAPrix">Je ne descendrai pas en dessous de (euros) :</label>
-<input type="number"  id="miseAPrix" name="miseAPrix" required> 
+<input type="number"  id="miseAPrix" name="miseAPrix"  value="${article.miseAPrix}" required> 
 <input type="submit" value="Enregistrer">
 </form>
 <form method="POST" action="/Enchere-Eni/PageSuppressionVente">
