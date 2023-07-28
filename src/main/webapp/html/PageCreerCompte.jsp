@@ -39,13 +39,13 @@
 <label for="motDePasse">Mot de passe :</label>
 <input type="password" id="motDePasse" name="motDePasse" required>
 <input type="submit" value="Créer mon compte">
-<a href="/Enchere-Eni/AccueilSite"><button>Annuler</button></a>
-
-
+<a href="/Enchere-Eni/PagesAccueilNonConnecte"><button type="button">Annuler</button></a>
 </fieldset>
 </form>
 </div>
 </div>
+
+
 <p></p>
 </body>
 </html>

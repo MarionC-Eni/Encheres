@@ -10,12 +10,14 @@
 </head>
 <body>
 <h1>ENI-Encheres</h1>
-	<p><a href="/Enchere-Eni/PageConnexion">se connecter</a></p>
-	
-	<h2>Liste des enchères</h2>
-	<form>
-	<label for="filtresEnchere">Filtres :</label><br>
-	<input type=search id="filtresEnchere" name="filtreEnchere" placeholder="Le nom de l'article contient"><br>
+	<p><a class="seconnecter" href="/Enchere-Eni/PageConnexion">se connecter</a></p>
+	<div class="container">
+    <div class="wrapper">
+      <form class="form-wrapper" >
+      <fieldset class="section is-active">
+      <h2>Liste des enchères</h2><br>
+	<label for="filtresEnchere">Filtres :</label>
+	<input type=search id="filtresEnchere" name="filtreEnchere" placeholder="Le nom de l'article contient"><br><br>
 	<label for="Categorie">Categorie :</label>
 	<select id="Categorie" name="Categorie" >
 	<option value="Toutes"> Toutes</option>
@@ -24,8 +26,12 @@
 		<option value="Vêtement"> Vêtement</option>
 		<option value="Sport§Loisirs"> Sport§Loisirs</option>
 		</select>
-		<input type="submit" value="Rechercher">
+		<input type="submit" value="Rechercher"><br><br><br>
+			<p class="nous">by dream team alias : nabil, marion et nicolas dit la mambo n°5</p>
+		</fieldset>
 	</form>
-	<p>yolo</p>
+	</div>
+	</div>
+
 </body>
 </html>
